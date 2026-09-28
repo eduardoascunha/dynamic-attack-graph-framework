@@ -1,8 +1,8 @@
-# Thesis Project
+# Master's Dissertation Project
 
 This repository is organized into two top-level folders:
 
-- **[`thesis/`](thesis/)** — The written thesis (Typst source, images, bibliography, glossary).
+- **[`thesis/`](thesis/)** — The written dissertation (Typst source, images, bibliography, glossary).
 - **[`src/`](src/)** — The complete code pipeline: an automated workflow that generates
   risk-scored attack graphs from environment descriptions, combining live threat
   intelligence, vulnerability correlation, and MulVAL-based attack graph reasoning.
@@ -24,7 +24,7 @@ scenarios, and configuration details.
 - `src/mulval/` contains MulVAL, licensed under GPL-3.0-or-later.
   Its original license and copyright notices are preserved.
 
-- `thesis/` is licensed under CC BY 4.0, except for third-party
+- The material in `thesis/` is licensed under CC BY 4.0, except for third-party
   material identified in the dissertation.
 
 - All remaining source code and files are Copyright © 2026 Eduardo André Silva Cunha.
