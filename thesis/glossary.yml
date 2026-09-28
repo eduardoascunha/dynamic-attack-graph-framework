@@ -1,0 +1,51 @@
+- key: attack
+  short: attack
+  description: A deliberate attempt to compromise a system by exploiting one or more vulnerabilities
+
+- key: datalog
+  short: Datalog
+  description: A declarative logic programming language and subset of Prolog that supports efficient, rule-based reasoning
+
+- key: exploit
+  short: exploit
+  description: The concrete mechanism, such as code, a sequence of actions or the abuse of legitimate functionality, through which a vulnerability is leveraged against a system
+
+- key: hyperalert
+  short: hyper-alert
+  description: A temporally ordered episode formed by aggregating intrusion detection alerts that share contextual and statistical properties
+
+- key: monotonicity
+  short: monotonicity assumption
+  description: The assumption that the successful execution of an attack step never invalidates the preconditions of other steps, allowing previously satisfied conditions to remain valid
+
+- key: mulval
+  short: MulVAL
+  description: An open-source, logic-based framework that automatically generates logical attack graphs by reasoning over network configuration and vulnerability data expressed as Datalog rules
+
+- key: nessus
+  short: Nessus
+  description: A widely used vulnerability scanner that identifies misconfigurations, missing patches and known weaknesses in networked systems
+
+- key: prolog
+  short: Prolog
+  description: A declarative logic programming language used to express facts and rules for automated reasoning
+
+- key: seamonster
+  short: SeaMonster
+  description: A graphical security modeling tool that relates the causes of vulnerabilities, potential attack paths and corresponding countermeasures through multiple complementary viewpoints
+
+- key: statespaceexplosion
+  short: state space explosion
+  description: The exponential growth in the number of global system states as hosts and vulnerabilities increase, which makes the explicit enumeration of attack graphs computationally infeasible
+
+- key: threat
+  short: threat
+  description: Any circumstance, event or entity with the potential to cause harm to a system or its assets
+
+- key: vulnerability
+  short: vulnerability
+  description: A flaw or weakness in a system's design, implementation, configuration or operation that can be exploited by a threat
+
+- key: xsb
+  short: XSB
+  description: A logic programming engine whose tabled resolution mechanism reuses intermediate results and prevents infinite recursion, used by MulVAL to construct attack traces in polynomial time

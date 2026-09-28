@@ -1,0 +1,115 @@
+primitive(inCompetent,1).
+primitive(competent,1).
+primitive(clientProgram,2).
+primitive(vulExists,3).
+primitive(vulProperty,3).
+primitive(hacl,4).
+primitive(attackerLocated,1).
+primitive(hasAccount,3).
+primitive(networkServiceInfo,5).
+primitive(setuidProgramInfo,3).
+primitive(nfsExportInfo,4).
+primitive(nfsMounted,5).
+primitive(localFileProtection,4).
+primitive(dependsOn,3).
+primitive(installed,2).
+primitive(bugHyp,4).
+primitive(vulExists,5).
+primitive(canAccessFile,4).
+primitive(isWebServer,1).
+derived(execCode,2).
+derived(netAccess,3).
+derived(canAccessHost,1).
+derived(accessFile,3).
+derived(accessMaliciousInput,3).
+derived(principalCompromised,1).
+derived(dos,1).
+derived(logInService,3).
+meta(cvss,2).
+meta(attackGoal,1).
+meta(advances,2).
+
+attack(execCode(victim1,user)).
+
+possible_duplicate_trace_step(because(22,rule_desc('Browsing a malicious website',0.80000000000000004),accessMaliciousInput(victim1,victim1_user,firefox),[attackerLocated(internet),hacl(victim1,internet,httpProtocol,httpPort),inCompetent(victim1_user)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim1,user),[accessMaliciousInput(victim1,victim1_user,firefox),hasAccount(victim1_user,victim1,user),vulExists(victim1,threat_t1_elevation_of_privilege,firefox,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim1,user),[accessMaliciousInput(victim1,victim1_user,firefox),hasAccount(victim1_user,victim1,user),vulExists(victim1,threat_t1_elevation_of_privilege,firefox,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('Browsing a malicious website',0.80000000000000004),accessMaliciousInput(victim3,victim3_user,mozilla_vpn),[attackerLocated(internet),hacl(victim3,internet,httpProtocol,httpPort),inCompetent(victim3_user)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim3,user),[accessMaliciousInput(victim3,victim3_user,mozilla_vpn),hasAccount(victim3_user,victim3,user),vulExists(victim3,threat_t3_elevation_of_privilege,mozilla_vpn,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim3,user),[accessMaliciousInput(victim3,victim3_user,mozilla_vpn),hasAccount(victim3_user,victim3,user),vulExists(victim3,'CVE-2022-0517',mozilla_vpn,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(22,rule_desc('Browsing a malicious website',0.80000000000000004),accessMaliciousInput(victim2,victim2_user,finereader),[attackerLocated(internet),hacl(victim2,internet,httpProtocol,httpPort),inCompetent(victim2_user)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim2,user),[accessMaliciousInput(victim2,victim2_user,finereader),hasAccount(victim2_user,victim2,user),vulExists(victim2,threat_t2_elevation_of_privilege,finereader,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim2,user),[accessMaliciousInput(victim2,victim2_user,finereader),hasAccount(victim2_user,victim2,user),vulExists(victim2,'CVE-2019-20383',finereader,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim2,user),[accessMaliciousInput(victim2,victim2_user,finereader),hasAccount(victim2_user,victim2,user),vulExists(victim2,threat_t2_elevation_of_privilege,finereader,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim2,user),[accessMaliciousInput(victim2,victim2_user,finereader),hasAccount(victim2_user,victim2,user),vulExists(victim2,'CVE-2019-20383',finereader,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim3,user),[accessMaliciousInput(victim3,victim3_user,mozilla_vpn),hasAccount(victim3_user,victim3,user),vulExists(victim3,threat_t3_elevation_of_privilege,mozilla_vpn,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim3,user),[accessMaliciousInput(victim3,victim3_user,mozilla_vpn),hasAccount(victim3_user,victim3,user),vulExists(victim3,'CVE-2022-0517',mozilla_vpn,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim2,user),[accessMaliciousInput(victim2,victim2_user,finereader),hasAccount(victim2_user,victim2,user),vulExists(victim2,threat_t2_elevation_of_privilege,finereader,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim2,user),[accessMaliciousInput(victim2,victim2_user,finereader),hasAccount(victim2_user,victim2,user),vulExists(victim2,'CVE-2019-20383',finereader,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim3,user),[accessMaliciousInput(victim3,victim3_user,mozilla_vpn),hasAccount(victim3_user,victim3,user),vulExists(victim3,threat_t3_elevation_of_privilege,mozilla_vpn,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim3,user),[accessMaliciousInput(victim3,victim3_user,mozilla_vpn),hasAccount(victim3_user,victim3,user),vulExists(victim3,'CVE-2022-0517',mozilla_vpn,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(victim1,user),[accessMaliciousInput(victim1,victim1_user,firefox),hasAccount(victim1_user,victim1,user),vulExists(victim1,threat_t1_elevation_of_privilege,firefox,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('password sniffing',0.80000000000000004),principalCompromised(victim1_user),[execCode(victim1,user),hasAccount(victim1_user,victim1,user)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('password sniffing',0.80000000000000004),principalCompromised(victim3_user),[execCode(victim3,user),hasAccount(victim3_user,victim3,user)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('password sniffing',0.80000000000000004),principalCompromised(victim2_user),[execCode(victim2,user),hasAccount(victim2_user,victim2,user)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',1.0),canAccessHost(victim1),[execCode(victim1,user)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',1.0),canAccessHost(victim3),[execCode(victim3,user)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',1.0),canAccessHost(victim2),[execCode(victim2,user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',0.5),execCode(victim3,user),[canAccessHost(victim3),hasAccount(victim3_user,victim3,user),principalCompromised(victim3_user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',0.5),execCode(victim2,user),[canAccessHost(victim2),hasAccount(victim2_user,victim2,user),principalCompromised(victim2_user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',0.5),execCode(victim1,user),[canAccessHost(victim1),hasAccount(victim1_user,victim1,user),principalCompromised(victim1_user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',0.5),execCode(victim3,user),[canAccessHost(victim3),hasAccount(victim3_user,victim3,user),principalCompromised(victim3_user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',0.5),execCode(victim2,user),[canAccessHost(victim2),hasAccount(victim2_user,victim2,user),principalCompromised(victim2_user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',0.5),execCode(victim1,user),[canAccessHost(victim1),hasAccount(victim1_user,victim1,user),principalCompromised(victim1_user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',0.5),execCode(victim2,user),[canAccessHost(victim2),hasAccount(victim2_user,victim2,user),principalCompromised(victim2_user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',0.5),execCode(victim3,user),[canAccessHost(victim3),hasAccount(victim3_user,victim3,user),principalCompromised(victim3_user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',0.5),execCode(victim1,user),[canAccessHost(victim1),hasAccount(victim1_user,victim1,user),principalCompromised(victim1_user)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',1.0),canAccessHost(victim3),[execCode(victim3,user)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',1.0),canAccessHost(victim2),[execCode(victim2,user)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',1.0),canAccessHost(victim1),[execCode(victim1,user)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('password sniffing',0.80000000000000004),principalCompromised(victim1_user),[execCode(victim1,user),hasAccount(victim1_user,victim1,user)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('password sniffing',0.80000000000000004),principalCompromised(victim3_user),[execCode(victim3,user),hasAccount(victim3_user,victim3,user)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('password sniffing',0.80000000000000004),principalCompromised(victim2_user),[execCode(victim2,user),hasAccount(victim2_user,victim2,user)])).
+
+attack(execCode(victim2,user)).
+
+attack(execCode(victim3,user)).
+

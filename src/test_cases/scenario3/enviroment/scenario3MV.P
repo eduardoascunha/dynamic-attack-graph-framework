@@ -1,0 +1,43 @@
+/*network connection*/
+attackerLocated(internet).
+hacl(internet, reverseProxy, tcp, 443).
+hacl(reverseProxy, portalServer, tcp, 8080).
+hacl(portalServer, apiServer, tcp, 8443).
+hacl(apiServer, authServer, tcp, 9443).
+hacl(apiServer, dbServer, tcp, 5432).
+hacl(apiServer, cacheServer, tcp, 11211).
+hacl(apiServer, mqServer, tcp, 5672).
+hacl(clinicianWorkstation, internet, httpProtocol, httpPort).
+
+/*network services*/
+networkServiceInfo(reverseProxy, haproxy, tcp, 443, haproxy).
+networkServiceInfo(portalServer, tomcat, tcp, 8080, tomcat).
+networkServiceInfo(apiServer, jetty, tcp, 8443, jetty).
+networkServiceInfo(authServer, keycloak, tcp, 9443, keycloak).
+networkServiceInfo(dbServer, postgresql, tcp, 5432, postgresql).
+networkServiceInfo(cacheServer, memcached, tcp, 11211, memcached).
+networkServiceInfo(mqServer, rabbitmq, tcp, 5672, rabbitmq).
+
+/*installed software*/
+installed(reverseProxy, haproxy).
+installed(portalServer, tomcat).
+installed(apiServer, jetty).
+installed(authServer, keycloak).
+installed(dbServer, postgresql).
+installed(cacheServer, memcached).
+installed(mqServer, rabbitmq).
+installed(clinicianWorkstation, thunderbird).
+
+/*users*/
+inCompetent(clinician_user).
+hasAccount(clinician_user, clinicianWorkstation, user).
+
+/*attack goals*/
+attackGoal(execCode(reverseProxy, _)).
+attackGoal(execCode(portalServer, _)).
+attackGoal(execCode(apiServer, _)).
+attackGoal(execCode(authServer, _)).
+attackGoal(execCode(dbServer, _)).
+attackGoal(execCode(cacheServer, _)).
+attackGoal(execCode(mqServer, _)).
+attackGoal(execCode(clinicianWorkstation, _)).

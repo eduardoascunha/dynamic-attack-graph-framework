@@ -1,0 +1,56 @@
+---
+config:
+  flowchart:
+    rankSpacing: 95
+    subGraphTitleMargin:
+      top: 6
+      bottom: 12
+---
+flowchart TB
+    subgraph top[" "]
+        direction LR
+        subgraph inputs["Test Case Inputs"]
+            scenarioP["scenario*.P<br/>(network topology)"]
+            cpeMap["asset_cpe_mapping.json"]
+            stride["stride_definition.json<br/>(optional)"]
+        end
+        ti["Threat Intelligence Ingestion<br/><i>(optional · profile: ingest)</i><br/>NVD · EPSS · KEV"]
+    end
+
+    db[("PostgreSQL<br/>Threat Intel DB")]
+    ec["Environment Correlation<br/>CPE → CVE · vulExists / vulProperty"]
+
+    subgraph orch["Orchestrator"]
+        direction TB
+        change["Change Detection<br/>hash · vulExists / attackGoal diff"]
+        mulval["MulVAL Engine<br/>attack graph reasoning"]
+        change -->|input.P| mulval
+    end
+
+    pp["Post-Processing<br/>risk scoring · delta analysis"]
+    report@{ shape: doc, label: "Risk Report + Annotated\nAttack Graph (PDF/PNG)" }
+
+    ti -->|writes CVE/EPSS/KEV| db
+    db -->|reads threat intel| ec
+    scenarioP --> ec
+    cpeMap --> ec
+    stride --> ec
+    ec -->|scenario.P| change
+    mulval -->|VERTICES.CSV / ARCS.CSV| pp
+    db -->|enrich CVSS/EPSS/KEV| pp
+    pp --> report
+
+    classDef service fill:#dbeafe,stroke:#1e40af,stroke-width:2px,color:#0f172a;
+    classDef store fill:#dcfce7,stroke:#166534,stroke-width:2px,color:#0f172a;
+    classDef optional fill:#fef9c3,stroke:#a16207,stroke-width:2px,color:#0f172a;
+    classDef input fill:#f1f5f9,stroke:#475569,stroke-width:1px,color:#0f172a;
+    classDef output fill:#fae8ff,stroke:#86198f,stroke-width:2px,color:#0f172a;
+
+    class ec,change,mulval,pp service;
+    class db store;
+    class ti optional;
+    class scenarioP,cpeMap,stride input;
+    class report output;
+
+    style top fill:none,stroke:none;
+    style orch fill:#eff6ff,stroke:#1e40af,stroke-width:2px,color:#0f172a;

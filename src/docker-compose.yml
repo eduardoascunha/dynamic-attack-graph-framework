@@ -1,0 +1,99 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: threat_intel_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./threat_intel_schema.sql:/docker-entrypoint-initdb.d/01-init-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - threat_intel_network
+
+  threat_intelligence_app:
+    profiles: ["ingest"]
+    build:
+      context: ./threat_intelligence_ingestion
+      dockerfile: Dockerfile
+    container_name: threat_intel_app
+    restart: no
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./threat_intelligence_ingestion/.config:/app/.config:ro
+    networks:
+      - threat_intel_network
+
+  environment_correlation_app:
+    build:
+      context: ./enviroment_correlation
+      dockerfile: Dockerfile
+    container_name: environment_correlation_app
+    restart: no
+    depends_on:
+      postgres:
+        condition: service_healthy
+      threat_intelligence_app:
+        condition: service_completed_successfully
+        required: false
+    volumes:
+      - ./enviroment_correlation/.config:/app/.config:ro
+      - ./test_cases/${SCENARIO}/enviroment:/app/enviroment
+    networks:
+      - threat_intel_network
+
+  orchestrator_app:
+    build:
+      context: .
+      dockerfile: orchestrator/Dockerfile
+    container_name: orchestrator_app
+    restart: no
+    depends_on:
+      environment_correlation_app:
+        condition: service_completed_successfully
+        required: true
+    volumes:
+      - ./orchestrator/.config:/app/.config:ro
+      - ./test_cases/${SCENARIO}/enviroment:/output:ro
+      - ./test_cases/${SCENARIO}/gen_graph:/gen_graph
+    networks:
+      - threat_intel_network
+
+  post_processing_app:
+    build:
+      context: ./post_processing_layer
+      dockerfile: Dockerfile
+    container_name: post_processing_app
+    restart: no
+    depends_on:
+      postgres:
+        condition: service_healthy
+      orchestrator_app:
+        condition: service_completed_successfully
+        required: true
+    volumes:
+      - ./post_processing_layer/.config:/app/.config:ro
+      - ./test_cases/${SCENARIO}/enviroment:/scenario:ro
+      - ./test_cases/${SCENARIO}/gen_graph:/gen_graph:ro
+      - ./test_cases/${SCENARIO}/post_processing:/post_processing
+    networks:
+      - threat_intel_network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  threat_intel_network:
+    driver: bridge

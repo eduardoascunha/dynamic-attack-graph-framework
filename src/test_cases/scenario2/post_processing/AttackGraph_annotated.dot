@@ -1,0 +1,371 @@
+digraph G {
+	// ========== LEGEND ==========
+	subgraph cluster_legend {
+		label="Attack Graph Risk Analysis Legend";
+		fontsize=16;
+		fontname="Arial Bold";
+		style=filled;
+		color="#333333";
+		fillcolor="#F5F5F5";
+
+		legend_info [shape=plaintext,label=<
+			<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6">
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="14"><B>RISK ANALYSIS SUMMARY</B></FONT></TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Total Attack Paths:</B></TD><TD COLSPAN="2">1373</TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Unique CVEs:</B></TD><TD COLSPAN="2">19</TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Maximum Risk:</B></TD><TD COLSPAN="2"><FONT COLOR="#C85A54"><B>0.36/10</B></FONT></TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Average Risk:</B></TD><TD COLSPAN="2"><B>0.02/10</B></TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Coverage:</B></TD><TD COLSPAN="2">100.0%</TD></TR>
+
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="12"><B>NODE COLORS (Colorblind-Friendly)</B></FONT></TD></TR>
+				<TR><TD BGCOLOR="#D97066" WIDTH="120"><B>KEV</B></TD><TD COLSPAN="2" ALIGN="LEFT">CISA Known Exploited Vulnerability (active exploitation)</TD></TR>
+				<TR><TD BGCOLOR="#CC7A50"><B>Critical</B></TD><TD COLSPAN="2" ALIGN="LEFT">Critical Severity: CVSS ≥ 9.0</TD></TR>
+				<TR><TD BGCOLOR="#D4A574"><B>High</B></TD><TD COLSPAN="2" ALIGN="LEFT">High Severity: CVSS ≥ 7.0</TD></TR>
+				<TR><TD BGCOLOR="#E8D5B7"><B>Medium</B></TD><TD COLSPAN="2" ALIGN="LEFT">Medium Severity: CVSS ≥ 4.0</TD></TR>
+				<TR><TD BGCOLOR="#D8D8D8"><B>Low</B></TD><TD COLSPAN="2" ALIGN="LEFT">Low Severity: CVSS &lt; 4.0</TD></TR>
+				<TR><TD BGCOLOR="#C8979E"><B>Goal</B></TD><TD COLSPAN="2" ALIGN="LEFT">Attacker Goal / Final Objective</TD></TR>
+				<TR><TD BGCOLOR="#B8A9C9"><B>STRIDE</B></TD><TD COLSPAN="2" ALIGN="LEFT">STRIDE Threat Model Vulnerability</TD></TR>
+				<TR><TD BGCOLOR="#9DB4C0"><B>Rule</B></TD><TD COLSPAN="2" ALIGN="LEFT">AND/OR Logic Rule</TD></TR>
+				<TR><TD BGCOLOR="#FFFFFF"><B>Fact</B></TD><TD COLSPAN="2" ALIGN="LEFT">Infrastructure Fact (no CVE)</TD></TR>
+
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="12"><B>NODE SHAPES</B></FONT></TD></TR>
+				<TR><TD><B>Diamond</B></TD><TD COLSPAN="2" ALIGN="LEFT">OR Node (reachable state or goal)</TD></TR>
+				<TR><TD><B>Ellipse</B></TD><TD COLSPAN="2" ALIGN="LEFT">AND Node (inference rule)</TD></TR>
+				<TR><TD><B>Box</B></TD><TD COLSPAN="2" ALIGN="LEFT">Leaf (vulnerability or fact)</TD></TR>
+
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="12"><B>EDGE COLORS</B></FONT></TD></TR>
+				<TR><TD><FONT COLOR="#C85A54"><B>Dark Coral</B></FONT></TD><TD COLSPAN="2" ALIGN="LEFT">High Risk ≥ 7.0</TD></TR>
+				<TR><TD><FONT COLOR="#CC7A50"><B>Burnt Orange</B></FONT></TD><TD COLSPAN="2" ALIGN="LEFT">Medium-High Risk ≥ 4.0</TD></TR>
+				<TR><TD><FONT COLOR="#D4A574"><B>Tan</B></FONT></TD><TD COLSPAN="2" ALIGN="LEFT">Medium Risk ≥ 2.0</TD></TR>
+				<TR><TD><FONT COLOR="#7A9BAE"><B>Steel Blue</B></FONT></TD><TD COLSPAN="2" ALIGN="LEFT">Low Risk &lt; 2.0</TD></TR>
+				<TR><TD COLSPAN="3" ALIGN="LEFT"><I>Label format: "risk: X.X (N paths)"</I></TD></TR>
+
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="12"><B>METRICS</B></FONT></TD></TR>
+				<TR><TD><B>Risk Score</B></TD><TD COLSPAN="2" ALIGN="LEFT">Risk rating (0-10): EPSS × CVSS × KEV × Criticality</TD></TR>
+				<TR><TD><B>CVSS</B></TD><TD COLSPAN="2" ALIGN="LEFT">Common Vulnerability Scoring System v3.1 (0-10)</TD></TR>
+				<TR><TD><B>EPSS</B></TD><TD COLSPAN="2" ALIGN="LEFT">Exploit Prediction Scoring System (0-1): exploitation probability</TD></TR>
+				<TR><TD><B>KEV</B></TD><TD COLSPAN="2" ALIGN="LEFT">CISA Known Exploited Vulnerabilities: 1.5× multiplier</TD></TR>
+			</TABLE>
+		>];
+	}
+
+	1 [label="Execute Code
+Host: adminWorkstation | as: user",shape=diamond,style="filled",fillcolor="#C8979E"];
+	2 [label="When a principal is compromised any machine he has an account on will also be compromised",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	3 [label="Can Access Host
+adminWorkstation",shape=diamond,style="filled",fillcolor="#C8979E"];
+	4 [label="Access a host through executing code on the machine",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	5 [label="Account
+admin_user on adminWorkstation (user)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	6 [label="Principal Compromised
+admin_user",shape=diamond,style="filled",fillcolor="#C8979E"];
+	7 [label="Password sniffing",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	8 [label="Remote exploit for a client program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	9 [label="Malicious Input
+Host: adminWorkstation | victim: admin_user via firefox",shape=diamond,style="filled",fillcolor="#C8979E"];
+	10 [label="Browsing a malicious website",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	11 [label="Attacker Origin
+internet",shape=box,style="filled",fillcolor="#FFFFFF"];
+	12 [label="Firewall Rule
+adminWorkstation → internet | httpProtocol:httpPort",shape=box,style="filled",fillcolor="#FFFFFF"];
+	13 [label="Vulnerable User
+admin_user",shape=box,style="filled",fillcolor="#FFFFFF"];
+	14 [label="STRIDE: Elevation of privilege
+Host: adminWorkstation | firefox
+Client-Side Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t6_elevation_of_privilege"];
+	15 [label="Execute Code
+Host: appServer | as: apache",shape=diamond,style="filled",fillcolor="#C8979E"];
+	16 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	17 [label="Network Access
+Host: appServer | tcp:8080",shape=diamond,style="filled",fillcolor="#C8979E"];
+	18 [label="Multi-hop access",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	19 [label="Firewall Rule
+webProxy → appServer | tcp:8080",shape=box,style="filled",fillcolor="#FFFFFF"];
+	20 [label="Execute Code
+Host: webProxy | as: nginx",shape=diamond,style="filled",fillcolor="#C8979E"];
+	21 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	22 [label="Network Access
+Host: webProxy | tcp:80",shape=diamond,style="filled",fillcolor="#C8979E"];
+	23 [label="Direct network access",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	24 [label="Firewall Rule
+internet → webProxy | tcp:80",shape=box,style="filled",fillcolor="#FFFFFF"];
+	25 [label="Service
+Host: webProxy | nginx tcp:80 (nginx)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	26 [label="CVE-2022-41741
+Host: webProxy | nginx
+Remote Exploit → Privilege Escalation
+Risk: 0.13/10 
+CVSS: 7.8 | EPSS: 0.0079",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2022-41741 | Risk: 0.13 | CVSS: 7.8 | EPSS: 0.0079 | KEV: no"];
+	27 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	28 [label="CVE-2022-41742
+Host: webProxy | nginx
+Remote Exploit → Privilege Escalation
+Risk: 0.13/10 
+CVSS: 7.1 | EPSS: 0.0114",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2022-41742 | Risk: 0.13 | CVSS: 7.1 | EPSS: 0.0114 | KEV: no"];
+	29 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	30 [label="CVE-2025-23419
+Host: webProxy | nginx
+Remote Exploit → Privilege Escalation
+Risk: 0.10/10 
+CVSS: 4.3 | EPSS: 0.0279",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2025-23419 | Risk: 0.10 | CVSS: 4.3 | EPSS: 0.0279 | KEV: no"];
+	31 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	32 [label="STRIDE: Tampering
+Host: webProxy | nginx
+Remote Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t1_tampering"];
+	33 [label="Service
+Host: appServer | magento tcp:8080 (apache)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	34 [label="CVE-2024-49521
+Host: appServer | magento
+Remote Exploit → Privilege Escalation
+Risk: 0.08/10 
+CVSS: 7.7 | EPSS: 0.0075",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2024-49521 | Risk: 0.08 | CVSS: 7.7 | EPSS: 0.0075 | KEV: no"];
+	35 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	36 [label="CVE-2025-27189
+Host: appServer | magento
+Remote Exploit → Privilege Escalation
+Risk: 0.06/10 
+CVSS: 4.3 | EPSS: 0.0101",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2025-27189 | Risk: 0.06 | CVSS: 4.3 | EPSS: 0.0101 | KEV: no"];
+	37 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	38 [label="STRIDE: Spoofing
+Host: appServer | magento
+Remote Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t2_spoofing"];
+	39 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	40 [label="STRIDE: Information disclosure
+Host: appServer | magento
+Remote Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t3_information_disclosure"];
+	41 [label="Execute Code
+Host: cacheServer | as: redis",shape=diamond,style="filled",fillcolor="#C8979E"];
+	42 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	43 [label="Network Access
+Host: cacheServer | tcp:6379",shape=diamond,style="filled",fillcolor="#C8979E"];
+	44 [label="Multi-hop access",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	45 [label="Firewall Rule
+appServer → cacheServer | tcp:6379",shape=box,style="filled",fillcolor="#FFFFFF"];
+	46 [label="Service
+Host: cacheServer | redis tcp:6379 (redis)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	47 [label="CVE-2026-23479
+Host: cacheServer | redis
+Remote Exploit → Privilege Escalation
+Risk: 0.13/10 
+CVSS: 8.8 | EPSS: 0.0151",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-23479 | Risk: 0.13 | CVSS: 8.8 | EPSS: 0.0151 | KEV: no"];
+	48 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	49 [label="CVE-2026-23631
+Host: cacheServer | redis
+Remote Exploit → Privilege Escalation
+Risk: 0.23/10 
+CVSS: 8.1 | EPSS: 0.0280",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-23631 | Risk: 0.23 | CVSS: 8.1 | EPSS: 0.0280 | KEV: no"];
+	50 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	51 [label="CVE-2026-25243
+Host: cacheServer | redis
+Remote Exploit → Privilege Escalation
+Risk: 0.32/10 
+CVSS: 8.8 | EPSS: 0.0366",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-25243 | Risk: 0.32 | CVSS: 8.8 | EPSS: 0.0366 | KEV: no"];
+	52 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	53 [label="CVE-2026-66373
+Host: cacheServer | redis
+Remote Exploit → Privilege Escalation
+Risk: 0.07/10 
+CVSS: 7.5 | EPSS: 0.0087",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-66373 | Risk: 0.07 | CVSS: 7.5 | EPSS: 0.0087 | KEV: no"];
+	54 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	55 [label="CVE-2026-81934
+Host: cacheServer | redis
+Remote Exploit → Privilege Escalation
+Risk: 0.05/10 
+CVSS: 7.1 | EPSS: 0.0066",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-81934 | Risk: 0.05 | CVSS: 7.1 | EPSS: 0.0066 | KEV: no"];
+	56 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	57 [label="STRIDE: Tampering
+Host: cacheServer | redis
+Remote Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t5_tampering"];
+	58 [label="Execute Code
+Host: dbServer | as: mariadb",shape=diamond,style="filled",fillcolor="#C8979E"];
+	59 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	60 [label="Network Access
+Host: dbServer | tcp:3306",shape=diamond,style="filled",fillcolor="#C8979E"];
+	61 [label="Multi-hop access",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	62 [label="Firewall Rule
+appServer → dbServer | tcp:3306",shape=box,style="filled",fillcolor="#FFFFFF"];
+	63 [label="Service
+Host: dbServer | mariadb tcp:3306 (mariadb)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	64 [label="CVE-2026-3494
+Host: dbServer | mariadb
+Remote Exploit → Privilege Escalation
+Risk: 0.02/10 
+CVSS: 4.3 | EPSS: 0.0036",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-3494 | Risk: 0.02 | CVSS: 4.3 | EPSS: 0.0036 | KEV: no"];
+	65 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	66 [label="CVE-2026-35549
+Host: dbServer | mariadb
+Remote Exploit → Privilege Escalation
+Risk: 0.03/10 
+CVSS: 6.5 | EPSS: 0.0046",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-35549 | Risk: 0.03 | CVSS: 6.5 | EPSS: 0.0046 | KEV: no"];
+	67 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	68 [label="CVE-2026-44168
+Host: dbServer | mariadb
+Remote Exploit → Privilege Escalation
+Risk: 0.17/10 
+CVSS: 8.0 | EPSS: 0.0097",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-44168 | Risk: 0.17 | CVSS: 8.0 | EPSS: 0.0097 | KEV: no"];
+	69 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	70 [label="CVE-2026-44170
+Host: dbServer | mariadb
+Remote Exploit → Privilege Escalation
+Risk: 0.36/10 
+CVSS: 9.8 | EPSS: 0.0170",shape=box,style="filled",fillcolor="#CC7A50",tooltip="CVE-2026-44170 | Risk: 0.36 | CVSS: 9.8 | EPSS: 0.0170 | KEV: no"];
+	71 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	72 [label="CVE-2026-44171
+Host: dbServer | mariadb
+Remote Exploit → Privilege Escalation
+Risk: 0.03/10 
+CVSS: 7.8 | EPSS: 0.0017",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-44171 | Risk: 0.03 | CVSS: 7.8 | EPSS: 0.0017 | KEV: no"];
+	73 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	74 [label="CVE-2026-44173
+Host: dbServer | mariadb
+Remote Exploit → Privilege Escalation
+Risk: 0.04/10 
+CVSS: 5.3 | EPSS: 0.0084",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-44173 | Risk: 0.04 | CVSS: 5.3 | EPSS: 0.0084 | KEV: no"];
+	75 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	76 [label="CVE-2026-48163
+Host: dbServer | mariadb
+Remote Exploit → Privilege Escalation
+Risk: 0.17/10 
+CVSS: 7.2 | EPSS: 0.0112",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-48163 | Risk: 0.17 | CVSS: 7.2 | EPSS: 0.0112 | KEV: no"];
+	77 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	78 [label="CVE-2026-48165
+Host: dbServer | mariadb
+Remote Exploit → Privilege Escalation
+Risk: 0.25/10 
+CVSS: 7.2 | EPSS: 0.0160",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-48165 | Risk: 0.25 | CVSS: 7.2 | EPSS: 0.0160 | KEV: no"];
+	79 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	80 [label="CVE-2026-49261
+Host: dbServer | mariadb
+Remote Exploit → Privilege Escalation
+Risk: 0.36/10 
+CVSS: 9.8 | EPSS: 0.0169",shape=box,style="filled",fillcolor="#CC7A50",tooltip="CVE-2026-49261 | Risk: 0.36 | CVSS: 9.8 | EPSS: 0.0169 | KEV: no"];
+	81 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	82 [label="STRIDE: Information disclosure
+Host: dbServer | mariadb
+Remote Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t4_information_disclosure"];
+	1 -> 	4;
+	4 -> 	3;
+	3 -> 	2;
+	5 -> 	2;
+	1 -> 	7;
+	5 -> 	7;
+	7 -> 	6;
+	6 -> 	2;
+	2 -> 	1;
+	11 -> 	10;
+	12 -> 	10;
+	13 -> 	10;
+	10 -> 	9;
+	9 -> 	8;
+	5 -> 	8;
+	14 -> 	8;
+	8 -> 	1;
+	19 -> 	18;
+	24 -> 	23;
+	11 -> 	23;
+	23 -> 	22;
+	22 -> 	21;
+	25 -> 	21;
+	26 -> 21 [label="risk: 0.13\n(1 path)",color="#7A9BAE",fontsize=9];
+	21 -> 20 [label="risk: 0.13\n(1 path)",color="#7A9BAE",fontsize=9];
+	22 -> 	27;
+	25 -> 	27;
+	28 -> 27 [label="risk: 0.13\n(1 path)",color="#7A9BAE",fontsize=9];
+	27 -> 20 [label="risk: 0.13\n(1 path)",color="#7A9BAE",fontsize=9];
+	22 -> 	29;
+	25 -> 	29;
+	30 -> 	29;
+	29 -> 	20;
+	22 -> 	31;
+	25 -> 	31;
+	32 -> 	31;
+	31 -> 	20;
+	20 -> 	18;
+	18 -> 	17;
+	17 -> 	16;
+	33 -> 	16;
+	34 -> 	16;
+	16 -> 	15;
+	17 -> 	35;
+	33 -> 	35;
+	36 -> 	35;
+	35 -> 	15;
+	17 -> 	37;
+	33 -> 	37;
+	38 -> 	37;
+	37 -> 	15;
+	17 -> 	39;
+	33 -> 	39;
+	40 -> 	39;
+	39 -> 	15;
+	45 -> 	44;
+	15 -> 	44;
+	44 -> 	43;
+	43 -> 	42;
+	46 -> 	42;
+	47 -> 42 [label="risk: 0.13\n(1 path)",color="#7A9BAE",fontsize=9];
+	42 -> 41 [label="risk: 0.13\n(1 path)",color="#7A9BAE",fontsize=9];
+	43 -> 	48;
+	46 -> 	48;
+	49 -> 48 [label="risk: 0.23\n(1 path)",color="#7A9BAE",fontsize=9];
+	48 -> 41 [label="risk: 0.23\n(1 path)",color="#7A9BAE",fontsize=9];
+	43 -> 	50;
+	46 -> 	50;
+	51 -> 50 [label="risk: 0.32\n(1 path)",color="#7A9BAE",fontsize=9];
+	50 -> 41 [label="risk: 0.32\n(1 path)",color="#7A9BAE",fontsize=9];
+	43 -> 	52;
+	46 -> 	52;
+	53 -> 	52;
+	52 -> 	41;
+	43 -> 	54;
+	46 -> 	54;
+	55 -> 	54;
+	54 -> 	41;
+	43 -> 	56;
+	46 -> 	56;
+	57 -> 	56;
+	56 -> 	41;
+	62 -> 	61;
+	15 -> 	61;
+	61 -> 	60;
+	60 -> 	59;
+	63 -> 	59;
+	64 -> 	59;
+	59 -> 	58;
+	60 -> 	65;
+	63 -> 	65;
+	66 -> 	65;
+	65 -> 	58;
+	60 -> 	67;
+	63 -> 	67;
+	68 -> 67 [label="risk: 0.17\n(1 path)",color="#7A9BAE",fontsize=9];
+	67 -> 58 [label="risk: 0.17\n(1 path)",color="#7A9BAE",fontsize=9];
+	60 -> 	69;
+	63 -> 	69;
+	70 -> 69 [label="risk: 0.36\n(1 path)",color="#7A9BAE",fontsize=9];
+	69 -> 58 [label="risk: 0.36\n(1 path)",color="#7A9BAE",fontsize=9];
+	60 -> 	71;
+	63 -> 	71;
+	72 -> 	71;
+	71 -> 	58;
+	60 -> 	73;
+	63 -> 	73;
+	74 -> 	73;
+	73 -> 	58;
+	60 -> 	75;
+	63 -> 	75;
+	76 -> 75 [label="risk: 0.17\n(1 path)",color="#7A9BAE",fontsize=9];
+	75 -> 58 [label="risk: 0.17\n(1 path)",color="#7A9BAE",fontsize=9];
+	60 -> 	77;
+	63 -> 	77;
+	78 -> 77 [label="risk: 0.25\n(1 path)",color="#7A9BAE",fontsize=9];
+	77 -> 58 [label="risk: 0.25\n(1 path)",color="#7A9BAE",fontsize=9];
+	60 -> 	79;
+	63 -> 	79;
+	80 -> 79 [label="risk: 0.36\n(1 path)",color="#7A9BAE",fontsize=9];
+	79 -> 58 [label="risk: 0.36\n(1 path)",color="#7A9BAE",fontsize=9];
+	60 -> 	81;
+	63 -> 	81;
+	82 -> 	81;
+	81 -> 	58;
+}

@@ -1,0 +1,823 @@
+{
+  "risk_report": {
+    "generated_at": "2026-09-25T15:19:53.239892+00:00",
+    "graph_version": "8c9799948c0633aa",
+    "summary": {
+      "total_nodes": 44,
+      "total_leaf_nodes": 15,
+      "total_vulnerability_leaf_nodes": 5,
+      "unique_cves": 2,
+      "total_attack_paths": 81,
+      "enrichment_coverage_pct": 100.0
+    },
+    "top_attack_paths": [
+      {
+        "path_id": "05edc12ff37343b4",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0375,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2019-20383"
+        ],
+        "highest_risk_vuln": "CVE-2019-20383",
+        "kev_on_path": false,
+        "max_epss": 0.0048,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "1f9baa05e02e6277",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0344,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2019-20383"
+        ],
+        "highest_risk_vuln": "CVE-2019-20383",
+        "kev_on_path": false,
+        "max_epss": 0.0048,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "4991f146dc0ad86a",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0344,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2019-20383"
+        ],
+        "highest_risk_vuln": "CVE-2019-20383",
+        "kev_on_path": false,
+        "max_epss": 0.0048,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "9e7684c8741a8145",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0144,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2022-0517"
+        ],
+        "highest_risk_vuln": "CVE-2022-0517",
+        "kev_on_path": false,
+        "max_epss": 0.00185,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "2ec53f96cb58a00c",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0133,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-0517"
+        ],
+        "highest_risk_vuln": "CVE-2022-0517",
+        "kev_on_path": false,
+        "max_epss": 0.00185,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "ede921ee339e54de",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0133,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-0517"
+        ],
+        "highest_risk_vuln": "CVE-2022-0517",
+        "kev_on_path": false,
+        "max_epss": 0.00185,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "60d336e76e61aa35",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "highest_risk_vuln": null,
+        "kev_on_path": false,
+        "max_epss": 0.0,
+        "max_cvss": 0.0
+      },
+      {
+        "path_id": "6a2fb7157507fa49",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "highest_risk_vuln": null,
+        "kev_on_path": false,
+        "max_epss": 0.0,
+        "max_cvss": 0.0
+      },
+      {
+        "path_id": "7ecc12c702f040a2",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "highest_risk_vuln": null,
+        "kev_on_path": false,
+        "max_epss": 0.0,
+        "max_cvss": 0.0
+      },
+      {
+        "path_id": "ad6a2ae05c5ff5e6",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "highest_risk_vuln": null,
+        "kev_on_path": false,
+        "max_epss": 0.0,
+        "max_cvss": 0.0
+      }
+    ],
+    "all_paths": [
+      {
+        "path_id": "05edc12ff37343b4",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0375,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2019-20383"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1f9baa05e02e6277",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0344,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2019-20383"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4991f146dc0ad86a",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0344,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2019-20383"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "9e7684c8741a8145",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0144,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2022-0517"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "2ec53f96cb58a00c",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0133,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-0517"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ede921ee339e54de",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0133,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-0517"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "60d336e76e61aa35",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6a2fb7157507fa49",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7ecc12c702f040a2",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ad6a2ae05c5ff5e6",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1bc31707a97c77fb",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "cfadf50179eb6fba",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ed79f4b3a17d2853",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bb99176d7505a7a4",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "64ffc670be794bd7",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3f1cdb88804be2e3",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b1577aee11126242",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b1064abbcb156820",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8654f6c1001b20e5",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "67c42f11055af5db",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d9ed83b36ab16212",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c35003279567d31f",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b690e5374b950af9",
+        "goal": "execCode(victim1,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0f6515dac9c44ec5",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1119e88be094cd82",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "abadc73e235d7c27",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e1980a76b4629499",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f1703be4501c7534",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f4ef52fe3ee31529",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d234f62c00ddf523",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4fed77ec37af469d",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c7a4611a866b69a0",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4525fd1c8ba34786",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6dcc2f8c9a8e4fa0",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "fe83ef39f7050c52",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "87cb0f0e13916529",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3bde5af97f93dc6a",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "17416bed4a8b1a65",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8aa6edfc87ef0d80",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d13a3a471c56f09c",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6fcd017788db5a45",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5e678270de7bd84c",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1412208efb5559c1",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "344cf45b38a278b8",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1e430df11e9ca5d7",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b6a6b141a23c9c33",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "71bca4f33c7a96fc",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b152d189fa3fa403",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "adf8f6ebaef49b62",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "11a93e3ecb7220d0",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "394fde622fc242dc",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ca6bb03f12abbc6e",
+        "goal": "execCode(victim2,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "10d40b9980c50ac4",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f596e09693c19fdc",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "062df3982006936e",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "301b220e76e7418b",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d99e6c264d1f7564",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a4e593f5dce02203",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "74495db5852c602e",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "26e141a37d60f2d5",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "20ca33c2363c7ac8",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "78db575338328f2a",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e4c9c79e3f34535d",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "2acbdc9565e2e00f",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f87fa54aaad9a043",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "24e4b91d257918fc",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0bc1fce069febb41",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "2bb3957d177d2228",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "061be77668b94662",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "94a2d144799e854f",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e96bbd7d67dc7a41",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a369e2e03b34be08",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5371626175fe339b",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "830c4bf5fbb2a5a1",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8e9a6eb1ca7aa8f4",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8ad01c53737efb4f",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "316e7ebd1b013c3d",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "22e7ef7e7881b0e9",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "683929a133fad296",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "abe43227dea7da13",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f7fcf3ab3759f429",
+        "goal": "execCode(victim3,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      }
+    ]
+  },
+  "delta_report": {
+    "generated_at": "2026-09-25T15:19:53.258054+00:00",
+    "previous_version": "3347d01803daf8f6",
+    "current_version": "8c9799948c0633aa",
+    "vulnerability_delta": {
+      "new_cves": [],
+      "removed_cves": []
+    },
+    "risk_change": {
+      "average_top_path_score_delta": 0.0,
+      "new_top_paths": [
+        "2ec53f96cb58a00c",
+        "9e7684c8741a8145",
+        "ede921ee339e54de"
+      ],
+      "removed_top_paths": [
+        "434f229afa32aeb7",
+        "c2c24fecf0e6e14c",
+        "e33a851d84d9092b"
+      ]
+    },
+    "kev_additions": []
+  }
+}

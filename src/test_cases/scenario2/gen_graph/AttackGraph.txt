@@ -1,0 +1,207 @@
+1,"execCode(adminWorkstation,user)","OR",0
+2,"RULE 0 (When a principal is compromised any machine he has an account on will also be compromised)","AND",0
+3,"canAccessHost(adminWorkstation)","OR",0
+4,"RULE 8 (Access a host through executing code on the machine)","AND",0
+4,1,-1
+3,4,-1
+2,3,-1
+5,"hasAccount(admin_user,adminWorkstation,user)","LEAF",1
+2,5,-1
+6,"principalCompromised(admin_user)","OR",0
+7,"RULE 12 (password sniffing)","AND",0
+7,1,-1
+7,5,-1
+6,7,-1
+2,6,-1
+1,2,-1
+8,"RULE 3 (remote exploit for a client program)","AND",0
+9,"accessMaliciousInput(adminWorkstation,admin_user,firefox)","OR",0
+10,"RULE 22 (Browsing a malicious website)","AND",0
+11,"attackerLocated(internet)","LEAF",1
+10,11,-1
+12,"hacl(adminWorkstation,internet,httpProtocol,httpPort)","LEAF",1
+10,12,-1
+13,"inCompetent(admin_user)","LEAF",1
+10,13,-1
+9,10,-1
+8,9,-1
+8,5,-1
+14,"vulExists(adminWorkstation,threat_t6_elevation_of_privilege,firefox,remoteClient,privEscalation)","LEAF",1
+8,14,-1
+1,8,-1
+15,"execCode(appServer,apache)","OR",0
+16,"RULE 2 (remote exploit of a server program)","AND",0
+17,"netAccess(appServer,tcp,8080)","OR",0
+18,"RULE 5 (multi-hop access)","AND",0
+19,"hacl(webProxy,appServer,tcp,8080)","LEAF",1
+18,19,-1
+20,"execCode(webProxy,nginx)","OR",0
+21,"RULE 2 (remote exploit of a server program)","AND",0
+22,"netAccess(webProxy,tcp,80)","OR",0
+23,"RULE 6 (direct network access)","AND",0
+24,"hacl(internet,webProxy,tcp,80)","LEAF",1
+23,24,-1
+23,11,-1
+22,23,-1
+21,22,-1
+25,"networkServiceInfo(webProxy,nginx,tcp,80,nginx)","LEAF",1
+21,25,-1
+26,"vulExists(webProxy,'CVE-2022-41741',nginx,remoteExploit,privEscalation)","LEAF",1
+21,26,-1
+20,21,-1
+27,"RULE 2 (remote exploit of a server program)","AND",0
+27,22,-1
+27,25,-1
+28,"vulExists(webProxy,'CVE-2022-41742',nginx,remoteExploit,privEscalation)","LEAF",1
+27,28,-1
+20,27,-1
+29,"RULE 2 (remote exploit of a server program)","AND",0
+29,22,-1
+29,25,-1
+30,"vulExists(webProxy,'CVE-2025-23419',nginx,remoteExploit,privEscalation)","LEAF",1
+29,30,-1
+20,29,-1
+31,"RULE 2 (remote exploit of a server program)","AND",0
+31,22,-1
+31,25,-1
+32,"vulExists(webProxy,threat_t1_tampering,nginx,remoteExploit,privEscalation)","LEAF",1
+31,32,-1
+20,31,-1
+18,20,-1
+17,18,-1
+16,17,-1
+33,"networkServiceInfo(appServer,magento,tcp,8080,apache)","LEAF",1
+16,33,-1
+34,"vulExists(appServer,'CVE-2024-49521',magento,remoteExploit,privEscalation)","LEAF",1
+16,34,-1
+15,16,-1
+35,"RULE 2 (remote exploit of a server program)","AND",0
+35,17,-1
+35,33,-1
+36,"vulExists(appServer,'CVE-2025-27189',magento,remoteExploit,privEscalation)","LEAF",1
+35,36,-1
+15,35,-1
+37,"RULE 2 (remote exploit of a server program)","AND",0
+37,17,-1
+37,33,-1
+38,"vulExists(appServer,threat_t2_spoofing,magento,remoteExploit,privEscalation)","LEAF",1
+37,38,-1
+15,37,-1
+39,"RULE 2 (remote exploit of a server program)","AND",0
+39,17,-1
+39,33,-1
+40,"vulExists(appServer,threat_t3_information_disclosure,magento,remoteExploit,privEscalation)","LEAF",1
+39,40,-1
+15,39,-1
+41,"execCode(cacheServer,redis)","OR",0
+42,"RULE 2 (remote exploit of a server program)","AND",0
+43,"netAccess(cacheServer,tcp,6379)","OR",0
+44,"RULE 5 (multi-hop access)","AND",0
+45,"hacl(appServer,cacheServer,tcp,6379)","LEAF",1
+44,45,-1
+44,15,-1
+43,44,-1
+42,43,-1
+46,"networkServiceInfo(cacheServer,redis,tcp,6379,redis)","LEAF",1
+42,46,-1
+47,"vulExists(cacheServer,'CVE-2026-23479',redis,remoteExploit,privEscalation)","LEAF",1
+42,47,-1
+41,42,-1
+48,"RULE 2 (remote exploit of a server program)","AND",0
+48,43,-1
+48,46,-1
+49,"vulExists(cacheServer,'CVE-2026-23631',redis,remoteExploit,privEscalation)","LEAF",1
+48,49,-1
+41,48,-1
+50,"RULE 2 (remote exploit of a server program)","AND",0
+50,43,-1
+50,46,-1
+51,"vulExists(cacheServer,'CVE-2026-25243',redis,remoteExploit,privEscalation)","LEAF",1
+50,51,-1
+41,50,-1
+52,"RULE 2 (remote exploit of a server program)","AND",0
+52,43,-1
+52,46,-1
+53,"vulExists(cacheServer,'CVE-2026-66373',redis,remoteExploit,privEscalation)","LEAF",1
+52,53,-1
+41,52,-1
+54,"RULE 2 (remote exploit of a server program)","AND",0
+54,43,-1
+54,46,-1
+55,"vulExists(cacheServer,'CVE-2026-81934',redis,remoteExploit,privEscalation)","LEAF",1
+54,55,-1
+41,54,-1
+56,"RULE 2 (remote exploit of a server program)","AND",0
+56,43,-1
+56,46,-1
+57,"vulExists(cacheServer,threat_t5_tampering,redis,remoteExploit,privEscalation)","LEAF",1
+56,57,-1
+41,56,-1
+58,"execCode(dbServer,mariadb)","OR",0
+59,"RULE 2 (remote exploit of a server program)","AND",0
+60,"netAccess(dbServer,tcp,3306)","OR",0
+61,"RULE 5 (multi-hop access)","AND",0
+62,"hacl(appServer,dbServer,tcp,3306)","LEAF",1
+61,62,-1
+61,15,-1
+60,61,-1
+59,60,-1
+63,"networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb)","LEAF",1
+59,63,-1
+64,"vulExists(dbServer,'CVE-2026-3494',mariadb,remoteExploit,privEscalation)","LEAF",1
+59,64,-1
+58,59,-1
+65,"RULE 2 (remote exploit of a server program)","AND",0
+65,60,-1
+65,63,-1
+66,"vulExists(dbServer,'CVE-2026-35549',mariadb,remoteExploit,privEscalation)","LEAF",1
+65,66,-1
+58,65,-1
+67,"RULE 2 (remote exploit of a server program)","AND",0
+67,60,-1
+67,63,-1
+68,"vulExists(dbServer,'CVE-2026-44168',mariadb,remoteExploit,privEscalation)","LEAF",1
+67,68,-1
+58,67,-1
+69,"RULE 2 (remote exploit of a server program)","AND",0
+69,60,-1
+69,63,-1
+70,"vulExists(dbServer,'CVE-2026-44170',mariadb,remoteExploit,privEscalation)","LEAF",1
+69,70,-1
+58,69,-1
+71,"RULE 2 (remote exploit of a server program)","AND",0
+71,60,-1
+71,63,-1
+72,"vulExists(dbServer,'CVE-2026-44171',mariadb,remoteExploit,privEscalation)","LEAF",1
+71,72,-1
+58,71,-1
+73,"RULE 2 (remote exploit of a server program)","AND",0
+73,60,-1
+73,63,-1
+74,"vulExists(dbServer,'CVE-2026-44173',mariadb,remoteExploit,privEscalation)","LEAF",1
+73,74,-1
+58,73,-1
+75,"RULE 2 (remote exploit of a server program)","AND",0
+75,60,-1
+75,63,-1
+76,"vulExists(dbServer,'CVE-2026-48163',mariadb,remoteExploit,privEscalation)","LEAF",1
+75,76,-1
+58,75,-1
+77,"RULE 2 (remote exploit of a server program)","AND",0
+77,60,-1
+77,63,-1
+78,"vulExists(dbServer,'CVE-2026-48165',mariadb,remoteExploit,privEscalation)","LEAF",1
+77,78,-1
+58,77,-1
+79,"RULE 2 (remote exploit of a server program)","AND",0
+79,60,-1
+79,63,-1
+80,"vulExists(dbServer,'CVE-2026-49261',mariadb,remoteExploit,privEscalation)","LEAF",1
+79,80,-1
+58,79,-1
+81,"RULE 2 (remote exploit of a server program)","AND",0
+81,60,-1
+81,63,-1
+82,"vulExists(dbServer,threat_t4_information_disclosure,mariadb,remoteExploit,privEscalation)","LEAF",1
+81,82,-1
+58,81,-1

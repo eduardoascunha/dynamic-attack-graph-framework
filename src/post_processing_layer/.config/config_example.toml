@@ -1,0 +1,34 @@
+[DATABASE]
+dbname = "DatabaseName"
+user = "Username"
+password = "password for the user"
+host = "Database host"
+port = 5432
+dbdriver = "psycopg"
+sslmode = "disable"
+
+[POST_PROCESSING]
+graph_dir = "/gen_graph"
+work_dir = "/post_processing"
+top_paths_count = 10
+max_path_depth = 30
+
+# Also emit a condensed host-level "global view" graph
+# (AttackGraph_summarized.{dot,png,pdf}) next to the detailed annotated graph.
+generate_summary_graph = true
+
+# Cap on the number of highest-risk paths aggregated into the summary graph.
+# The summary collapses paths onto per-host nodes; a high cap shows the full
+# reachable topology. Lower it only if the global view becomes too dense.
+summary_max_paths = 200
+
+# Global default asset criticality (LOW / MEDIUM / HIGH / CRITICAL).
+# Per-asset values belong in asset_cpe_mapping.json.
+asset_criticality = "MEDIUM"
+
+# Global CIA priority fallback (LOW / MEDIUM / HIGH per dimension).
+# Equal levels = no prioritization. Per-asset overrides belong in asset_cpe_mapping.json.
+[POST_PROCESSING.cia_weights]
+confidentiality = "MEDIUM"
+integrity = "MEDIUM"
+availability = "MEDIUM"

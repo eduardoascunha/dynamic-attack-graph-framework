@@ -1,0 +1,150 @@
+/*network connection*/
+attackerLocated(internet).
+hacl(internet, reverseProxy, tcp, 443).
+hacl(reverseProxy, portalServer, tcp, 8080).
+hacl(portalServer, apiServer, tcp, 8443).
+hacl(apiServer, authServer, tcp, 9443).
+hacl(apiServer, dbServer, tcp, 5432).
+hacl(apiServer, cacheServer, tcp, 11211).
+hacl(apiServer, mqServer, tcp, 5672).
+hacl(clinicianWorkstation, internet, httpProtocol, httpPort).
+
+/*network services*/
+networkServiceInfo(reverseProxy, haproxy, tcp, 443, haproxy).
+networkServiceInfo(portalServer, tomcat, tcp, 8080, tomcat).
+networkServiceInfo(apiServer, jetty, tcp, 8443, jetty).
+networkServiceInfo(authServer, keycloak, tcp, 9443, keycloak).
+networkServiceInfo(dbServer, postgresql, tcp, 5432, postgresql).
+networkServiceInfo(cacheServer, memcached, tcp, 11211, memcached).
+networkServiceInfo(mqServer, rabbitmq, tcp, 5672, rabbitmq).
+
+/*installed software*/
+installed(reverseProxy, haproxy).
+installed(portalServer, tomcat).
+installed(apiServer, jetty).
+installed(authServer, keycloak).
+installed(dbServer, postgresql).
+installed(cacheServer, memcached).
+installed(mqServer, rabbitmq).
+installed(clinicianWorkstation, thunderbird).
+
+/*users*/
+inCompetent(clinician_user).
+hasAccount(clinician_user, clinicianWorkstation, user).
+
+/*attack goals*/
+attackGoal(execCode(reverseProxy, _)).
+attackGoal(execCode(portalServer, _)).
+attackGoal(execCode(apiServer, _)).
+attackGoal(execCode(authServer, _)).
+attackGoal(execCode(dbServer, _)).
+attackGoal(execCode(cacheServer, _)).
+attackGoal(execCode(mqServer, _)).
+attackGoal(execCode(clinicianWorkstation, _)).
+
+vulExists(reverseProxy,'CVE-2026-33555',haproxy).
+vulProperty('CVE-2026-33555',remoteExploit,privEscalation).
+vulExists(reverseProxy,'CVE-2026-26080',haproxy).
+vulProperty('CVE-2026-26080',remoteExploit,privEscalation).
+vulExists(reverseProxy,'CVE-2026-26081',haproxy).
+vulProperty('CVE-2026-26081',remoteExploit,privEscalation).
+vulProperty(threat_t1_tampering,remoteExploit,privEscalation).
+vulExists(reverseProxy,threat_t1_tampering,haproxy).
+vulExists(portalServer,'CVE-2023-24998',tomcat).
+vulProperty('CVE-2023-24998',remoteExploit,privEscalation).
+vulProperty(threat_t2_spoofing,remoteExploit,privEscalation).
+vulExists(portalServer,threat_t2_spoofing,tomcat).
+vulExists(apiServer,'CVE-2026-10050',jetty).
+vulProperty('CVE-2026-10050',remoteExploit,privEscalation).
+vulExists(apiServer,'CVE-2026-6790',jetty).
+vulProperty('CVE-2026-6790',remoteExploit,privEscalation).
+vulExists(apiServer,'CVE-2026-5795',jetty).
+vulProperty('CVE-2026-5795',remoteExploit,privEscalation).
+vulExists(apiServer,'CVE-2026-19203',jetty).
+vulProperty('CVE-2026-19203',remoteExploit,privEscalation).
+vulExists(apiServer,'CVE-2026-10051',jetty).
+vulProperty('CVE-2026-10051',remoteExploit,privEscalation).
+vulExists(apiServer,'CVE-2026-8384',jetty).
+vulProperty('CVE-2026-8384',remoteExploit,privEscalation).
+vulExists(apiServer,'CVE-2026-19204',jetty).
+vulProperty('CVE-2026-19204',remoteExploit,privEscalation).
+vulExists(apiServer,'CVE-2026-12611',jetty).
+vulProperty('CVE-2026-12611',remoteExploit,privEscalation).
+vulProperty(threat_t3_information_disclosure,remoteExploit,privEscalation).
+vulExists(apiServer,threat_t3_information_disclosure,jetty).
+vulExists(dbServer,'CVE-2026-14669',postgresql).
+vulProperty('CVE-2026-14669',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14676',postgresql).
+vulProperty('CVE-2026-14676',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14679',postgresql).
+vulProperty('CVE-2026-14679',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14681',postgresql).
+vulProperty('CVE-2026-14681',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-16241',postgresql).
+vulProperty('CVE-2026-16241',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2020-13692',postgresql).
+vulProperty('CVE-2020-13692',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-6464',postgresql).
+vulProperty('CVE-2026-6464',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-6469',postgresql).
+vulProperty('CVE-2026-6469',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14662',postgresql).
+vulProperty('CVE-2026-14662',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14663',postgresql).
+vulProperty('CVE-2026-14663',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14664',postgresql).
+vulProperty('CVE-2026-14664',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14666',postgresql).
+vulProperty('CVE-2026-14666',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14668',postgresql).
+vulProperty('CVE-2026-14668',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14670',postgresql).
+vulProperty('CVE-2026-14670',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14671',postgresql).
+vulProperty('CVE-2026-14671',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14672',postgresql).
+vulProperty('CVE-2026-14672',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14673',postgresql).
+vulProperty('CVE-2026-14673',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14677',postgresql).
+vulProperty('CVE-2026-14677',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14678',postgresql).
+vulProperty('CVE-2026-14678',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-14680',postgresql).
+vulProperty('CVE-2026-14680',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-15741',postgresql).
+vulProperty('CVE-2026-15741',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-15742',postgresql).
+vulProperty('CVE-2026-15742',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-16238',postgresql).
+vulProperty('CVE-2026-16238',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-16239',postgresql).
+vulProperty('CVE-2026-16239',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-18024',postgresql).
+vulProperty('CVE-2026-18024',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-18408',postgresql).
+vulProperty('CVE-2026-18408',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-19385',postgresql).
+vulProperty('CVE-2026-19385',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-6470',postgresql).
+vulProperty('CVE-2026-6470',remoteExploit,privEscalation).
+vulExists(dbServer,'CVE-2026-6471',postgresql).
+vulProperty('CVE-2026-6471',remoteExploit,privEscalation).
+vulProperty(threat_t5_information_disclosure,remoteExploit,privEscalation).
+vulExists(dbServer,threat_t5_information_disclosure,postgresql).
+vulExists(cacheServer,'CVE-2026-47784',memcached).
+vulProperty('CVE-2026-47784',remoteExploit,privEscalation).
+vulExists(cacheServer,'CVE-2026-47783',memcached).
+vulProperty('CVE-2026-47783',remoteExploit,privEscalation).
+vulProperty(threat_t6_tampering,remoteExploit,privEscalation).
+vulExists(cacheServer,threat_t6_tampering,memcached).
+vulExists(mqServer,'CVE-2019-11287',rabbitmq).
+vulProperty('CVE-2019-11287',remoteExploit,privEscalation).
+vulExists(mqServer,'CVE-2020-5419',rabbitmq).
+vulProperty('CVE-2020-5419',remoteExploit,privEscalation).
+vulProperty(threat_t7_tampering,remoteExploit,privEscalation).
+vulExists(mqServer,threat_t7_tampering,rabbitmq).
+vulProperty(threat_t4_spoofing,remoteExploit,privEscalation).
+vulExists(authServer,threat_t4_spoofing,keycloak).
+vulProperty(threat_t8_elevation_of_privilege,remoteClient,privEscalation).
+vulExists(clinicianWorkstation,threat_t8_elevation_of_privilege,thunderbird).

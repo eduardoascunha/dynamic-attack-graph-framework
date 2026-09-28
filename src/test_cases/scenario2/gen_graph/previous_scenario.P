@@ -1,0 +1,86 @@
+/* ============================================================
+   Scenario 2 - Medium e-commerce application (Magento storefront)
+
+   Multi-tier deployment:
+     internet          - external attacker location
+     webProxy          - nginx reverse proxy (DMZ, internet facing)
+     appServer         - Magento / Adobe Commerce storefront application
+     dbServer          - MariaDB backend database
+     cacheServer       - Redis session / cache store
+     adminWorkstation  - back-office admin host (client side)
+
+   This file contains only the hand-written base facts. The environment
+   correlation layer appends the vulExists/vulProperty statements derived
+   from asset_cpe_mapping.json and stride_definition.json into scenario.P.
+   ============================================================ */
+
+/* ---------- attacker ---------- */
+attackerLocated(internet).
+
+/* ---------- attack goals ---------- */
+attackGoal(execCode(webProxy, _)).
+attackGoal(execCode(appServer, _)).
+attackGoal(execCode(dbServer, _)).
+attackGoal(execCode(cacheServer, _)).
+attackGoal(execCode(adminWorkstation, _)).
+
+/* ---------- network connectivity (hacl) ---------- */
+/* the public reverse proxy is reachable from the internet over HTTP */
+hacl(internet, webProxy, tcp, 80).
+/* the reverse proxy forwards storefront traffic to the Magento app server */
+hacl(webProxy, appServer, tcp, 8080).
+/* the app server queries its MariaDB database and Redis cache */
+hacl(appServer, dbServer, tcp, 3306).
+hacl(appServer, cacheServer, tcp, 6379).
+/* the admin workstation browses out to the internet */
+hacl(adminWorkstation, internet, httpProtocol, httpPort).
+
+/* ---------- network services (server side, remoteExploit) ---------- */
+networkServiceInfo(webProxy, nginx, tcp, 80, nginx).
+networkServiceInfo(appServer, magento, tcp, 8080, apache).
+networkServiceInfo(dbServer, mariadb, tcp, 3306, mariadb).
+networkServiceInfo(cacheServer, redis, tcp, 6379, redis).
+
+/* ---------- installed software ---------- */
+installed(webProxy, nginx).
+installed(appServer, magento).
+installed(dbServer, mariadb).
+installed(cacheServer, redis).
+installed(adminWorkstation, firefox).
+
+/* ---------- users (client side, remoteClient) ---------- */
+inCompetent(admin_user).
+hasAccount(admin_user, adminWorkstation, user).
+
+vulExists(webProxy,'CVE-2022-41742',nginx).
+vulProperty('CVE-2022-41742',remoteExploit,privEscalation).
+vulExists(webProxy,'CVE-2022-41741',nginx).
+vulProperty('CVE-2022-41741',remoteExploit,privEscalation).
+vulProperty(threat_t1_tampering,remoteExploit,privEscalation).
+vulExists(webProxy,threat_t1_tampering,nginx).
+vulExists(appServer,'CVE-2025-27189',magento).
+vulProperty('CVE-2025-27189',remoteExploit,privEscalation).
+vulExists(appServer,'CVE-2024-49521',magento).
+vulProperty('CVE-2024-49521',remoteExploit,privEscalation).
+vulProperty(threat_t2_spoofing,remoteExploit,privEscalation).
+vulExists(appServer,threat_t2_spoofing,magento).
+vulProperty(threat_t3_information_disclosure,remoteExploit,privEscalation).
+vulExists(appServer,threat_t3_information_disclosure,magento).
+vulExists(dbServer,'CVE-2026-35549',mariadb).
+vulProperty('CVE-2026-35549',remoteExploit,privEscalation).
+vulProperty(threat_t4_information_disclosure,remoteExploit,privEscalation).
+vulExists(dbServer,threat_t4_information_disclosure,mariadb).
+vulExists(cacheServer,'CVE-2026-23479',redis).
+vulProperty('CVE-2026-23479',remoteExploit,privEscalation).
+vulExists(cacheServer,'CVE-2026-23631',redis).
+vulProperty('CVE-2026-23631',remoteExploit,privEscalation).
+vulExists(cacheServer,'CVE-2026-25243',redis).
+vulProperty('CVE-2026-25243',remoteExploit,privEscalation).
+vulProperty(threat_t5_tampering,remoteExploit,privEscalation).
+vulExists(cacheServer,threat_t5_tampering,redis).
+vulExists(adminWorkstation,'CVE-2026-5734',firefox).
+vulProperty('CVE-2026-5734',remoteClient,privEscalation).
+vulExists(adminWorkstation,'CVE-2026-5732',firefox).
+vulProperty('CVE-2026-5732',remoteClient,privEscalation).
+vulProperty(threat_t6_elevation_of_privilege,remoteClient,privEscalation).
+vulExists(adminWorkstation,threat_t6_elevation_of_privilege,firefox).

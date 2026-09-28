@@ -1,0 +1,75 @@
+{
+  "system": "scenario2",
+  "assets": [
+    {
+      "name": "webProxy",
+      "service": "nginx"
+    },
+    {
+      "name": "appServer",
+      "service": "magento"
+    },
+    {
+      "name": "dbServer",
+      "service": "mariadb"
+    },
+    {
+      "name": "cacheServer",
+      "service": "redis"
+    },
+    {
+      "name": "adminWorkstation",
+      "service": "firefox"
+    }
+  ],
+  "threats": [
+    {
+      "id": "T1",
+      "stride": "Tampering",
+      "asset": "webProxy",
+      "impact": "data_modification",
+      "description": "An attacker on the internet tampers with HTTP requests handled by the reverse proxy (request smuggling / header injection) to reach internal services.",
+      "mitre_attack": "T1190 - Exploit Public-Facing Application"
+    },
+    {
+      "id": "T2",
+      "stride": "Spoofing",
+      "asset": "appServer",
+      "impact": "account_compromise",
+      "description": "Authentication or session spoofing against the Magento storefront lets the attacker act as a legitimate customer or admin.",
+      "mitre_attack": "T1078 - Valid Accounts"
+    },
+    {
+      "id": "T3",
+      "stride": "Information Disclosure",
+      "asset": "appServer",
+      "impact": "data_exfiltration",
+      "description": "Sensitive customer and order data is exposed by the storefront through an information disclosure flaw.",
+      "mitre_attack": "T1213 - Data from Information Repositories"
+    },
+    {
+      "id": "T4",
+      "stride": "Information Disclosure",
+      "asset": "dbServer",
+      "impact": "data_exfiltration",
+      "description": "The MariaDB backend leaks customer PII and payment-related records to an attacker who has pivoted from the application tier.",
+      "mitre_attack": "T1005 - Data from Local System"
+    },
+    {
+      "id": "T5",
+      "stride": "Tampering",
+      "asset": "cacheServer",
+      "impact": "data_modification",
+      "description": "The Redis session/cache store is tampered with to poison cached content or hijack authenticated sessions.",
+      "mitre_attack": "T1565 - Data Manipulation"
+    },
+    {
+      "id": "T6",
+      "stride": "Elevation of Privilege",
+      "asset": "adminWorkstation",
+      "impact": "remote_code_execution",
+      "description": "A back-office administrator browses malicious content and the vulnerable browser is exploited to gain code execution on the admin workstation.",
+      "mitre_attack": "T1203 - Exploitation for Client Execution"
+    }
+  ]
+}

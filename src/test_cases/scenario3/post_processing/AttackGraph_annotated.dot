@@ -1,0 +1,683 @@
+digraph G {
+	// ========== LEGEND ==========
+	subgraph cluster_legend {
+		label="Attack Graph Risk Analysis Legend";
+		fontsize=16;
+		fontname="Arial Bold";
+		style=filled;
+		color="#333333";
+		fillcolor="#F5F5F5";
+
+		legend_info [shape=plaintext,label=<
+			<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6">
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="14"><B>RISK ANALYSIS SUMMARY</B></FONT></TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Total Attack Paths:</B></TD><TD COLSPAN="2">14204</TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Unique CVEs:</B></TD><TD COLSPAN="2">45</TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Maximum Risk:</B></TD><TD COLSPAN="2"><FONT COLOR="#C85A54"><B>0.00/10</B></FONT></TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Average Risk:</B></TD><TD COLSPAN="2"><B>0.08/10</B></TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Coverage:</B></TD><TD COLSPAN="2">100.0%</TD></TR>
+
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="12"><B>NODE COLORS (Colorblind-Friendly)</B></FONT></TD></TR>
+				<TR><TD BGCOLOR="#D97066" WIDTH="120"><B>KEV</B></TD><TD COLSPAN="2" ALIGN="LEFT">CISA Known Exploited Vulnerability (active exploitation)</TD></TR>
+				<TR><TD BGCOLOR="#CC7A50"><B>Critical</B></TD><TD COLSPAN="2" ALIGN="LEFT">Critical Severity: CVSS ≥ 9.0</TD></TR>
+				<TR><TD BGCOLOR="#D4A574"><B>High</B></TD><TD COLSPAN="2" ALIGN="LEFT">High Severity: CVSS ≥ 7.0</TD></TR>
+				<TR><TD BGCOLOR="#E8D5B7"><B>Medium</B></TD><TD COLSPAN="2" ALIGN="LEFT">Medium Severity: CVSS ≥ 4.0</TD></TR>
+				<TR><TD BGCOLOR="#D8D8D8"><B>Low</B></TD><TD COLSPAN="2" ALIGN="LEFT">Low Severity: CVSS &lt; 4.0</TD></TR>
+				<TR><TD BGCOLOR="#C8979E"><B>Goal</B></TD><TD COLSPAN="2" ALIGN="LEFT">Attacker Goal / Final Objective</TD></TR>
+				<TR><TD BGCOLOR="#B8A9C9"><B>STRIDE</B></TD><TD COLSPAN="2" ALIGN="LEFT">STRIDE Threat Model Vulnerability</TD></TR>
+				<TR><TD BGCOLOR="#9DB4C0"><B>Rule</B></TD><TD COLSPAN="2" ALIGN="LEFT">AND/OR Logic Rule</TD></TR>
+				<TR><TD BGCOLOR="#FFFFFF"><B>Fact</B></TD><TD COLSPAN="2" ALIGN="LEFT">Infrastructure Fact (no CVE)</TD></TR>
+
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="12"><B>NODE SHAPES</B></FONT></TD></TR>
+				<TR><TD><B>Diamond</B></TD><TD COLSPAN="2" ALIGN="LEFT">OR Node (reachable state or goal)</TD></TR>
+				<TR><TD><B>Ellipse</B></TD><TD COLSPAN="2" ALIGN="LEFT">AND Node (inference rule)</TD></TR>
+				<TR><TD><B>Box</B></TD><TD COLSPAN="2" ALIGN="LEFT">Leaf (vulnerability or fact)</TD></TR>
+
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="12"><B>EDGE COLORS</B></FONT></TD></TR>
+				<TR><TD><FONT COLOR="#C85A54"><B>Dark Coral</B></FONT></TD><TD COLSPAN="2" ALIGN="LEFT">High Risk ≥ 7.0</TD></TR>
+				<TR><TD><FONT COLOR="#CC7A50"><B>Burnt Orange</B></FONT></TD><TD COLSPAN="2" ALIGN="LEFT">Medium-High Risk ≥ 4.0</TD></TR>
+				<TR><TD><FONT COLOR="#D4A574"><B>Tan</B></FONT></TD><TD COLSPAN="2" ALIGN="LEFT">Medium Risk ≥ 2.0</TD></TR>
+				<TR><TD><FONT COLOR="#7A9BAE"><B>Steel Blue</B></FONT></TD><TD COLSPAN="2" ALIGN="LEFT">Low Risk &lt; 2.0</TD></TR>
+				<TR><TD COLSPAN="3" ALIGN="LEFT"><I>Label format: "risk: X.X (N paths)"</I></TD></TR>
+
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="12"><B>METRICS</B></FONT></TD></TR>
+				<TR><TD><B>Risk Score</B></TD><TD COLSPAN="2" ALIGN="LEFT">Risk rating (0-10): EPSS × CVSS × KEV × Criticality</TD></TR>
+				<TR><TD><B>CVSS</B></TD><TD COLSPAN="2" ALIGN="LEFT">Common Vulnerability Scoring System v3.1 (0-10)</TD></TR>
+				<TR><TD><B>EPSS</B></TD><TD COLSPAN="2" ALIGN="LEFT">Exploit Prediction Scoring System (0-1): exploitation probability</TD></TR>
+				<TR><TD><B>KEV</B></TD><TD COLSPAN="2" ALIGN="LEFT">CISA Known Exploited Vulnerabilities: 1.5× multiplier</TD></TR>
+			</TABLE>
+		>];
+	}
+
+	1 [label="Execute Code
+Host: apiServer | as: jetty",shape=diamond,style="filled",fillcolor="#C8979E"];
+	2 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	3 [label="Network Access
+Host: apiServer | tcp:8443",shape=diamond,style="filled",fillcolor="#C8979E"];
+	4 [label="Multi-hop access",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	5 [label="Firewall Rule
+portalServer → apiServer | tcp:8443",shape=box,style="filled",fillcolor="#FFFFFF"];
+	6 [label="Execute Code
+Host: portalServer | as: tomcat",shape=diamond,style="filled",fillcolor="#C8979E"];
+	7 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	8 [label="Network Access
+Host: portalServer | tcp:8080",shape=diamond,style="filled",fillcolor="#C8979E"];
+	9 [label="Multi-hop access",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	10 [label="Firewall Rule
+reverseProxy → portalServer | tcp:8080",shape=box,style="filled",fillcolor="#FFFFFF"];
+	11 [label="Execute Code
+Host: reverseProxy | as: haproxy",shape=diamond,style="filled",fillcolor="#C8979E"];
+	12 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	13 [label="Network Access
+Host: reverseProxy | tcp:443",shape=diamond,style="filled",fillcolor="#C8979E"];
+	14 [label="Direct network access",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	15 [label="Firewall Rule
+internet → reverseProxy | tcp:443",shape=box,style="filled",fillcolor="#FFFFFF"];
+	16 [label="Attacker Origin
+internet",shape=box,style="filled",fillcolor="#FFFFFF"];
+	17 [label="Service
+Host: reverseProxy | haproxy tcp:443 (haproxy)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	18 [label="CVE-2026-26080
+Host: reverseProxy | haproxy
+Remote Exploit → Privilege Escalation
+Risk: 0.02/10 
+CVSS: 3.7 | EPSS: 0.0055",shape=box,style="filled",fillcolor="#D8D8D8",tooltip="CVE-2026-26080 | Risk: 0.02 | CVSS: 3.7 | EPSS: 0.0055 | KEV: no"];
+	19 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	20 [label="CVE-2026-26081
+Host: reverseProxy | haproxy
+Remote Exploit → Privilege Escalation
+Risk: 0.03/10 
+CVSS: 4.8 | EPSS: 0.0048",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-26081 | Risk: 0.03 | CVSS: 4.8 | EPSS: 0.0048 | KEV: no"];
+	21 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	22 [label="CVE-2026-33555
+Host: reverseProxy | haproxy
+Remote Exploit → Privilege Escalation
+Risk: 0.03/10 
+CVSS: 5.8 | EPSS: 0.0058",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-33555 | Risk: 0.03 | CVSS: 5.8 | EPSS: 0.0058 | KEV: no"];
+	23 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	24 [label="STRIDE: Tampering
+Host: reverseProxy | haproxy
+Remote Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t1_tampering"];
+	25 [label="Service
+Host: portalServer | tomcat tcp:8080 (tomcat)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	26 [label="CVE-2023-24998
+Host: portalServer | tomcat
+Remote Exploit → Privilege Escalation
+Risk: 3.66/10 
+CVSS: 7.5 | EPSS: 0.4879",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2023-24998 | Risk: 3.66 | CVSS: 7.5 | EPSS: 0.4879 | KEV: no"];
+	27 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	28 [label="STRIDE: Spoofing
+Host: portalServer | tomcat
+Remote Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t2_spoofing"];
+	29 [label="Service
+Host: apiServer | jetty tcp:8443 (jetty)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	30 [label="CVE-2026-10050
+Host: apiServer | jetty
+Remote Exploit → Privilege Escalation
+Risk: 0.08/10 
+CVSS: 9.1 | EPSS: 0.0063",shape=box,style="filled",fillcolor="#CC7A50",tooltip="CVE-2026-10050 | Risk: 0.08 | CVSS: 9.1 | EPSS: 0.0063 | KEV: no"];
+	31 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	32 [label="CVE-2026-10051
+Host: apiServer | jetty
+Remote Exploit → Privilege Escalation
+Risk: 0.03/10 
+CVSS: 7.5 | EPSS: 0.0030",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-10051 | Risk: 0.03 | CVSS: 7.5 | EPSS: 0.0030 | KEV: no"];
+	33 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	34 [label="CVE-2026-12611
+Host: apiServer | jetty
+Remote Exploit → Privilege Escalation
+Risk: 0.00/10 
+CVSS: 0.0 | EPSS: 0.0025",shape=box,style="filled",fillcolor="#D8D8D8",tooltip="CVE-2026-12611 | Risk: 0.00 | CVSS: 0.0 | EPSS: 0.0025 | KEV: no"];
+	35 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	36 [label="CVE-2026-19203
+Host: apiServer | jetty
+Remote Exploit → Privilege Escalation
+Risk: 0.00/10 
+CVSS: 0.0 | EPSS: 0.0031",shape=box,style="filled",fillcolor="#D8D8D8",tooltip="CVE-2026-19203 | Risk: 0.00 | CVSS: 0.0 | EPSS: 0.0031 | KEV: no"];
+	37 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	38 [label="CVE-2026-19204
+Host: apiServer | jetty
+Remote Exploit → Privilege Escalation
+Risk: 0.00/10 
+CVSS: 0.0 | EPSS: 0.0031",shape=box,style="filled",fillcolor="#D8D8D8",tooltip="CVE-2026-19204 | Risk: 0.00 | CVSS: 0.0 | EPSS: 0.0031 | KEV: no"];
+	39 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	40 [label="CVE-2026-5795
+Host: apiServer | jetty
+Remote Exploit → Privilege Escalation
+Risk: 0.07/10 
+CVSS: 7.4 | EPSS: 0.0061",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-5795 | Risk: 0.07 | CVSS: 7.4 | EPSS: 0.0061 | KEV: no"];
+	41 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	42 [label="CVE-2026-6790
+Host: apiServer | jetty
+Remote Exploit → Privilege Escalation
+Risk: 0.02/10 
+CVSS: 5.3 | EPSS: 0.0031",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-6790 | Risk: 0.02 | CVSS: 5.3 | EPSS: 0.0031 | KEV: no"];
+	43 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	44 [label="CVE-2026-8384
+Host: apiServer | jetty
+Remote Exploit → Privilege Escalation
+Risk: 0.03/10 
+CVSS: 5.3 | EPSS: 0.0033",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-8384 | Risk: 0.03 | CVSS: 5.3 | EPSS: 0.0033 | KEV: no"];
+	45 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	46 [label="STRIDE: Information disclosure
+Host: apiServer | jetty
+Remote Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t3_information_disclosure"];
+	47 [label="Execute Code
+Host: authServer | as: keycloak",shape=diamond,style="filled",fillcolor="#C8979E"];
+	48 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	49 [label="Network Access
+Host: authServer | tcp:9443",shape=diamond,style="filled",fillcolor="#C8979E"];
+	50 [label="Multi-hop access",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	51 [label="Firewall Rule
+apiServer → authServer | tcp:9443",shape=box,style="filled",fillcolor="#FFFFFF"];
+	52 [label="Service
+Host: authServer | keycloak tcp:9443 (keycloak)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	53 [label="STRIDE: Spoofing
+Host: authServer | keycloak
+Remote Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t4_spoofing"];
+	54 [label="Execute Code
+Host: cacheServer | as: memcached",shape=diamond,style="filled",fillcolor="#C8979E"];
+	55 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	56 [label="Network Access
+Host: cacheServer | tcp:11211",shape=diamond,style="filled",fillcolor="#C8979E"];
+	57 [label="Multi-hop access",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	58 [label="Firewall Rule
+apiServer → cacheServer | tcp:11211",shape=box,style="filled",fillcolor="#FFFFFF"];
+	59 [label="Service
+Host: cacheServer | memcached tcp:11211 (memcached)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	60 [label="CVE-2026-47783
+Host: cacheServer | memcached
+Remote Exploit → Privilege Escalation
+Risk: 0.10/10 
+CVSS: 8.1 | EPSS: 0.0126",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-47783 | Risk: 0.10 | CVSS: 8.1 | EPSS: 0.0126 | KEV: no"];
+	61 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	62 [label="CVE-2026-47784
+Host: cacheServer | memcached
+Remote Exploit → Privilege Escalation
+Risk: 0.04/10 
+CVSS: 8.1 | EPSS: 0.0055",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-47784 | Risk: 0.04 | CVSS: 8.1 | EPSS: 0.0055 | KEV: no"];
+	63 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	64 [label="STRIDE: Tampering
+Host: cacheServer | memcached
+Remote Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t6_tampering"];
+	65 [label="Execute Code
+Host: clinicianWorkstation | as: user",shape=diamond,style="filled",fillcolor="#C8979E"];
+	66 [label="When a principal is compromised any machine he has an account on will also be compromised",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	67 [label="Can Access Host
+clinicianWorkstation",shape=diamond,style="filled",fillcolor="#C8979E"];
+	68 [label="Access a host through executing code on the machine",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	69 [label="Account
+clinician_user on clinicianWorkstation (user)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	70 [label="Principal Compromised
+clinician_user",shape=diamond,style="filled",fillcolor="#C8979E"];
+	71 [label="Password sniffing",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	72 [label="Remote exploit for a client program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	73 [label="Malicious Input
+Host: clinicianWorkstation | victim: clinician_user via thunderbird",shape=diamond,style="filled",fillcolor="#C8979E"];
+	74 [label="Browsing a malicious website",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	75 [label="Firewall Rule
+clinicianWorkstation → internet | httpProtocol:httpPort",shape=box,style="filled",fillcolor="#FFFFFF"];
+	76 [label="Vulnerable User
+clinician_user",shape=box,style="filled",fillcolor="#FFFFFF"];
+	77 [label="STRIDE: Elevation of privilege
+Host: clinicianWorkstation | thunderbird
+Client-Side Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t8_elevation_of_privilege"];
+	78 [label="Execute Code
+Host: dbServer | as: postgresql",shape=diamond,style="filled",fillcolor="#C8979E"];
+	79 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	80 [label="Network Access
+Host: dbServer | tcp:5432",shape=diamond,style="filled",fillcolor="#C8979E"];
+	81 [label="Multi-hop access",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	82 [label="Firewall Rule
+apiServer → dbServer | tcp:5432",shape=box,style="filled",fillcolor="#FFFFFF"];
+	83 [label="Service
+Host: dbServer | postgresql tcp:5432 (postgresql)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	84 [label="CVE-2020-13692
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.59/10 
+CVSS: 7.7 | EPSS: 0.0409",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2020-13692 | Risk: 0.59 | CVSS: 7.7 | EPSS: 0.0409 | KEV: no"];
+	85 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	86 [label="CVE-2026-14662
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.09/10 
+CVSS: 8.8 | EPSS: 0.0046",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-14662 | Risk: 0.09 | CVSS: 8.8 | EPSS: 0.0046 | KEV: no"];
+	87 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	88 [label="CVE-2026-14663
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.01/10 
+CVSS: 6.5 | EPSS: 0.0010",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-14663 | Risk: 0.01 | CVSS: 6.5 | EPSS: 0.0010 | KEV: no"];
+	89 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	90 [label="CVE-2026-14664
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.08/10 
+CVSS: 8.8 | EPSS: 0.0044",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-14664 | Risk: 0.08 | CVSS: 8.8 | EPSS: 0.0044 | KEV: no"];
+	91 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	92 [label="CVE-2026-14666
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.01/10 
+CVSS: 4.2 | EPSS: 0.0018",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-14666 | Risk: 0.01 | CVSS: 4.2 | EPSS: 0.0018 | KEV: no"];
+	93 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	94 [label="CVE-2026-14668
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.04/10 
+CVSS: 8.1 | EPSS: 0.0033",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-14668 | Risk: 0.04 | CVSS: 8.1 | EPSS: 0.0033 | KEV: no"];
+	95 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	96 [label="CVE-2026-14669
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.12/10 
+CVSS: 8.8 | EPSS: 0.0066",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-14669 | Risk: 0.12 | CVSS: 8.8 | EPSS: 0.0066 | KEV: no"];
+	97 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	98 [label="CVE-2026-14670
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.08/10 
+CVSS: 8.8 | EPSS: 0.0044",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-14670 | Risk: 0.08 | CVSS: 8.8 | EPSS: 0.0044 | KEV: no"];
+	99 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	100 [label="CVE-2026-14671
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.08/10 
+CVSS: 8.8 | EPSS: 0.0042",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-14671 | Risk: 0.08 | CVSS: 8.8 | EPSS: 0.0042 | KEV: no"];
+	101 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	102 [label="CVE-2026-14672
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.01/10 
+CVSS: 5.3 | EPSS: 0.0025",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-14672 | Risk: 0.01 | CVSS: 5.3 | EPSS: 0.0025 | KEV: no"];
+	103 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	104 [label="CVE-2026-14673
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.01/10 
+CVSS: 3.8 | EPSS: 0.0017",shape=box,style="filled",fillcolor="#D8D8D8",tooltip="CVE-2026-14673 | Risk: 0.01 | CVSS: 3.8 | EPSS: 0.0017 | KEV: no"];
+	105 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	106 [label="CVE-2026-14676
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.08/10 
+CVSS: 8.8 | EPSS: 0.0044",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-14676 | Risk: 0.08 | CVSS: 8.8 | EPSS: 0.0044 | KEV: no"];
+	107 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	108 [label="CVE-2026-14677
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.08/10 
+CVSS: 8.8 | EPSS: 0.0042",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-14677 | Risk: 0.08 | CVSS: 8.8 | EPSS: 0.0042 | KEV: no"];
+	109 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	110 [label="CVE-2026-14678
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.01/10 
+CVSS: 4.3 | EPSS: 0.0019",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-14678 | Risk: 0.01 | CVSS: 4.3 | EPSS: 0.0019 | KEV: no"];
+	111 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	112 [label="CVE-2026-14679
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.03/10 
+CVSS: 8.2 | EPSS: 0.0029",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-14679 | Risk: 0.03 | CVSS: 8.2 | EPSS: 0.0029 | KEV: no"];
+	113 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	114 [label="CVE-2026-14680
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.08/10 
+CVSS: 8.8 | EPSS: 0.0042",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-14680 | Risk: 0.08 | CVSS: 8.8 | EPSS: 0.0042 | KEV: no"];
+	115 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	116 [label="CVE-2026-14681
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.00/10 
+CVSS: 4.2 | EPSS: 0.0007",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-14681 | Risk: 0.00 | CVSS: 4.2 | EPSS: 0.0007 | KEV: no"];
+	117 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	118 [label="CVE-2026-15741
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.09/10 
+CVSS: 8.8 | EPSS: 0.0047",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-15741 | Risk: 0.09 | CVSS: 8.8 | EPSS: 0.0047 | KEV: no"];
+	119 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	120 [label="CVE-2026-15742
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.10/10 
+CVSS: 8.8 | EPSS: 0.0056",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-15742 | Risk: 0.10 | CVSS: 8.8 | EPSS: 0.0056 | KEV: no"];
+	121 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	122 [label="CVE-2026-16238
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.08/10 
+CVSS: 8.8 | EPSS: 0.0041",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-16238 | Risk: 0.08 | CVSS: 8.8 | EPSS: 0.0041 | KEV: no"];
+	123 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	124 [label="CVE-2026-16239
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.13/10 
+CVSS: 8.8 | EPSS: 0.0068",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-16239 | Risk: 0.13 | CVSS: 8.8 | EPSS: 0.0068 | KEV: no"];
+	125 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	126 [label="CVE-2026-16241
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.01/10 
+CVSS: 3.8 | EPSS: 0.0020",shape=box,style="filled",fillcolor="#D8D8D8",tooltip="CVE-2026-16241 | Risk: 0.01 | CVSS: 3.8 | EPSS: 0.0020 | KEV: no"];
+	127 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	128 [label="CVE-2026-18024
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.01/10 
+CVSS: 4.3 | EPSS: 0.0019",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-18024 | Risk: 0.01 | CVSS: 4.3 | EPSS: 0.0019 | KEV: no"];
+	129 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	130 [label="CVE-2026-18408
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.07/10 
+CVSS: 8.8 | EPSS: 0.0036",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-18408 | Risk: 0.07 | CVSS: 8.8 | EPSS: 0.0036 | KEV: no"];
+	131 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	132 [label="CVE-2026-19385
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.08/10 
+CVSS: 8.8 | EPSS: 0.0043",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-19385 | Risk: 0.08 | CVSS: 8.8 | EPSS: 0.0043 | KEV: no"];
+	133 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	134 [label="CVE-2026-6464
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.06/10 
+CVSS: 8.1 | EPSS: 0.0036",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-6464 | Risk: 0.06 | CVSS: 8.1 | EPSS: 0.0036 | KEV: no"];
+	135 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	136 [label="CVE-2026-6469
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.01/10 
+CVSS: 3.8 | EPSS: 0.0032",shape=box,style="filled",fillcolor="#D8D8D8",tooltip="CVE-2026-6469 | Risk: 0.01 | CVSS: 3.8 | EPSS: 0.0032 | KEV: no"];
+	137 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	138 [label="CVE-2026-6470
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.01/10 
+CVSS: 4.3 | EPSS: 0.0033",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2026-6470 | Risk: 0.01 | CVSS: 4.3 | EPSS: 0.0033 | KEV: no"];
+	139 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	140 [label="CVE-2026-6471
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation
+Risk: 0.08/10 
+CVSS: 7.2 | EPSS: 0.0053",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2026-6471 | Risk: 0.08 | CVSS: 7.2 | EPSS: 0.0053 | KEV: no"];
+	141 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	142 [label="STRIDE: Information disclosure
+Host: dbServer | postgresql
+Remote Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t5_information_disclosure"];
+	143 [label="Execute Code
+Host: mqServer | as: rabbitmq",shape=diamond,style="filled",fillcolor="#C8979E"];
+	144 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	145 [label="Network Access
+Host: mqServer | tcp:5672",shape=diamond,style="filled",fillcolor="#C8979E"];
+	146 [label="Multi-hop access",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	147 [label="Firewall Rule
+apiServer → mqServer | tcp:5672",shape=box,style="filled",fillcolor="#FFFFFF"];
+	148 [label="Service
+Host: mqServer | rabbitmq tcp:5672 (rabbitmq)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	149 [label="CVE-2019-11287
+Host: mqServer | rabbitmq
+Remote Exploit → Privilege Escalation
+Risk: 0.25/10 
+CVSS: 7.5 | EPSS: 0.0440",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2019-11287 | Risk: 0.25 | CVSS: 7.5 | EPSS: 0.0440 | KEV: no"];
+	150 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	151 [label="CVE-2020-5419
+Host: mqServer | rabbitmq
+Remote Exploit → Privilege Escalation
+Risk: 0.05/10 
+CVSS: 6.7 | EPSS: 0.0045",shape=box,style="filled",fillcolor="#E8D5B7",tooltip="CVE-2020-5419 | Risk: 0.05 | CVSS: 6.7 | EPSS: 0.0045 | KEV: no"];
+	152 [label="Remote exploit of a server program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	153 [label="STRIDE: Tampering
+Host: mqServer | rabbitmq
+Remote Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t7_tampering"];
+	5 -> 	4;
+	10 -> 	9;
+	15 -> 	14;
+	16 -> 	14;
+	14 -> 	13;
+	13 -> 	12;
+	17 -> 	12;
+	18 -> 	12;
+	12 -> 	11;
+	13 -> 	19;
+	17 -> 	19;
+	20 -> 	19;
+	19 -> 	11;
+	13 -> 	21;
+	17 -> 	21;
+	22 -> 	21;
+	21 -> 	11;
+	13 -> 	23;
+	17 -> 	23;
+	24 -> 	23;
+	23 -> 	11;
+	11 -> 	9;
+	9 -> 	8;
+	8 -> 	7;
+	25 -> 	7;
+	26 -> 	7;
+	7 -> 	6;
+	8 -> 	27;
+	25 -> 	27;
+	28 -> 	27;
+	27 -> 	6;
+	6 -> 	4;
+	4 -> 	3;
+	3 -> 	2;
+	29 -> 	2;
+	30 -> 	2;
+	2 -> 	1;
+	3 -> 	31;
+	29 -> 	31;
+	32 -> 	31;
+	31 -> 	1;
+	3 -> 	33;
+	29 -> 	33;
+	34 -> 33 [label="risk: 0.00\n(4 paths)",color="#7A9BAE",fontsize=9];
+	33 -> 1 [label="risk: 0.00\n(4 paths)",color="#7A9BAE",fontsize=9];
+	3 -> 	35;
+	29 -> 	35;
+	36 -> 35 [label="risk: 0.00\n(3 paths)",color="#7A9BAE",fontsize=9];
+	35 -> 1 [label="risk: 0.00\n(3 paths)",color="#7A9BAE",fontsize=9];
+	3 -> 	37;
+	29 -> 	37;
+	38 -> 37 [label="risk: 0.00\n(3 paths)",color="#7A9BAE",fontsize=9];
+	37 -> 1 [label="risk: 0.00\n(3 paths)",color="#7A9BAE",fontsize=9];
+	3 -> 	39;
+	29 -> 	39;
+	40 -> 	39;
+	39 -> 	1;
+	3 -> 	41;
+	29 -> 	41;
+	42 -> 	41;
+	41 -> 	1;
+	3 -> 	43;
+	29 -> 	43;
+	44 -> 	43;
+	43 -> 	1;
+	3 -> 	45;
+	29 -> 	45;
+	46 -> 	45;
+	45 -> 	1;
+	51 -> 	50;
+	1 -> 50 [label="risk: 0.00\n(3 paths)",color="#7A9BAE",fontsize=9];
+	50 -> 49 [label="risk: 0.00\n(3 paths)",color="#7A9BAE",fontsize=9];
+	49 -> 48 [label="risk: 0.00\n(3 paths)",color="#7A9BAE",fontsize=9];
+	52 -> 	48;
+	53 -> 	48;
+	48 -> 47 [label="risk: 0.00\n(3 paths)",color="#7A9BAE",fontsize=9];
+	58 -> 	57;
+	1 -> 57 [label="risk: 0.00\n(4 paths)",color="#7A9BAE",fontsize=9];
+	57 -> 56 [label="risk: 0.00\n(4 paths)",color="#7A9BAE",fontsize=9];
+	56 -> 55 [label="risk: 0.00\n(3 paths)",color="#7A9BAE",fontsize=9];
+	59 -> 	55;
+	60 -> 	55;
+	55 -> 54 [label="risk: 0.00\n(3 paths)",color="#7A9BAE",fontsize=9];
+	56 -> 61 [label="risk: 0.00\n(1 path)",color="#7A9BAE",fontsize=9];
+	59 -> 	61;
+	62 -> 	61;
+	61 -> 54 [label="risk: 0.00\n(1 path)",color="#7A9BAE",fontsize=9];
+	56 -> 	63;
+	59 -> 	63;
+	64 -> 	63;
+	63 -> 	54;
+	65 -> 	68;
+	68 -> 	67;
+	67 -> 	66;
+	69 -> 	66;
+	65 -> 	71;
+	69 -> 	71;
+	71 -> 	70;
+	70 -> 	66;
+	66 -> 	65;
+	16 -> 	74;
+	75 -> 	74;
+	76 -> 	74;
+	74 -> 	73;
+	73 -> 	72;
+	69 -> 	72;
+	77 -> 	72;
+	72 -> 	65;
+	82 -> 	81;
+	1 -> 	81;
+	81 -> 	80;
+	80 -> 	79;
+	83 -> 	79;
+	84 -> 	79;
+	79 -> 	78;
+	80 -> 	85;
+	83 -> 	85;
+	86 -> 	85;
+	85 -> 	78;
+	80 -> 	87;
+	83 -> 	87;
+	88 -> 	87;
+	87 -> 	78;
+	80 -> 	89;
+	83 -> 	89;
+	90 -> 	89;
+	89 -> 	78;
+	80 -> 	91;
+	83 -> 	91;
+	92 -> 	91;
+	91 -> 	78;
+	80 -> 	93;
+	83 -> 	93;
+	94 -> 	93;
+	93 -> 	78;
+	80 -> 	95;
+	83 -> 	95;
+	96 -> 	95;
+	95 -> 	78;
+	80 -> 	97;
+	83 -> 	97;
+	98 -> 	97;
+	97 -> 	78;
+	80 -> 	99;
+	83 -> 	99;
+	100 -> 	99;
+	99 -> 	78;
+	80 -> 	101;
+	83 -> 	101;
+	102 -> 	101;
+	101 -> 	78;
+	80 -> 	103;
+	83 -> 	103;
+	104 -> 	103;
+	103 -> 	78;
+	80 -> 	105;
+	83 -> 	105;
+	106 -> 	105;
+	105 -> 	78;
+	80 -> 	107;
+	83 -> 	107;
+	108 -> 	107;
+	107 -> 	78;
+	80 -> 	109;
+	83 -> 	109;
+	110 -> 	109;
+	109 -> 	78;
+	80 -> 	111;
+	83 -> 	111;
+	112 -> 	111;
+	111 -> 	78;
+	80 -> 	113;
+	83 -> 	113;
+	114 -> 	113;
+	113 -> 	78;
+	80 -> 	115;
+	83 -> 	115;
+	116 -> 	115;
+	115 -> 	78;
+	80 -> 	117;
+	83 -> 	117;
+	118 -> 	117;
+	117 -> 	78;
+	80 -> 	119;
+	83 -> 	119;
+	120 -> 	119;
+	119 -> 	78;
+	80 -> 	121;
+	83 -> 	121;
+	122 -> 	121;
+	121 -> 	78;
+	80 -> 	123;
+	83 -> 	123;
+	124 -> 	123;
+	123 -> 	78;
+	80 -> 	125;
+	83 -> 	125;
+	126 -> 	125;
+	125 -> 	78;
+	80 -> 	127;
+	83 -> 	127;
+	128 -> 	127;
+	127 -> 	78;
+	80 -> 	129;
+	83 -> 	129;
+	130 -> 	129;
+	129 -> 	78;
+	80 -> 	131;
+	83 -> 	131;
+	132 -> 	131;
+	131 -> 	78;
+	80 -> 	133;
+	83 -> 	133;
+	134 -> 	133;
+	133 -> 	78;
+	80 -> 	135;
+	83 -> 	135;
+	136 -> 	135;
+	135 -> 	78;
+	80 -> 	137;
+	83 -> 	137;
+	138 -> 	137;
+	137 -> 	78;
+	80 -> 	139;
+	83 -> 	139;
+	140 -> 	139;
+	139 -> 	78;
+	80 -> 	141;
+	83 -> 	141;
+	142 -> 	141;
+	141 -> 	78;
+	147 -> 	146;
+	1 -> 	146;
+	146 -> 	145;
+	145 -> 	144;
+	148 -> 	144;
+	149 -> 	144;
+	144 -> 	143;
+	145 -> 	150;
+	148 -> 	150;
+	151 -> 	150;
+	150 -> 	143;
+	145 -> 	152;
+	148 -> 	152;
+	153 -> 	152;
+	152 -> 	143;
+}

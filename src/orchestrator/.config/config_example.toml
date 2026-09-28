@@ -1,0 +1,5 @@
+[ORCHESTRATOR]
+mulval_root = "/mulval"
+default_mapped_scenario = "/output/scenario.P"
+default_graph_dir = "/gen_graph"
+graph_timeout_seconds = 300

@@ -1,0 +1,191 @@
+digraph G {
+	// ========== LEGEND ==========
+	subgraph cluster_legend {
+		label="Attack Graph Risk Analysis Legend";
+		fontsize=16;
+		fontname="Arial Bold";
+		style=filled;
+		color="#333333";
+		fillcolor="#F5F5F5";
+
+		legend_info [shape=plaintext,label=<
+			<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6">
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="14"><B>RISK ANALYSIS SUMMARY</B></FONT></TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Total Attack Paths:</B></TD><TD COLSPAN="2">81</TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Unique CVEs:</B></TD><TD COLSPAN="2">2</TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Maximum Risk:</B></TD><TD COLSPAN="2"><FONT COLOR="#C85A54"><B>0.04/10</B></FONT></TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Average Risk:</B></TD><TD COLSPAN="2"><B>0.00/10</B></TD></TR>
+				<TR><TD ALIGN="LEFT"><B>Coverage:</B></TD><TD COLSPAN="2">100.0%</TD></TR>
+
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="12"><B>NODE COLORS (Colorblind-Friendly)</B></FONT></TD></TR>
+				<TR><TD BGCOLOR="#D97066" WIDTH="120"><B>KEV</B></TD><TD COLSPAN="2" ALIGN="LEFT">CISA Known Exploited Vulnerability (active exploitation)</TD></TR>
+				<TR><TD BGCOLOR="#CC7A50"><B>Critical</B></TD><TD COLSPAN="2" ALIGN="LEFT">Critical Severity: CVSS ≥ 9.0</TD></TR>
+				<TR><TD BGCOLOR="#D4A574"><B>High</B></TD><TD COLSPAN="2" ALIGN="LEFT">High Severity: CVSS ≥ 7.0</TD></TR>
+				<TR><TD BGCOLOR="#E8D5B7"><B>Medium</B></TD><TD COLSPAN="2" ALIGN="LEFT">Medium Severity: CVSS ≥ 4.0</TD></TR>
+				<TR><TD BGCOLOR="#D8D8D8"><B>Low</B></TD><TD COLSPAN="2" ALIGN="LEFT">Low Severity: CVSS &lt; 4.0</TD></TR>
+				<TR><TD BGCOLOR="#C8979E"><B>Goal</B></TD><TD COLSPAN="2" ALIGN="LEFT">Attacker Goal / Final Objective</TD></TR>
+				<TR><TD BGCOLOR="#B8A9C9"><B>STRIDE</B></TD><TD COLSPAN="2" ALIGN="LEFT">STRIDE Threat Model Vulnerability</TD></TR>
+				<TR><TD BGCOLOR="#9DB4C0"><B>Rule</B></TD><TD COLSPAN="2" ALIGN="LEFT">AND/OR Logic Rule</TD></TR>
+				<TR><TD BGCOLOR="#FFFFFF"><B>Fact</B></TD><TD COLSPAN="2" ALIGN="LEFT">Infrastructure Fact (no CVE)</TD></TR>
+
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="12"><B>NODE SHAPES</B></FONT></TD></TR>
+				<TR><TD><B>Diamond</B></TD><TD COLSPAN="2" ALIGN="LEFT">OR Node (reachable state or goal)</TD></TR>
+				<TR><TD><B>Ellipse</B></TD><TD COLSPAN="2" ALIGN="LEFT">AND Node (inference rule)</TD></TR>
+				<TR><TD><B>Box</B></TD><TD COLSPAN="2" ALIGN="LEFT">Leaf (vulnerability or fact)</TD></TR>
+
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="12"><B>EDGE COLORS</B></FONT></TD></TR>
+				<TR><TD><FONT COLOR="#C85A54"><B>Dark Coral</B></FONT></TD><TD COLSPAN="2" ALIGN="LEFT">High Risk ≥ 7.0</TD></TR>
+				<TR><TD><FONT COLOR="#CC7A50"><B>Burnt Orange</B></FONT></TD><TD COLSPAN="2" ALIGN="LEFT">Medium-High Risk ≥ 4.0</TD></TR>
+				<TR><TD><FONT COLOR="#D4A574"><B>Tan</B></FONT></TD><TD COLSPAN="2" ALIGN="LEFT">Medium Risk ≥ 2.0</TD></TR>
+				<TR><TD><FONT COLOR="#7A9BAE"><B>Steel Blue</B></FONT></TD><TD COLSPAN="2" ALIGN="LEFT">Low Risk &lt; 2.0</TD></TR>
+				<TR><TD COLSPAN="3" ALIGN="LEFT"><I>Label format: "risk: X.X (N paths)"</I></TD></TR>
+
+				<TR><TD COLSPAN="3" BGCOLOR="#1a1a1a"><FONT COLOR="white" POINT-SIZE="12"><B>METRICS</B></FONT></TD></TR>
+				<TR><TD><B>Risk Score</B></TD><TD COLSPAN="2" ALIGN="LEFT">Risk rating (0-10): EPSS × CVSS × KEV × Criticality</TD></TR>
+				<TR><TD><B>CVSS</B></TD><TD COLSPAN="2" ALIGN="LEFT">Common Vulnerability Scoring System v3.1 (0-10)</TD></TR>
+				<TR><TD><B>EPSS</B></TD><TD COLSPAN="2" ALIGN="LEFT">Exploit Prediction Scoring System (0-1): exploitation probability</TD></TR>
+				<TR><TD><B>KEV</B></TD><TD COLSPAN="2" ALIGN="LEFT">CISA Known Exploited Vulnerabilities: 1.5× multiplier</TD></TR>
+			</TABLE>
+		>];
+	}
+
+	1 [label="Execute Code
+Host: victim1 | as: user",shape=diamond,style="filled",fillcolor="#C8979E"];
+	2 [label="When a principal is compromised any machine he has an account on will also be compromised",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	3 [label="Can Access Host
+victim1",shape=diamond,style="filled",fillcolor="#C8979E"];
+	4 [label="Access a host through executing code on the machine",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	5 [label="Account
+victim1_user on victim1 (user)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	6 [label="Principal Compromised
+victim1_user",shape=diamond,style="filled",fillcolor="#C8979E"];
+	7 [label="Password sniffing",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	8 [label="Remote exploit for a client program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	9 [label="Malicious Input
+Host: victim1 | victim: victim1_user via firefox",shape=diamond,style="filled",fillcolor="#C8979E"];
+	10 [label="Browsing a malicious website",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	11 [label="Attacker Origin
+internet",shape=box,style="filled",fillcolor="#FFFFFF"];
+	12 [label="Firewall Rule
+victim1 → internet | httpProtocol:httpPort",shape=box,style="filled",fillcolor="#FFFFFF"];
+	13 [label="Vulnerable User
+victim1_user",shape=box,style="filled",fillcolor="#FFFFFF"];
+	14 [label="STRIDE: Elevation of privilege
+Host: victim1 | firefox
+Client-Side Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t1_elevation_of_privilege"];
+	15 [label="Execute Code
+Host: victim2 | as: user",shape=diamond,style="filled",fillcolor="#C8979E"];
+	16 [label="When a principal is compromised any machine he has an account on will also be compromised",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	17 [label="Can Access Host
+victim2",shape=diamond,style="filled",fillcolor="#C8979E"];
+	18 [label="Access a host through executing code on the machine",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	19 [label="Account
+victim2_user on victim2 (user)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	20 [label="Principal Compromised
+victim2_user",shape=diamond,style="filled",fillcolor="#C8979E"];
+	21 [label="Password sniffing",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	22 [label="Remote exploit for a client program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	23 [label="Malicious Input
+Host: victim2 | victim: victim2_user via finereader",shape=diamond,style="filled",fillcolor="#C8979E"];
+	24 [label="Browsing a malicious website",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	25 [label="Firewall Rule
+victim2 → internet | httpProtocol:httpPort",shape=box,style="filled",fillcolor="#FFFFFF"];
+	26 [label="Vulnerable User
+victim2_user",shape=box,style="filled",fillcolor="#FFFFFF"];
+	27 [label="CVE-2019-20383
+Host: victim2 | finereader
+Client-Side Exploit → Privilege Escalation
+Risk: 0.04/10 
+CVSS: 7.8 | EPSS: 0.0048",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2019-20383 | Risk: 0.04 | CVSS: 7.8 | EPSS: 0.0048 | KEV: no"];
+	28 [label="Remote exploit for a client program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	29 [label="STRIDE: Elevation of privilege
+Host: victim2 | finereader
+Client-Side Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t2_elevation_of_privilege"];
+	30 [label="Execute Code
+Host: victim3 | as: user",shape=diamond,style="filled",fillcolor="#C8979E"];
+	31 [label="When a principal is compromised any machine he has an account on will also be compromised",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	32 [label="Can Access Host
+victim3",shape=diamond,style="filled",fillcolor="#C8979E"];
+	33 [label="Access a host through executing code on the machine",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	34 [label="Account
+victim3_user on victim3 (user)",shape=box,style="filled",fillcolor="#FFFFFF"];
+	35 [label="Principal Compromised
+victim3_user",shape=diamond,style="filled",fillcolor="#C8979E"];
+	36 [label="Password sniffing",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	37 [label="Remote exploit for a client program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	38 [label="Malicious Input
+Host: victim3 | victim: victim3_user via mozilla_vpn",shape=diamond,style="filled",fillcolor="#C8979E"];
+	39 [label="Browsing a malicious website",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	40 [label="Firewall Rule
+victim3 → internet | httpProtocol:httpPort",shape=box,style="filled",fillcolor="#FFFFFF"];
+	41 [label="Vulnerable User
+victim3_user",shape=box,style="filled",fillcolor="#FFFFFF"];
+	42 [label="CVE-2022-0517
+Host: victim3 | mozilla_vpn
+Client-Side Exploit → Privilege Escalation
+Risk: 0.01/10 
+CVSS: 7.8 | EPSS: 0.0019",shape=box,style="filled",fillcolor="#D4A574",tooltip="CVE-2022-0517 | Risk: 0.01 | CVSS: 7.8 | EPSS: 0.0019 | KEV: no"];
+	43 [label="Remote exploit for a client program",shape=ellipse,style="filled",fillcolor="#9DB4C0"];
+	44 [label="STRIDE: Elevation of privilege
+Host: victim3 | mozilla_vpn
+Client-Side Exploit → Privilege Escalation",shape=box,style="filled",fillcolor="#B8A9C9",tooltip="STRIDE threat: threat_t3_elevation_of_privilege"];
+	1 -> 4 [label="risk: 0.00\n(4 paths)",color="#7A9BAE",fontsize=9];
+	4 -> 3 [label="risk: 0.00\n(4 paths)",color="#7A9BAE",fontsize=9];
+	3 -> 2 [label="risk: 0.00\n(4 paths)",color="#7A9BAE",fontsize=9];
+	5 -> 	2;
+	1 -> 	7;
+	5 -> 	7;
+	7 -> 	6;
+	6 -> 	2;
+	2 -> 1 [label="risk: 0.00\n(4 paths)",color="#7A9BAE",fontsize=9];
+	11 -> 10 [label="risk: 0.00\n(1 path)",color="#7A9BAE",fontsize=9];
+	12 -> 10 [label="risk: 0.00\n(1 path)",color="#7A9BAE",fontsize=9];
+	13 -> 10 [label="risk: 0.00\n(1 path)",color="#7A9BAE",fontsize=9];
+	10 -> 9 [label="risk: 0.00\n(3 paths)",color="#7A9BAE",fontsize=9];
+	9 -> 8 [label="risk: 0.00\n(3 paths)",color="#7A9BAE",fontsize=9];
+	5 -> 8 [label="risk: 0.00\n(1 path)",color="#7A9BAE",fontsize=9];
+	14 -> 	8;
+	8 -> 1 [label="risk: 0.00\n(4 paths)",color="#7A9BAE",fontsize=9];
+	15 -> 18 [label="risk: 0.03\n(1 path)",color="#7A9BAE",fontsize=9];
+	18 -> 17 [label="risk: 0.03\n(1 path)",color="#7A9BAE",fontsize=9];
+	17 -> 16 [label="risk: 0.03\n(1 path)",color="#7A9BAE",fontsize=9];
+	19 -> 	16;
+	15 -> 21 [label="risk: 0.03\n(1 path)",color="#7A9BAE",fontsize=9];
+	19 -> 	21;
+	21 -> 20 [label="risk: 0.03\n(1 path)",color="#7A9BAE",fontsize=9];
+	20 -> 16 [label="risk: 0.03\n(1 path)",color="#7A9BAE",fontsize=9];
+	16 -> 15 [label="risk: 0.03\n(2 paths)",color="#7A9BAE",fontsize=9];
+	11 -> 	24;
+	25 -> 	24;
+	26 -> 	24;
+	24 -> 	23;
+	23 -> 	22;
+	19 -> 	22;
+	27 -> 22 [label="risk: 0.04\n(3 paths)",color="#7A9BAE",fontsize=9];
+	22 -> 15 [label="risk: 0.04\n(3 paths)",color="#7A9BAE",fontsize=9];
+	23 -> 	28;
+	19 -> 	28;
+	29 -> 	28;
+	28 -> 	15;
+	30 -> 33 [label="risk: 0.01\n(1 path)",color="#7A9BAE",fontsize=9];
+	33 -> 32 [label="risk: 0.01\n(1 path)",color="#7A9BAE",fontsize=9];
+	32 -> 31 [label="risk: 0.01\n(1 path)",color="#7A9BAE",fontsize=9];
+	34 -> 	31;
+	30 -> 36 [label="risk: 0.01\n(1 path)",color="#7A9BAE",fontsize=9];
+	34 -> 	36;
+	36 -> 35 [label="risk: 0.01\n(1 path)",color="#7A9BAE",fontsize=9];
+	35 -> 31 [label="risk: 0.01\n(1 path)",color="#7A9BAE",fontsize=9];
+	31 -> 30 [label="risk: 0.01\n(2 paths)",color="#7A9BAE",fontsize=9];
+	11 -> 	39;
+	40 -> 	39;
+	41 -> 	39;
+	39 -> 	38;
+	38 -> 	37;
+	34 -> 	37;
+	42 -> 37 [label="risk: 0.01\n(3 paths)",color="#7A9BAE",fontsize=9];
+	37 -> 30 [label="risk: 0.01\n(3 paths)",color="#7A9BAE",fontsize=9];
+	38 -> 	43;
+	34 -> 	43;
+	44 -> 	43;
+	43 -> 	30;
+}

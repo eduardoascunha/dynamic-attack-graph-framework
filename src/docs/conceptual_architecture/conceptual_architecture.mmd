@@ -1,0 +1,42 @@
+flowchart TB
+    subgraph inputs[Inputs]
+        direction LR
+        cti[External threat intelligence<br/>CVE, CVSS, EPSS, KEV]
+        environment[Environment model<br/>topology, services, assets]
+        stride[STRIDE threat model]
+        criticality[Asset criticality<br/>and CIA priorities]
+    end
+
+    ingestion[Threat intelligence<br/>ingestion]
+    database[(Threat intelligence<br/>knowledge base)]
+    correlation[Environment correlation<br/>and threat modeling integration]
+    orchestration[Change detection<br/>and orchestration]
+    mulval[MulVAL reasoning<br/>engine]
+    postprocessing[Post-processing<br/>and dynamic risk analysis]
+    outputs[Annotated attack graphs<br/>risk and delta reports]
+
+    cti --> ingestion
+    ingestion --> database
+    environment --> correlation
+    stride --> correlation
+    database -->|CVE and CPE data| correlation
+    correlation -->|Enriched MulVAL facts| orchestration
+    orchestration -->|Structural change| mulval
+    mulval -->|Logical attack graph| postprocessing
+    database -.->|EPSS and KEV| postprocessing
+    criticality -.-> postprocessing
+    postprocessing --> outputs
+
+    classDef input fill:#FFF7E8,stroke:#B58B45,color:#333
+    classDef structural fill:#EAF2FF,stroke:#5A88C5,color:#333
+    classDef contextual fill:#EEF8EC,stroke:#6A9C65,color:#333
+    classDef store fill:#F4F0FF,stroke:#8870B8,color:#333
+    classDef output fill:#FCEEEF,stroke:#B96E78,color:#333
+
+    class cti,environment,stride,criticality input
+    class ingestion,correlation,orchestration,mulval structural
+    class postprocessing contextual
+    class database store
+    class outputs output
+
+    linkStyle 8,9 stroke:#6A9C65,stroke-width:2px,stroke-dasharray: 5 5

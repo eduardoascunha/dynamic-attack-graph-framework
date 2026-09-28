@@ -1,0 +1,103 @@
+{
+  "system": "scenario3",
+  "assets": [
+    {
+      "name": "reverseProxy",
+      "service": "haproxy"
+    },
+    {
+      "name": "portalServer",
+      "service": "tomcat"
+    },
+    {
+      "name": "apiServer",
+      "service": "jetty"
+    },
+    {
+      "name": "authServer",
+      "service": "keycloak"
+    },
+    {
+      "name": "dbServer",
+      "service": "postgresql"
+    },
+    {
+      "name": "cacheServer",
+      "service": "memcached"
+    },
+    {
+      "name": "mqServer",
+      "service": "rabbitmq"
+    },
+    {
+      "name": "clinicianWorkstation",
+      "service": "thunderbird"
+    }
+  ],
+  "threats": [
+    {
+      "id": "T1",
+      "stride": "Tampering",
+      "asset": "reverseProxy",
+      "impact": "data_modification",
+      "description": "An attacker on the internet tampers with HTTP requests at the TLS-terminating load balancer (request smuggling / header injection) to reach internal portal and API services.",
+      "mitre_attack": "T1190 - Exploit Public-Facing Application"
+    },
+    {
+      "id": "T2",
+      "stride": "Spoofing",
+      "asset": "portalServer",
+      "impact": "account_compromise",
+      "description": "Session or identity spoofing against the patient portal lets the attacker act as a legitimate patient and reach the protected API.",
+      "mitre_attack": "T1078 - Valid Accounts"
+    },
+    {
+      "id": "T3",
+      "stride": "Information Disclosure",
+      "asset": "apiServer",
+      "impact": "data_exfiltration",
+      "description": "An information-disclosure flaw in the REST API exposes protected health information (PHI) and internal service tokens to an attacker who has pivoted from the portal tier.",
+      "mitre_attack": "T1213 - Data from Information Repositories"
+    },
+    {
+      "id": "T4",
+      "stride": "Spoofing",
+      "asset": "authServer",
+      "impact": "unauthorized_access",
+      "description": "Token forgery or SSO bypass against the Keycloak identity provider lets the attacker mint trusted assertions and impersonate clinical staff.",
+      "mitre_attack": "T1606 - Forge Web Credentials"
+    },
+    {
+      "id": "T5",
+      "stride": "Information Disclosure",
+      "asset": "dbServer",
+      "impact": "data_exfiltration",
+      "description": "The PostgreSQL patient-records database leaks PII/PHI and payment records to an attacker pivoting from the application tier.",
+      "mitre_attack": "T1005 - Data from Local System"
+    },
+    {
+      "id": "T6",
+      "stride": "Tampering",
+      "asset": "cacheServer",
+      "impact": "data_modification",
+      "description": "The Memcached session/lookup cache is poisoned to hijack authenticated clinician sessions or alter cached clinical lookups.",
+      "mitre_attack": "T1565 - Data Manipulation"
+    },
+    {
+      "id": "T7",
+      "stride": "Tampering",
+      "asset": "mqServer",
+      "impact": "data_modification",
+      "description": "HL7 / clinical-event messages on the RabbitMQ broker are tampered with to alter orders, results, or downstream clinical workflows.",
+      "mitre_attack": "T1565.002 - Transmitted Data Manipulation"
+    },
+    {
+      "id": "T8",
+      "stride": "Elevation of Privilege",
+      "asset": "clinicianWorkstation",
+      "impact": "remote_code_execution",
+      "description": "A clinician opens a malicious email attachment and the vulnerable mail client is exploited to gain code execution on the back-office workstation.",
+      "mitre_attack": "T1203 - Exploitation for Client Execution"
+    }
+  ]
+}

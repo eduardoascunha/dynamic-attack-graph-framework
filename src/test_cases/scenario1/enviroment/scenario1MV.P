@@ -1,0 +1,23 @@
+
+/*network connection*/
+attackerLocated(internet).
+hacl(victim1, internet, httpProtocol, httpPort).
+hacl(victim2, internet, httpProtocol, httpPort).
+hacl(victim3, internet, httpProtocol, httpPort).
+
+installed(victim1, firefox).
+installed(victim2, finereader).
+installed(victim3, mozilla_vpn).
+
+/*users*/
+inCompetent(victim1_user).
+hasAccount(victim1_user, victim1, user).
+inCompetent(victim2_user).
+hasAccount(victim2_user, victim2, user).
+inCompetent(victim3_user).
+hasAccount(victim3_user, victim3, user).
+
+/*attack goals*/
+attackGoal(execCode(victim1, _)).
+attackGoal(execCode(victim2, _)).
+attackGoal(execCode(victim3, _)).

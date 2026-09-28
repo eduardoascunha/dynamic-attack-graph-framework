@@ -1,0 +1,1130 @@
+GM19:
+  type: Article
+  title: "Attack-Tree Series: A Case for Dynamic Attack Tree Analysis"
+  author:
+    - "Gadyatskaya, Olga"
+    - "Mauw, Sjouke"
+  date: 2019
+  page-range: 7-19
+  parent:
+    type: Proceedings
+    title: "Proceedings of the 6th International Workshop on Graphical Models for Security (GraMSec 2019)"
+    publisher: "Springer"
+    location: "Hoboken, NJ, USA"
+    parent:
+      type: Anthology
+      title: "Lecture Notes in Computer Science"
+      volume: 11720
+  keywords:
+    - "Attack Trees"
+    - "Dynamic Analysis"
+  # url: https://satoss.uni.lu/members/sjouke/papers/GM19.pdf
+
+KM23:
+  type: Article
+  title: "Survey: Automatic Generation of Attack Trees and Attack Graphs"
+  author:
+    - "Konsta, Alyzia-Maria"
+    - "Lluch Lafuente, Alberto"
+    - "Spiga, Beatrice"
+    - "Dragoni, Nicola"
+  date: 2024
+  page-range: "103602"
+  serial-number:
+    doi: "10.1016/j.cose.2023.103602"
+  parent:
+    type: Periodical
+    title: "Computers & Security"
+    volume: 137
+    publisher: "Elsevier"
+    location: "Netherlands"
+  keywords:
+    - "Automatic generation"
+    - "Attack Trees"
+    - "Attack Graphs"
+  # url: https://www.sciencedirect.com/science/article/pii/S0167404823005126
+
+SCHNEIER99:
+  type: Article
+  title: "Attack Trees"
+  author:
+    - "Schneier, Bruce"
+  date: 1999
+  page-range: 21-29
+  parent:
+    type: Periodical
+    title: "Dr. Dobbs Journal"
+    volume: 24
+    issue: 12
+
+MAUW_OOSTDIJK06:
+  type: Article
+  title: "Foundations of Attack Trees"
+  author:
+    - "Mauw, Sjouke"
+    - "Oostdijk, Martijn"
+  date: 2006
+  page-range: 186-198
+  parent:
+    type: Proceedings
+    title: "Information Security and Cryptology: ICISC 2005"
+    publisher: "Springer"
+    location: "Berlin, Germany"
+
+WIDEL19:
+  type: Article
+  title: "Beyond 2014: Formal Methods for Attack Tree-Based Security Modeling"
+  author:
+    - "Wideł, Wojciech"
+    - "Audinot, Maxime"
+    - "Fila, Baptiste"
+    - "Pinchinat, Sophie"
+  date: 2019
+  serial-number:
+    doi: "10.1145/3331524"
+  parent:
+    type: Periodical
+    title: "ACM Computing Surveys"
+    volume: 52
+    issue: 4
+
+SHEYNER02:
+  type: Article
+  title: "Automated Generation and Analysis of Attack Graphs"
+  author:
+    - "Sheyner, Oleg"
+    - "Haines, Joshua"
+    - "Jha, Somesh"
+    - "Lippmann, Richard"
+    - "Wing, Jeannette M."
+  date: 2002
+  page-range: 273-284
+  parent:
+    type: Proceedings
+    title: "Proceedings of the 2002 IEEE Symposium on Security and Privacy"
+    publisher: "IEEE"
+
+LALLIE20:
+  type: Article
+  title: "A Review of Attack Graph and Attack Tree Visual Syntax in Cyber Security"
+  author:
+    - "Lallie, H. S."
+    - "Debattista, Kurt"
+    - "Bal, Jon"
+  date: 2020
+  page-range: "100219"
+  serial-number:
+    doi: "10.1016/j.cosrev.2019.100219"
+  parent:
+    type: Periodical
+    title: "Computer Science Review"
+    volume: 35
+
+OU06:
+  type: Article
+  title: "A Scalable Approach to Attack Graph Generation"
+  author:
+    - "Ou, Xinming"
+    - "Boyer, Wayne F."
+    - "McQueen, Miles A."
+  date: 2006
+  page-range: 336-345
+  parent:
+    type: Proceedings
+    title: "Proceedings of the 13th ACM Conference on Computer and Communications Security"
+    publisher: "ACM"
+
+PD24:
+  type: Web
+  title: "Guide to Threat Modeling using Attack Trees"
+  author:
+    - "Yuga"
+  date: 2024
+  url: { value: "https://www.practical-devsecops.com/threat-modeling-using-attack-trees/", date: 2025 }
+  parent:
+    type: Web
+    title: "Practical DevSecOps"
+  keywords:
+    - "Threat Modeling"
+    - "Attack Trees"
+    - "Cybersecurity"
+
+SN25:
+  type: Web
+  title: "What are Attack Graphs? Key Components Explained"
+  author:
+    - "SentinelOne"
+  date: "2025-09-01"
+  url: { value: "https://www.sentinelone.com/cybersecurity-101/cybersecurity/attack-graphs/", date: 2025 }
+  parent:
+    type: Web
+    title: "SentinelOne Cybersecurity 101"
+  keywords:
+    - "Attack Graphs"
+    - "Cybersecurity"
+    - "Threat Analysis"
+
+OWASP1:
+  type: Web
+  title: "Threat Modeling Process"
+  author:
+    - "OWASP Foundation"
+  date: 2025
+  url: { value: "https://owasp.org/www-community/Threat_Modeling_Process", date: 2025 }
+  parent:
+    type: Web
+    title: "OWASP Foundation"
+  keywords:
+    - "Threat Modeling"
+    - "Threat Modeling Process"
+    - "Cybersecurity"
+
+MS_AZ27:
+  type: Web
+  title: "Threats - Microsoft Threat Modeling Tool"
+  author:
+    - "Microsoft"
+  date: 2022
+  url: { value: "https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats", date: 2025 }
+  parent:
+    type: Web
+    title: "Microsoft Learn - Azure Security"
+  keywords:
+    - "Threat Modeling Tool"
+    - "Threats"
+    - "STRIDE"
+
+ANDERSEN_FAGERHAUG06:
+  type: Book
+  title: "Root Cause Analysis: Simplified Tools and Techniques"
+  author:
+    - "Andersen, Bjorn"
+    - "Fagerhaug, Tom"
+  date: 2006
+  publisher: "ASQ Quality Press"
+
+KEMPER_SANDERS03:
+  type: Book
+  title: "Computer Performance Evaluation: Modelling Techniques and Tools"
+  author:
+    - "Kemper, Peter"
+    - "Sanders, William H."
+  date: 2003
+  publisher: "Springer"
+
+BYERS06:
+  type: Article
+  title: "Modeling Software Vulnerabilities with Vulnerability Cause Graphs"
+  author:
+    - "Byers, David"
+    - "Ardi, Sima"
+    - "Shahmehri, Nahid"
+    - "Duma, Cristian"
+  date: 2006
+  page-range: 411-422
+  parent:
+    type: Proceedings
+    title: "Proceedings of the 22nd IEEE International Conference on Software Maintenance"
+    publisher: "IEEE"
+
+SINDRE_OPDAHL05:
+  type: Article
+  title: "Eliciting Security Requirements with Misuse Cases"
+  author:
+    - "Sindre, Guttorm"
+    - "Opdahl, Andreas L."
+  date: 2005
+  page-range: 34-44
+  parent:
+    type: Periodical
+    title: "Requirements Engineering"
+    volume: 10
+    issue: 1
+
+ROSTAD06:
+  type: Article
+  title: "An Extended Misuse Case Notation: Including Vulnerabilities and the Insider Threat"
+  author:
+    - "Rostad, Lene"
+  date: 2006
+  parent:
+    type: Proceedings
+    title: "Proceedings of the 12th Working Conference on Requirements Engineering: Foundation for Software Quality"
+
+ARDI06:
+  type: Article
+  title: "Towards a Structured Unified Process for Software Security"
+  author:
+    - "Ardi, Sima"
+    - "Byers, David"
+    - "Shahmehri, Nahid"
+  date: 2006
+  page-range: 3-10
+  parent:
+    type: Proceedings
+    title: "Proceedings of the 2006 International Workshop on Software Engineering for Secure Systems"
+    publisher: "ACM"
+
+SS28:
+  type: Web
+  title: "STRIDE Threat Modelling: What You Need to Know"
+  author:
+    - "Koussa, Sherif"
+  date: 2024
+  url: { value: "https://www.softwaresecured.com/post/stride-threat-modelling", date: 2026 }
+  parent:
+    type: Web
+    title: "Software Secured"
+  keywords:
+    - "STRIDE"
+    - "Threat Modelling"
+    - "Cybersecurity"
+
+MS_STRIDE06:
+  type: Article
+  title: "Uncover Security Design Flaws Using the STRIDE Approach"
+  author:
+    - "Shostack, Adam"
+  date: 2006
+  url: { value: "https://learn.microsoft.com/en-us/archive/msdn-magazine/2006/november/uncover-security-design-flaws-using-the-stride-approach", date: 2025 }
+  parent:
+    type: Periodical
+    title: "MSDN Magazine"
+    publisher: "Microsoft"
+  keywords:
+    - "STRIDE"
+    - "Threat Modeling"
+    - "Security Design"
+    - "Microsoft SDL"
+
+BN_STRIDE26:
+  type: Web
+  title: "Cyber STRIDE - Threat Modeling Framework Explained"
+  author:
+    - "Barnes Cybersecurity"
+  date: 2023
+  url: { value: "https://barnes.ch/cyber-STRIDE.html", date: 2025 }
+  parent:
+    type: Web
+    title: "Barnes Cybersecurity"
+  keywords:
+    - "STRIDE"
+    - "Threat Modeling"
+    - "Cybersecurity"
+    - "Security Frameworks"
+
+RH_CVE24:
+  type: Web
+  title: "What is a CVE?"
+  author:
+    - "Red Hat"
+  date: 2024
+  url: { value: "https://www.redhat.com/en/topics/security/what-is-cve", date: 2025 }
+  parent:
+    type: Web
+    title: "Red Hat Security Topics"
+  keywords:
+    - "Common Vulnerabilities and Exposures"
+    - "CVE"
+    - "Cybersecurity"
+
+IBM_CVSS24:
+  type: Web
+  title: "What Is the Common Vulnerability Scoring System (CVSS)?"
+  author:
+    - "Gomstyn, Alice"
+    - "Jonker, Alexandra"
+  date: 2024
+  url: { value: "https://www.ibm.com/think/topics/cvss", date: 2025 }
+  parent:
+    type: Web
+    title: "IBM Think - Cybersecurity Topics"
+  keywords:
+    - "CVSS"
+    - "Common Vulnerability Scoring System"
+    - "Vulnerability Management"
+    - "Cybersecurity"
+
+MITRE_CWE24:
+  type: Web
+  title: "About CWE (Common Weakness Enumeration)"
+  author:
+    - "MITRE"
+  date: 2024
+  url: { value: "https://cwe.mitre.org/about/index.html", date: 2025 }
+  parent:
+    type: Web
+    title: "Common Weakness Enumeration"
+  keywords:
+    - "Common Weakness Enumeration"
+    - "CWE"
+    - "Software Weaknesses"
+    - "Cybersecurity"
+
+INTR_CWE:
+  type: Web
+  title: "Common Weakness Enumeration (CWE)"
+  author:
+    - "Yianni, Charlie"
+  url: { value: "https://www.intruder.io/glossary/what-is-cwe", date: 2025 }
+  parent:
+    type: Web
+    title: "Intruder.io Glossary"
+  keywords:
+    - "Common Weakness Enumeration"
+    - "CWE"
+    - "Cybersecurity Glossary"
+
+SANS_OSINT26:
+  type: Web
+  title: "What Is Open-Source Intelligence (OSINT)?"
+  author:
+    - "SANS Institute"
+  url: { value: "https://www.sans.org/blog/what-is-open-source-intelligence", date: 2025 }
+  parent:
+    type: Web
+    title: "SANS Institute Blog"
+  keywords:
+    - "Open Source Intelligence"
+    - "OSINT"
+    - "Cybersecurity"
+    - "Intelligence"
+
+LEE_CTI23:
+  type: Book
+  title: "Cyber Threat Intelligence"
+  author:
+    - "Lee, Martin"
+  date: 2023
+  publisher: "John Wiley & Sons"
+  location: "Hoboken, New Jersey, USA"
+  serial-number:
+    isbn: "9781119861744"
+  keywords:
+    - "Cyber Threat Intelligence"
+    - "Threat Intelligence"
+    - "Cybersecurity"
+
+MAV_BRO17:
+  type: Article
+  title: "Cyber Threat Intelligence Model: An Evaluation of Taxonomies, Sharing Standards, and Ontologies within Cyber Threat Intelligence"
+  author:
+    - "Mavroeidis, Vasileios"
+    - "Bromander, Siri"
+  date: 2017
+  page-range: 91-98
+  serial-number:
+    doi: "10.1109/EISIC.2017.20"
+  parent:
+    type: Proceedings
+    title: "2017 European Intelligence and Security Informatics Conference (EISIC)"
+    publisher: "IEEE"
+    location: "Athens, Greece"
+  # url: "https://ieeexplore.ieee.org/document/8240774"
+  keywords:
+    - "Cyber Threat Intelligence"
+    - "Taxonomies"
+    - "Ontologies"
+    - "Threat Intelligence Standards"
+
+TAY_BAU23:
+  type: Article
+  title: "A Survey of MulVAL Extensions and Their Attack Scenarios Coverage"
+  author:
+    - "Tayouri, David"
+    - "Baum, Nick"
+    - "Shabtai, Asaf"
+    - "Puzis, Rami"
+  date: 2023
+  serial-number:
+    doi: "10.1109/ACCESS.2023.3257721"
+  parent:
+    type: Periodical
+    title: "IEEE Access"
+    publisher: "IEEE"
+  # url: "https://ieeexplore.ieee.org/abstract/document/10070747"
+  keywords:
+    - "MulVAL"
+    - "Attack Graphs"
+    - "Attack Scenarios Coverage"
+    - "MITRE ATT&CK"
+
+AMMANN02:
+  type: Article
+  title: "Scalable, Graph-Based Network Vulnerability Analysis"
+  author:
+    - "Ammann, Paul"
+    - "Wijesekera, Duminda"
+    - "Kaushik, Saket"
+  date: 2002
+  page-range: 217-224
+  parent:
+    type: Proceedings
+    title: "Proceedings of the 9th ACM Conference on Computer and Communications Security"
+    publisher: "ACM"
+
+NOEL03:
+  type: Article
+  title: "Efficient Minimum-Cost Network Hardening via Exploit Dependency Graphs"
+  author:
+    - "Noel, Steven"
+    - "Jajodia, Sushil"
+    - "O'Berry, Brian"
+    - "Jacobs, Michael"
+  date: 2003
+  page-range: 86-95
+  parent:
+    type: Proceedings
+    title: "Proceedings of the 19th Annual Computer Security Applications Conference"
+    publisher: "IEEE"
+
+JAJODIA07:
+  type: Article
+  title: "Topological Analysis of Network Attack Vulnerability"
+  author:
+    - "Jajodia, Sushil"
+    - "Noel, Steven"
+    - "O'Berry, Brian"
+  date: 2007
+  page-range: 247-266
+  parent:
+    type: Proceedings
+    title: "Proceedings of the 2nd ACM Symposium on Information, Computer and Communications Security"
+    publisher: "ACM"
+
+LIU_MAN05:
+  type: Article
+  title: "Network Vulnerability Assessment Using Bayesian Networks"
+  author:
+    - "Liu, Yong"
+    - "Man, Henry"
+  date: 2005
+  page-range: 61-71
+  parent:
+    type: Proceedings
+    title: "Proceedings of SPIE"
+    volume: 5812
+
+INGOLS06:
+  type: Article
+  title: "Practical Attack Graph Generation for Network Defense"
+  author:
+    - "Ingols, Keith"
+    - "Lippmann, Richard"
+    - "Piwowarski, Keith"
+  date: 2006
+  page-range: 121-130
+  parent:
+    type: Proceedings
+    title: "Proceedings of the 22nd Annual Computer Security Applications Conference"
+    publisher: "IEEE"
+
+ARTZ02:
+  type: Thesis
+  title: "NetSPA: A Network Security Planning Architecture"
+  author:
+    - "Artz, Michael Lyle"
+  date: 2002
+  genre: "M.Eng. Thesis"
+  organization: "Massachusetts Institute of Technology"
+  location: "Cambridge, Massachusetts, USA"
+  url: { value: "https://dspace.mit.edu/entities/publication/2a76a510-7aa2-49c7-90b4-6522cfafaff6", date: 2026 }
+
+JAJODIA11:
+  type: Article
+  title: "Cauldron: Mission-Centric Cyber Situational Awareness with Defense in Depth"
+  author:
+    - "Jajodia, Sushil"
+    - "Noel, Steven"
+    - "Kalapa, Pramod"
+    - "Albanese, Massimiliano"
+    - "Williams, John"
+  date: 2011
+
+HOLM13:
+  type: Article
+  title: "CySeMoL: A Tool for Cyber Security Analysis of Enterprises"
+  author:
+    - "Holm, Hannes"
+    - "Sommestad, Teodor"
+    - "Ekstedt, Mathias"
+    - "Nordstrom, Martin"
+  date: 2013
+  page-range: 1-4
+  parent:
+    type: Proceedings
+    title: "Proceedings of the 22nd International Conference and Exhibition on Electricity Distribution"
+
+NOEL16:
+  type: Article
+  title: "CyGraph: Graph-Based Analytics and Visualization for Cybersecurity"
+  author:
+    - "Noel, Steven"
+    - "Harley, Eric"
+    - "Tam, K. H."
+    - "Limiero, Marcelo"
+    - "Share, Michael"
+  date: 2016
+  page-range: 117-167
+  parent:
+    type: Chapter
+    title: "Handbook of Statistics"
+    volume: 35
+    publisher: "Elsevier"
+
+NADEEM22:
+  type: Article
+  title: "Alert-Driven Attack Graph Generation Using S-PDFA"
+  author:
+    - "Nadeem, Azqa"
+    - "Verwer, Sicco"
+    - "Moskal, Stephen"
+    - "Yang, Shanchieh Jay"
+  date: 2022
+  page-range: 731-746
+  parent:
+    type: Periodical
+    title: "IEEE Transactions on Dependable and Secure Computing"
+    volume: 19
+    issue: 2
+
+LI21:
+  type: Article
+  title: "AttacKG: Constructing Technique Knowledge Graph from Cyber Threat Intelligence Reports"
+  author:
+    - "Li, Zhen"
+    - "Zeng, Jun"
+    - "Chen, Yuxin"
+    - "Liang, Zhongyuan"
+  date: 2021
+  serial-number:
+    arxiv: "2111.07093"
+
+LI23:
+  type: Article
+  title: "DeepAG: Attack Graph Construction and Threats Prediction with Bi-Directional Deep Learning"
+  author:
+    - "Li, Tianwei"
+    - "Jiang, Yujun"
+    - "Lin, Chao"
+    - "Obaidat, Mohammad S."
+    - "Shen, Yusheng"
+    - "Ma, Jianhua"
+  date: 2023
+  page-range: 740-757
+  parent:
+    type: Periodical
+    title: "IEEE Transactions on Dependable and Secure Computing"
+    volume: 20
+    issue: 1
+
+OVAL_GUIDE26:
+  type: Web
+  title: "Getting Started — The OVAL Community Guidelines"
+  author:
+    - "OVAL Community"
+  date: 2024
+  url: { value: "https://oval-community-guidelines.readthedocs.io/en/latest/getting-started.html", date: 2026 }
+  parent:
+    type: Web
+    title: "OVAL Community Guidelines"
+  keywords:
+    - "OVAL"
+    - "Open Vulnerability and Assessment Language"
+    - "Security Assessment"
+    - "Getting Started"
+
+KLOS18:
+  type: Thesis
+  title: "Attack Graph Generation Algorithm Implementation"
+  author:
+    - "Klos, Jan"
+  date: 2018
+  genre: "Bachelor's Thesis"
+  organization: "Masaryk University, Faculty of Informatics"
+  location: "Brno, Czech Republic"
+  # url: "https://is.muni.cz/th/sjrvw/Attack_graph_generation_algorithm_implementation.pdf"
+  keywords:
+    - "Attack Graph"
+    - "Algorithm Implementation"
+    - "Cybersecurity"
+    - "Threat Modeling"
+
+OU_GOVINDAVAJHALA_APPEL05:
+  type: Article
+  title: "MulVAL: A Logic-Based Network Security Analyzer"
+  author:
+    - "Ou, Xinming"
+    - "Govindavajhala, Sudhakar"
+    - "Appel, Andrew W."
+  date: 2005
+  parent:
+    type: Proceedings
+    title: "Proceedings of the 14th USENIX Security Symposium"
+    publisher: "USENIX Association"
+
+MULVAL_PROJECT13:
+  type: Web
+  title: "The MulVAL Project"
+  author:
+    - "MulVAL Project"
+  date: 2013
+  url: { value: "http://people.cs.ksu.edu/~xou/mulval/", date: 2018 }
+  parent:
+    type: Web
+    title: "MulVAL"
+
+WOLF21:
+  type: Article
+  title: "The PASTA Threat Model Implementation in the IoT Development Life Cycle"
+  author:
+    - "Wolf, Andreas"
+    - "Simopoulos, Dimitrios"
+    - "D'Avino, Luca"
+    - "Schwaiger, Patrick"
+  date: 2021
+  parent:
+    type: Proceedings
+    title: "INFORMATIK 2020"
+    editor:
+      - "Reussner, R."
+      - "Koziolek, A."
+      - "Heinrich, R."
+    publisher: "Gesellschaft für Informatik"
+    location: "Bonn, Germany"
+    parent:
+      type: Anthology
+      title: "Lecture Notes in Informatics (LNI)"
+  keywords:
+    - "PASTA"
+    - "Threat Modeling"
+    - "IoT Development Life Cycle"
+    - "Cybersecurity"
+
+HAMMAMI24:
+  type: Article
+  title: "The Art of Threat Modeling"
+  author:
+    - "Hammami, Amir"
+  date: 2024
+  serial-number:
+    doi: "10.5455/JCSI.20240710052550"
+  parent:
+    type: Periodical
+    title: "Journal of Computer Sciences and Informatics"
+  # url: "https://www.researchgate.net/profile/Amir-Hammami/publication/383100949_The_Art_of_Threat_Modeling"
+  keywords:
+    - "Threat Modeling"
+    - "Security Design"
+    - "Cybersecurity"
+
+DAVIS23:
+  type: Article
+  title: "Enhancing System Security Through OCTAVE"
+  author:
+    - "Davis, A."
+  date: 2023
+  page-range: 15-29
+  parent:
+    type: Periodical
+    title: "Journal of Cybersecurity Systems Management"
+    volume: 17
+    issue: 3
+
+MILLER_THOMPSON22:
+  type: Article
+  title: "Identifying Assets in Threat Modeling"
+  author:
+    - "Miller, R."
+    - "Thompson, H."
+  date: 2022
+  page-range: 120-134
+  parent:
+    type: Periodical
+    title: "Journal of Strategic Security Solutions"
+    volume: 18
+    issue: 2
+
+BROWN_ZHAO22:
+  type: Article
+  title: "Technical Scope in Threat Modeling: PASTA's Approach"
+  author:
+    - "Brown, J."
+    - "Zhao, F."
+  date: 2022
+  page-range: 112-130
+  parent:
+    type: Periodical
+    title: "Journal of Information Security Research"
+    volume: 14
+    issue: 1
+
+GARCIA_JOHNSON23:
+  type: Article
+  title: "Enhancing Web Application Security Using Microsoft Threat Modeling"
+  author:
+    - "Garcia, M."
+    - "Johnson, T."
+  date: 2023
+  page-range: 145-162
+  parent:
+    type: Periodical
+    title: "Journal of Information Security"
+    volume: 14
+    issue: 3
+
+WHITE22:
+  type: Article
+  title: "Vulnerability Analysis in Software Development"
+  author:
+    - "White, B."
+  date: 2022
+  page-range: 165-180
+  parent:
+    type: Periodical
+    title: "Software Security Journal"
+    volume: 14
+    issue: 3
+
+LEE22:
+  type: Article
+  title: "Evaluating Risk with DREAD and CVSS"
+  author:
+    - "Lee, K."
+  date: 2023
+  page-range: 234-249
+  parent:
+    type: Periodical
+    title: "Security Metrics Journal"
+    volume: 11
+    issue: 3
+
+MILLER24:
+  type: Article
+  title: "OCTAVE: Comprehensive Risk Management for the Modern Enterprise"
+  author:
+    - "Miller, H."
+  date: 2024
+  page-range: 202-217
+  parent:
+    type: Periodical
+    title: "International Journal of Information Security Management"
+    volume: 30
+    issue: 1
+
+JAC_ROM21:
+  type: Article
+  title: "Exploit Prediction Scoring System (EPSS)"
+  author:
+    - "Jacobs, Jay"
+    - "Romanosky, Sasha"
+    - "Edwards, Benjamin"
+    - "Adjerid, Idris"
+    - "Roytman, Michael"
+  date: 2021
+  page-range: 1-17
+  serial-number:
+    doi: "10.1145/3436242"
+    issn: "2576-5337"
+  parent:
+    type: Periodical
+    title: "Digital Threats: Research and Practice"
+    publisher: "ACM"
+  # url: "https://dl.acm.org/doi/epdf/10.1145/3436242"
+  keywords:
+    - "EPSS"
+    - "Exploit Prediction"
+    - "Vulnerability Scoring"
+    - "Cybersecurity"
+
+CISA_KEV26:
+  type: Web
+  title: "Reducing the Significant Risk of Known Exploited Vulnerabilities"
+  author:
+    - "Cybersecurity and Infrastructure Security Agency (CISA)"
+  url: { value: "https://www.cisa.gov/known-exploited-vulnerabilities", date: 2026 }
+  parent:
+    type: Web
+    title: "CISA"
+  keywords:
+    - "Known Exploited Vulnerabilities"
+    - "KEV"
+    - "Vulnerability Management"
+    - "Cybersecurity"
+
+MELAND08:
+  type: Article
+  title: "SeaMonster: Providing Tool Support for Security Modeling"
+  author:
+    - "Meland, Per Håkon"
+    - "Spampinato, Daniele Giuseppe"
+    - "Hagen, Eilev"
+    - "Baadshaug, Egil Trygve"
+    - "Krister, Kris-Mikael"
+    - "Velle, Ketil Sandanger"
+  date: 2008
+  parent:
+    type: Proceedings
+    title: "Norsk Informasjonssikkerhetskonferanse (NISK)"
+    publisher: "NISK"
+    location: "Trondheim, Norway"
+  # url: https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=ac6e278f9115b898a7ea0a75bbbcce92c97960dd
+  keywords:
+    - "SeaMonster"
+    - "Security Modeling"
+    - "Threat Modeling Tools"
+    - "Attack Trees"
+
+NADEEM21:
+  type: Article
+  title: "Enabling Visual Analytics via Alert-driven Attack Graphs"
+  author:
+    - "Nadeem, Azqa"
+    - "Verwer, Sicco E."
+    - "Moskal, Stephen"
+    - "Yang, Shanchieh Jay"
+  date: 2021
+  page-range: 2420-2422
+  serial-number:
+    doi: "10.1145/3460120.3485361"
+  parent:
+    type: Proceedings
+    title: "Proceedings of the 2021 ACM SIGSAC Conference on Computer and Communications Security (CCS)"
+    publisher: "ACM"
+    location: "Virtual"
+  # url: "https://dl.acm.org/doi/10.1145/3460120.3485361"
+  keywords:
+    - "Attack Graphs"
+    - "Visual Analytics"
+    - "Intrusion Alerts"
+    - "Cybersecurity"
+
+NISTIR7695:
+  type: Report
+  title: "Common Platform Enumeration: Naming Specification Version 2.3"
+  author:
+    - "Cheikes, Brant A."
+    - "Waltermire, David A."
+    - "Scarfone, Karen"
+  date: 2011
+  organization: "National Institute of Standards and Technology (NIST)"
+  location: "Gaithersburg, MD, USA"
+  serial-number:
+    serial: "NISTIR 7695"
+    doi: "10.6028/NIST.IR.7695"
+  # url: https://nvlpubs.nist.gov/nistpubs/Legacy/IR/nistir7695.pdf
+  keywords:
+    - "CPE"
+    - "Common Platform Enumeration"
+    - "Naming Specification"
+    - "Security Automation"
+
+FIRST_CVSS30:
+  type: Web
+  title: "CVSS 3.0"
+  author:
+    - "FIRST"
+  date: 2015
+  url: { value: "https://www.first.org/cvss/calculator/3.0", date: 2026 }
+  parent:
+    type: Web
+    title: "FIRST - Forum of Incident Response and Security Teams"
+  keywords:
+    - "CVSS"
+    - "Common Vulnerability Scoring System"
+    - "CVSS Calculator"
+    - "Cybersecurity"
+
+ASLAN23:
+  type: Article
+  title: "A Comprehensive Review of Cyber Security Vulnerabilities, Threats, Attacks, and Solutions"
+  author:
+    - "Aslan, Ömer"
+    - "Aktuğ, Semih Serkant"
+    - "Ozkan-Okay, Merve"
+    - "Yilmaz, Abdullah Asim"
+    - "Akin, Erdal"
+  date: 2023
+  serial-number:
+    doi: "10.3390/electronics12061333"
+  parent:
+    type: Periodical
+    title: "Electronics"
+    volume: 12
+    issue: 6
+    publisher: "MDPI"
+  # url: "https://www.mdpi.com/2079-9292/12/6/1333"
+  keywords:
+    - "Cybersecurity"
+    - "Vulnerabilities"
+    - "Threats"
+    - "Attacks"
+    - "Solutions"
+
+KIM_KIM22:
+  type: Article
+  title: "STRIDE-based Threat Modeling and DREAD Evaluation for the Distributed Control System in the Oil Refinery"
+  author:
+    - "Kim, Kyoung Ho"
+    - "Kim, Kyounggon"
+    - "Kim, Huy Kang"
+  date: 2022
+  page-range: 741-753
+  serial-number:
+    doi: "10.4218/etrij.2021-0181"
+  parent:
+    type: Periodical
+    title: "ETRI Journal"
+    volume: 44
+    issue: 6
+  # url: "https://onlinelibrary.wiley.com/doi/full/10.4218/etrij.2021-0181"
+  keywords:
+    - "STRIDE"
+    - "Threat Modeling"
+    - "DREAD"
+    - "Distributed Control System"
+    - "Cyber-Physical Security"
+
+SHEIKH_SIN23:
+  type: Article
+  title: "A Hybrid Threat Assessment Model for Security of Cyber Physical Systems"
+  author:
+    - "Sheikh, Zakir Ahmad"
+    - "Singh, Yashwant"
+  date: 2023
+  page-range: 1-15
+  serial-number:
+    doi: "10.1109/TDSC.2023.10053332"
+  parent:
+    type: Periodical
+    title: "IEEE Transactions on Dependable and Secure Computing"
+    publisher: "IEEE"
+  # url: "https://ieeexplore.ieee.org/abstract/document/10053332"
+  keywords:
+    - "Cyber-Physical Systems"
+    - "Threat Assessment"
+    - "Hybrid Model"
+    - "Security"
+
+SS_COMPARISON23:
+  type: Web
+  title: "Comparison of STRIDE, DREAD & PASTA"
+  author:
+    - "Koussa, Sherif"
+  date: 2023
+  url: { value: "https://www.softwaresecured.com/post/comparison-of-stride-dread-pasta", date: 2026 }
+  parent:
+    type: Web
+    title: "Software Secured"
+  keywords:
+    - "STRIDE"
+    - "DREAD"
+    - "PASTA"
+    - "Threat Modeling"
+    - "Cybersecurity"
+
+OASIS_STIX_INTRO26:
+  type: Web
+  title: "Introduction to STIX"
+  author:
+    - "OASIS Cyber Threat Intelligence (CTI) Technical Committee"
+  date: 2026
+  url: { value: "https://oasis-open.github.io/cti-documentation/stix/intro.html", date: 2026 }
+  parent:
+    type: Web
+    title: "OASIS STIX Documentation"
+  keywords:
+    - "STIX"
+    - "Structured Threat Information Expression"
+    - "Cyber Threat Intelligence"
+    - "Threat Sharing"
+
+HERATH18:
+  type: Article
+  title: "A Collaborative Platform Featuring Visibility, Tracking, Monitoring and Awareness for Building Security In"
+  author:
+    - "Herath, H. M. K. K. B."
+    - "Wimalaratne, G. D. S. P."
+  date: 2018
+  page-range: 145-166
+  serial-number:
+    doi: "10.17706/ijcce.2018.7.4.145-166"
+  parent:
+    type: Periodical
+    title: "International Journal of Computer and Communication Engineering (IJCCE)"
+    volume: 7
+    issue: 4
+  # url: "https://www.researchgate.net/profile/Prasad-Wimalaratne/publication/331552852"
+  keywords:
+    - "Collaborative Platform"
+    - "Building Security"
+    - "Visibility"
+    - "Tracking"
+    - "Monitoring"
+
+NIST_SP80030R1:
+  type: Report
+  title: "Guide for Conducting Risk Assessments (SP 800-30 Rev. 1)"
+  author:
+    - "Joint Task Force Transformation Initiative"
+  date: 2012
+  organization: "National Institute of Standards and Technology (NIST)"
+  location: "Gaithersburg, MD, USA"
+  serial-number:
+    serial: "NIST Special Publication 800-30 Revision 1"
+  # url: "https://csrc.nist.gov/pubs/sp/800/30/r1/final"
+  keywords:
+    - "Risk Assessment"
+    - "Security Risk Management"
+    - "Guide"
+    - "Cybersecurity"
+
+ADAGGUSPDFA:
+  type: Article
+  title: "Alert-Driven Attack Graph Generation Using S-PDFA"
+  author:
+    - "Nadeem, Azqa"
+    - "Verwer, Sicco E."
+    - "Moskal, Stephen"
+    - "Yang, Shanchieh Jay"
+  date: 2022
+  page-range: 731-746
+  serial-number:
+    doi: "10.1109/TDSC.2021.3117348"
+  parent:
+    type: Periodical
+    title: "IEEE Transactions on Dependable and Secure Computing"
+    volume: 19
+    issue: 2
+    publisher: "IEEE"
+  # url: "https://ieeexplore.ieee.org/document/9557854"
+  keywords:
+    - "Attack Graphs"
+    - "S-PDFA"
+    - "Alert-Driven"
+    - "Intrusion Alerts"
+    - "Cybersecurity"
+
+LE23:
+  type: Article
+  title: "A threat modeling language for generating attack graphs of substation automation systems"
+  author:
+    - "Rencelj Ling, Engla"
+    - "Ekstedt, Mathias"
+  date: 2023
+  page-range: "100601"
+  serial-number:
+    doi: "10.1016/j.ijcip.2023.100601"
+  parent:
+    type: Periodical
+    title: "International Journal of Critical Infrastructure Protection"
+    volume: 41
+    publisher: "Elsevier"
+    location: "Netherlands"
+  keywords:
+    - "Threat modeling"
+    - "Attack graphs"
+    - "Substation automation systems"
+    - "MAL (Meta Attack Language)"
+    - "Power Systems"
+  # url: https://doi.org/10.1016/j.ijcip.2023.100601

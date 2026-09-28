@@ -1,0 +1,37 @@
+digraph AttackSummary {
+	rankdir=LR;
+	bgcolor="white";
+	label="Attack Graph — Host-Level Global View";
+	labelloc=t;
+	fontname="Arial Bold";
+	fontsize=18;
+	nodesep=0.5;
+	ranksep=0.9;
+	node [fontname="Arial", style="filled,rounded", shape=box, penwidth=1.5];
+	edge [fontname="Arial", fontsize=10, penwidth=2.0];
+
+	subgraph cluster_legend {
+		label="";
+		style="filled";
+		fillcolor="#F5F5F5";
+		color="#999999";
+		legend [shape=plaintext,fillcolor="#F5F5F5",label=<
+			<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5">
+				<TR><TD COLSPAN="4" BGCOLOR="#1A1A1A"><FONT COLOR="white" POINT-SIZE="13"><B>Host-Level Global View</B></FONT></TD></TR>
+				<TR><TD COLSPAN="4" BGCOLOR="#333333"><FONT COLOR="white">Host risk (max on path)</FONT></TD></TR>
+				<TR><TD BGCOLOR="#C85A54"><FONT COLOR="white">Critical &#8805;7</FONT></TD><TD BGCOLOR="#CC7A50">High &#8805;4</TD><TD BGCOLOR="#D4A574">Medium &#8805;2</TD><TD BGCOLOR="#7A9BAE"><FONT COLOR="white">Low &lt;2</FONT></TD></TR>
+				<TR><TD COLSPAN="4" BGCOLOR="#333333"><FONT COLOR="white">Special hosts</FONT></TD></TR>
+				<TR><TD BGCOLOR="#DCDCDC" COLSPAN="2">Origin (ellipse)</TD><TD BGCOLOR="#C8979E" COLSPAN="2">Goal (ellipse)</TD></TR>
+				<TR><TD COLSPAN="4" ALIGN="LEFT"><I>Arrows = lateral movement; label shows max risk &amp; path count</I></TD></TR>
+			</TABLE>>];
+	}
+
+	"victim2" [label=<<B>victim2</B><BR/><FONT POINT-SIZE="10">priv: user</FONT><BR/><FONT POINT-SIZE="10">risk: 0.04</FONT><BR/><FONT POINT-SIZE="9">CVE-2019-20383</FONT>>,shape=ellipse,fillcolor="#C8979E"];
+	"victim3" [label=<<B>victim3</B><BR/><FONT POINT-SIZE="10">priv: user</FONT><BR/><FONT POINT-SIZE="10">risk: 0.01</FONT><BR/><FONT POINT-SIZE="9">CVE-2022-0517</FONT>>,shape=ellipse,fillcolor="#C8979E"];
+	"internet" [label=<<B>internet</B>>,shape=ellipse,fillcolor="#DCDCDC"];
+	"victim1" [label=<<B>victim1</B><BR/><FONT POINT-SIZE="10">priv: user</FONT><BR/><FONT POINT-SIZE="10">risk: 0.00</FONT>>,shape=ellipse,fillcolor="#C8979E"];
+
+	"internet" -> "victim1" [label="risk: 0.00\n(3 paths)",color="#7A9BAE"];
+	"internet" -> "victim2" [label="risk: 0.00\n(6 paths)",color="#7A9BAE"];
+	"internet" -> "victim3" [label="risk: 0.00\n(6 paths)",color="#7A9BAE"];
+}

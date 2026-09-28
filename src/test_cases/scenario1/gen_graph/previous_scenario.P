@@ -1,0 +1,40 @@
+
+/*network connection*/
+attackerLocated(internet).
+hacl(victim1, internet, httpProtocol, httpPort).
+hacl(victim2, internet, httpProtocol, httpPort).
+hacl(victim3, internet, httpProtocol, httpPort).
+
+installed(victim1, firefox).
+installed(victim2, dotnet_framework).
+installed(victim3, ie).
+
+/*users*/
+inCompetent(victim1_user).
+hasAccount(victim1_user, victim1, user).
+inCompetent(victim2_user).
+hasAccount(victim2_user, victim2, user).
+inCompetent(victim3_user).
+hasAccount(victim3_user, victim3, user).
+
+/*attack goals*/
+attackGoal(execCode(victim1, _)).
+attackGoal(execCode(victim2, _)).
+attackGoal(execCode(victim3, _)).
+
+vulExists(victim1,'CVE-2020-15671',firefox).
+vulProperty('CVE-2020-15671',remoteClient,privEscalation).
+vulProperty(threat_t1_elevation_of_privilege,remoteClient,privEscalation).
+vulExists(victim1,threat_t1_elevation_of_privilege,firefox).
+vulExists(victim2,'CVE-2022-26832',dotnet_framework).
+vulProperty('CVE-2022-26832',remoteClient,privEscalation).
+vulExists(victim2,'CVE-2022-21911',dotnet_framework).
+vulProperty('CVE-2022-21911',remoteClient,privEscalation).
+vulProperty(threat_t2_elevation_of_privilege,remoteClient,privEscalation).
+vulExists(victim2,threat_t2_elevation_of_privilege,dotnet_framework).
+vulExists(victim3,'CVE-2012-1879',ie).
+vulProperty('CVE-2012-1879',remoteClient,privEscalation).
+vulExists(victim3,'CVE-2011-0346',ie).
+vulProperty('CVE-2011-0346',remoteClient,privEscalation).
+vulProperty(threat_t3_elevation_of_privilege,remoteClient,privEscalation).
+vulExists(victim3,threat_t3_elevation_of_privilege,ie).

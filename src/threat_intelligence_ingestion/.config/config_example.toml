@@ -1,0 +1,16 @@
+[DATABASE]
+dbname = "DatabaseName"
+user = "Username"
+password = "password for the user"
+host = "Database host"
+port = 5432
+dbdriver = "psycopg"
+sslmode = "disable"
+
+[VULNCHECK]
+api_kev_endpoint = 'https://api.vulncheck.com/v3/backup/vulncheck-kev'
+api_nvd_endpoint = 'https://api.vulncheck.com/v3/backup/nist-nvd2'
+api_token = '<redacted>'
+
+[EPSS]
+csv_url = 'https://epss.cyentia.com/epss_scores-current.csv.gz'

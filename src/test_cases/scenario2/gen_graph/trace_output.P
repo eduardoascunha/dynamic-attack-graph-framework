@@ -1,0 +1,167 @@
+primitive(inCompetent,1).
+primitive(competent,1).
+primitive(clientProgram,2).
+primitive(vulExists,3).
+primitive(vulProperty,3).
+primitive(hacl,4).
+primitive(attackerLocated,1).
+primitive(hasAccount,3).
+primitive(networkServiceInfo,5).
+primitive(setuidProgramInfo,3).
+primitive(nfsExportInfo,4).
+primitive(nfsMounted,5).
+primitive(localFileProtection,4).
+primitive(dependsOn,3).
+primitive(installed,2).
+primitive(bugHyp,4).
+primitive(vulExists,5).
+primitive(canAccessFile,4).
+primitive(isWebServer,1).
+derived(execCode,2).
+derived(netAccess,3).
+derived(canAccessHost,1).
+derived(accessFile,3).
+derived(accessMaliciousInput,3).
+derived(principalCompromised,1).
+derived(dos,1).
+derived(logInService,3).
+meta(cvss,2).
+meta(attackGoal,1).
+meta(advances,2).
+
+attack(execCode(webProxy,nginx)).
+
+possible_duplicate_trace_step(because(22,rule_desc('Browsing a malicious website',0.80000000000000004),accessMaliciousInput(adminWorkstation,admin_user,firefox),[attackerLocated(internet),hacl(adminWorkstation,internet,httpProtocol,httpPort),inCompetent(admin_user)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(adminWorkstation,user),[accessMaliciousInput(adminWorkstation,admin_user,firefox),hasAccount(admin_user,adminWorkstation,user),vulExists(adminWorkstation,threat_t6_elevation_of_privilege,firefox,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(6,rule_desc('direct network access',1.0),netAccess(webProxy,tcp,80),[hacl(internet,webProxy,tcp,80),attackerLocated(internet)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(webProxy,nginx),[netAccess(webProxy,tcp,80),networkServiceInfo(webProxy,nginx,tcp,80,nginx),vulExists(webProxy,'CVE-2022-41742',nginx,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(webProxy,nginx),[netAccess(webProxy,tcp,80),networkServiceInfo(webProxy,nginx,tcp,80,nginx),vulExists(webProxy,'CVE-2022-41741',nginx,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(webProxy,nginx),[netAccess(webProxy,tcp,80),networkServiceInfo(webProxy,nginx,tcp,80,nginx),vulExists(webProxy,'CVE-2025-23419',nginx,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(adminWorkstation,user),[accessMaliciousInput(adminWorkstation,admin_user,firefox),hasAccount(admin_user,adminWorkstation,user),vulExists(adminWorkstation,threat_t6_elevation_of_privilege,firefox,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(5,rule_desc('multi-hop access',0.5),netAccess(appServer,tcp,8080),[hacl(webProxy,appServer,tcp,8080),advances(webProxy,appServer),execCode(webProxy,nginx)])).
+
+possible_duplicate_trace_step(because(3,rule_desc('remote exploit for a client program',0.5),execCode(adminWorkstation,user),[accessMaliciousInput(adminWorkstation,admin_user,firefox),hasAccount(admin_user,adminWorkstation,user),vulExists(adminWorkstation,threat_t6_elevation_of_privilege,firefox,remoteClient,privEscalation)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('password sniffing',0.80000000000000004),principalCompromised(admin_user),[execCode(adminWorkstation,user),hasAccount(admin_user,adminWorkstation,user)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(webProxy,nginx),[netAccess(webProxy,tcp,80),networkServiceInfo(webProxy,nginx,tcp,80,nginx),vulExists(webProxy,threat_t1_tampering,nginx,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(appServer,apache),[netAccess(appServer,tcp,8080),networkServiceInfo(appServer,magento,tcp,8080,apache),vulExists(appServer,'CVE-2025-27189',magento,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(appServer,apache),[netAccess(appServer,tcp,8080),networkServiceInfo(appServer,magento,tcp,8080,apache),vulExists(appServer,'CVE-2024-49521',magento,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(appServer,apache),[netAccess(appServer,tcp,8080),networkServiceInfo(appServer,magento,tcp,8080,apache),vulExists(appServer,threat_t2_spoofing,magento,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(appServer,apache),[netAccess(appServer,tcp,8080),networkServiceInfo(appServer,magento,tcp,8080,apache),vulExists(appServer,threat_t3_information_disclosure,magento,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',1.0),canAccessHost(adminWorkstation),[execCode(adminWorkstation,user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',0.5),execCode(adminWorkstation,user),[canAccessHost(adminWorkstation),hasAccount(admin_user,adminWorkstation,user),principalCompromised(admin_user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',0.5),execCode(adminWorkstation,user),[canAccessHost(adminWorkstation),hasAccount(admin_user,adminWorkstation,user),principalCompromised(admin_user)])).
+
+possible_duplicate_trace_step(because(0,rule_desc('When a principal is compromised any machine he has an account on will also be compromised',0.5),execCode(adminWorkstation,user),[canAccessHost(adminWorkstation),hasAccount(admin_user,adminWorkstation,user),principalCompromised(admin_user)])).
+
+possible_duplicate_trace_step(because(5,rule_desc('multi-hop access',0.5),netAccess(dbServer,tcp,3306),[hacl(appServer,dbServer,tcp,3306),advances(appServer,dbServer),execCode(appServer,apache)])).
+
+possible_duplicate_trace_step(because(5,rule_desc('multi-hop access',0.5),netAccess(cacheServer,tcp,6379),[hacl(appServer,cacheServer,tcp,6379),advances(appServer,cacheServer),execCode(appServer,apache)])).
+
+possible_duplicate_trace_step(because(8,rule_desc('Access a host through executing code on the machine',1.0),canAccessHost(adminWorkstation),[execCode(adminWorkstation,user)])).
+
+possible_duplicate_trace_step(because(12,rule_desc('password sniffing',0.80000000000000004),principalCompromised(admin_user),[execCode(adminWorkstation,user),hasAccount(admin_user,adminWorkstation,user)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-3494',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-44171',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-48165',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-44168',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,threat_t4_information_disclosure,mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-44173',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-35549',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-44170',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-49261',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-48163',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(cacheServer,redis),[netAccess(cacheServer,tcp,6379),networkServiceInfo(cacheServer,redis,tcp,6379,redis),vulExists(cacheServer,'CVE-2026-81934',redis,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(cacheServer,redis),[netAccess(cacheServer,tcp,6379),networkServiceInfo(cacheServer,redis,tcp,6379,redis),vulExists(cacheServer,'CVE-2026-66373',redis,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(cacheServer,redis),[netAccess(cacheServer,tcp,6379),networkServiceInfo(cacheServer,redis,tcp,6379,redis),vulExists(cacheServer,'CVE-2026-23479',redis,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(cacheServer,redis),[netAccess(cacheServer,tcp,6379),networkServiceInfo(cacheServer,redis,tcp,6379,redis),vulExists(cacheServer,'CVE-2026-23631',redis,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(cacheServer,redis),[netAccess(cacheServer,tcp,6379),networkServiceInfo(cacheServer,redis,tcp,6379,redis),vulExists(cacheServer,'CVE-2026-25243',redis,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(cacheServer,redis),[netAccess(cacheServer,tcp,6379),networkServiceInfo(cacheServer,redis,tcp,6379,redis),vulExists(cacheServer,threat_t5_tampering,redis,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(webProxy,nginx),[netAccess(webProxy,tcp,80),networkServiceInfo(webProxy,nginx,tcp,80,nginx),vulExists(webProxy,threat_t1_tampering,nginx,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(webProxy,nginx),[netAccess(webProxy,tcp,80),networkServiceInfo(webProxy,nginx,tcp,80,nginx),vulExists(webProxy,'CVE-2022-41742',nginx,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(webProxy,nginx),[netAccess(webProxy,tcp,80),networkServiceInfo(webProxy,nginx,tcp,80,nginx),vulExists(webProxy,'CVE-2022-41741',nginx,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(webProxy,nginx),[netAccess(webProxy,tcp,80),networkServiceInfo(webProxy,nginx,tcp,80,nginx),vulExists(webProxy,'CVE-2025-23419',nginx,remoteExploit,privEscalation)])).
+
+attack(execCode(appServer,apache)).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(appServer,apache),[netAccess(appServer,tcp,8080),networkServiceInfo(appServer,magento,tcp,8080,apache),vulExists(appServer,threat_t3_information_disclosure,magento,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(appServer,apache),[netAccess(appServer,tcp,8080),networkServiceInfo(appServer,magento,tcp,8080,apache),vulExists(appServer,threat_t2_spoofing,magento,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(appServer,apache),[netAccess(appServer,tcp,8080),networkServiceInfo(appServer,magento,tcp,8080,apache),vulExists(appServer,'CVE-2024-49521',magento,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(appServer,apache),[netAccess(appServer,tcp,8080),networkServiceInfo(appServer,magento,tcp,8080,apache),vulExists(appServer,'CVE-2025-27189',magento,remoteExploit,privEscalation)])).
+
+attack(execCode(dbServer,mariadb)).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-48163',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-49261',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-44170',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-35549',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-44173',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,threat_t4_information_disclosure,mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-44168',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-48165',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-44171',mariadb,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(dbServer,mariadb),[netAccess(dbServer,tcp,3306),networkServiceInfo(dbServer,mariadb,tcp,3306,mariadb),vulExists(dbServer,'CVE-2026-3494',mariadb,remoteExploit,privEscalation)])).
+
+attack(execCode(cacheServer,redis)).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(cacheServer,redis),[netAccess(cacheServer,tcp,6379),networkServiceInfo(cacheServer,redis,tcp,6379,redis),vulExists(cacheServer,threat_t5_tampering,redis,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(cacheServer,redis),[netAccess(cacheServer,tcp,6379),networkServiceInfo(cacheServer,redis,tcp,6379,redis),vulExists(cacheServer,'CVE-2026-25243',redis,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(cacheServer,redis),[netAccess(cacheServer,tcp,6379),networkServiceInfo(cacheServer,redis,tcp,6379,redis),vulExists(cacheServer,'CVE-2026-23631',redis,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(cacheServer,redis),[netAccess(cacheServer,tcp,6379),networkServiceInfo(cacheServer,redis,tcp,6379,redis),vulExists(cacheServer,'CVE-2026-23479',redis,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(cacheServer,redis),[netAccess(cacheServer,tcp,6379),networkServiceInfo(cacheServer,redis,tcp,6379,redis),vulExists(cacheServer,'CVE-2026-66373',redis,remoteExploit,privEscalation)])).
+
+possible_duplicate_trace_step(because(2,rule_desc('remote exploit of a server program',1.0),execCode(cacheServer,redis),[netAccess(cacheServer,tcp,6379),networkServiceInfo(cacheServer,redis,tcp,6379,redis),vulExists(cacheServer,'CVE-2026-81934',redis,remoteExploit,privEscalation)])).
+
+attack(execCode(adminWorkstation,user)).
+

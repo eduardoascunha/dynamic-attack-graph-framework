@@ -1,0 +1,38 @@
+{
+  "assets": [
+    {
+      "asset": "victim1",
+      "criticality": "HIGH",
+      "cia_weights": {
+        "confidentiality": "HIGH",
+        "integrity": "MEDIUM",
+        "availability": "LOW"
+      },
+      "client_software": [
+        {
+          "software_name": "firefox",
+          "cpe": "cpe:2.3:a:mozilla:firefox:26:*:*:*:*:*:*:*"
+        }
+      ]
+    },
+    {
+      "asset": "victim2",
+      "criticality": "MEDIUM",
+      "client_software": [
+        {
+          "software_name": "finereader",
+          "cpe": "cpe:2.3:a:abbyy:finereader:10.0:-:pro:*:*:*:*:*"
+        }
+      ]
+    },
+    {
+      "asset": "victim3",
+      "client_software": [
+        {
+          "software_name": "mozilla_vpn",
+          "cpe": "cpe:2.3:a:mozilla:vpn:2.3:*:*:*:*:*:*:*"
+        }
+      ]
+    }
+  ]
+}

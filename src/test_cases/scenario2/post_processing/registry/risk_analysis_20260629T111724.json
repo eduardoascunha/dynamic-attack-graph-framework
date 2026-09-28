@@ -1,0 +1,4303 @@
+{
+  "risk_report": {
+    "generated_at": "2026-06-29T11:17:24.908380+00:00",
+    "graph_version": "6806b8dbb2aadf57",
+    "summary": {
+      "total_nodes": 64,
+      "total_leaf_nodes": 28,
+      "total_vulnerability_leaf_nodes": 16,
+      "unique_cves": 10,
+      "total_attack_paths": 497,
+      "enrichment_coverage_pct": 100.0
+    },
+    "top_attack_paths": [
+      {
+        "path_id": "91b73966d6f0ed60",
+        "goal": "execCode(webProxy,nginx)",
+        "risk_score": 0.1425,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "highest_risk_vuln": "CVE-2022-41741",
+        "kev_on_path": false,
+        "max_epss": 0.00851,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "f8e6d6a17858df5a",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.131,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "highest_risk_vuln": "CVE-2022-41741",
+        "kev_on_path": false,
+        "max_epss": 0.00851,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "a8d4e7def5ff3941",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.131,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "highest_risk_vuln": "CVE-2022-41741",
+        "kev_on_path": false,
+        "max_epss": 0.00851,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "6387978d7d83de7e",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.131,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "highest_risk_vuln": "CVE-2022-41741",
+        "kev_on_path": false,
+        "max_epss": 0.00851,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "34cf648ad83a2ee1",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.131,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "highest_risk_vuln": "CVE-2022-41741",
+        "kev_on_path": false,
+        "max_epss": 0.00851,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "6a3db69c86217d67",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "highest_risk_vuln": "CVE-2022-41741",
+        "kev_on_path": false,
+        "max_epss": 0.00851,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "6664dcd0781cf836",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "highest_risk_vuln": "CVE-2022-41741",
+        "kev_on_path": false,
+        "max_epss": 0.00851,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "07f0046e3c6a08ba",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "highest_risk_vuln": "CVE-2022-41741",
+        "kev_on_path": false,
+        "max_epss": 0.00851,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "fe19288f4fd1ca0f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "highest_risk_vuln": "CVE-2022-41741",
+        "kev_on_path": false,
+        "max_epss": 0.00851,
+        "max_cvss": 7.8
+      },
+      {
+        "path_id": "952c32cbe3ab7709",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "highest_risk_vuln": "CVE-2022-41741",
+        "kev_on_path": false,
+        "max_epss": 0.00851,
+        "max_cvss": 7.8
+      }
+    ],
+    "all_paths": [
+      {
+        "path_id": "91b73966d6f0ed60",
+        "goal": "execCode(webProxy,nginx)",
+        "risk_score": 0.1425,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f8e6d6a17858df5a",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.131,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a8d4e7def5ff3941",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.131,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6387978d7d83de7e",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.131,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "34cf648ad83a2ee1",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.131,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6a3db69c86217d67",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6664dcd0781cf836",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "07f0046e3c6a08ba",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "fe19288f4fd1ca0f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "952c32cbe3ab7709",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "dc43818db1bb7a5a",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bc0fccee2f2c4419",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bbe149c7725ebb5a",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "9c4e140370d78da8",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d7823630f0b195c8",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "cb631095d16b0d75",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ebc1ca78a0a8223b",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "74a8196fdb7d4737",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1772a3ae5cb29b8f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b2cddfb2c2c1acab",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "38f75ac9f941f572",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b2e7dcff090c6e2d",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bbf9595ee178fa32",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d245c6dcd66da482",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4c8ea5358b2a8889",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c6ecdef25d509934",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "db0664c90fa49270",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "33aa4184785582c2",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "157697f392201bcd",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.1265,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41741"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "33c804c43a56d7ec",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0362,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2024-49521"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1b967bca9c6ee10f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0333,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2024-49521"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "61d1f951c089f208",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0333,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2024-49521"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "9fd78246fcf1633c",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0333,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2024-49521"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "10371bedfaff8c06",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0333,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2024-49521"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4deb958b77e9c41c",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0333,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2024-49521"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7c3de194fde8562b",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0333,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2024-49521"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "9d0366d375a1c770",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0289,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2025-27189"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "99ef798733abd5cf",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0266,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2025-27189"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1942de7614bfe247",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0266,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2025-27189"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a947a8d416272961",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0266,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2025-27189"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "320fbc2927f3e3ad",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0266,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2025-27189"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "94d5c805a4fd4c3a",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0266,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2025-27189"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "eea1c25c70323e1d",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0266,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2025-27189"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "05c9802f3aed2737",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0137,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2026-5734"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "967b9fcc5683bf91",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0126,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2026-5734"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "20da3a6e4be8d8b2",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0126,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2026-5734"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "78f55844dacd3fe9",
+        "goal": "execCode(webProxy,nginx)",
+        "risk_score": 0.0099,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "820054285865d47c",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0091,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "80ac454387eacaef",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0091,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d72e9f803e5b379a",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0091,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "2cdccf56c829d2f1",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0091,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3ce1785efd152c49",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0091,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2026-23479"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "cb82cb6ecd5575a3",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "10229dadff587d3a",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c1e8602e1d293614",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3e7ecec9011158d1",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "056a638ff36b8b80",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c5d32eac8271e35c",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b2bf089b6d774cd5",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8812ccbf976c2865",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "df79b46cd9616c5f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b870501ad1acfa69",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "2c991d73b2c61dc2",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d07f237c08dedd6e",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "dc37ce3f240c4a1e",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "fff2d83f6e1d857c",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0f3418231657dd94",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "33c457c532dd622f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "fbcc675c1976b4f6",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "cbf9a8bfc279a59e",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "41b88a2c5ad5cff9",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e348c6ac7e82f02a",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4ed5b2424e7b6a97",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d9b9fd7c74d669ee",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d06843b0a1c25236",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "621ca00aa5f16a21",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0088,
+        "path_length": 11,
+        "leaf_cves": [
+          "CVE-2022-41742"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b690e5374b950af9",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0087,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2026-5732"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a9c34a07dcafbdd5",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0083,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2026-25243"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1bc31707a97c77fb",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.008,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2026-5732"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b1577aee11126242",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.008,
+        "path_length": 7,
+        "leaf_cves": [
+          "CVE-2026-5732"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5055aab5038547f0",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0064,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2026-23631"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "95dca332eb7afe18",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0037,
+        "path_length": 3,
+        "leaf_cves": [
+          "CVE-2026-35549"
+        ],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "60d336e76e61aa35",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6a2fb7157507fa49",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7ecc12c702f040a2",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ad6a2ae05c5ff5e6",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0badee03e8e414bd",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ccacad62092d9cac",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "63682ba6e5c6fb23",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e4b930151aac945e",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "88980178d00f3d49",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b86a0654ecd007d2",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "cffbe152456c9ec3",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1fe3ee308be485e1",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "df1bbfbc4390a7c4",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "cfadf50179eb6fba",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ed79f4b3a17d2853",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bb99176d7505a7a4",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "64ffc670be794bd7",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3f1cdb88804be2e3",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "38b835b5fbff16e2",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3a62c864c92ec44c",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b6652563a3d70fad",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "307a7ec8b5a7e002",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "95f90b3bca7f5500",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c447c6acabccd6bc",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "cd433d6d12470c3f",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "47591f5995e7c774",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6c1433fe28016aa8",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b1064abbcb156820",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8654f6c1001b20e5",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "67c42f11055af5db",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d9ed83b36ab16212",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c35003279567d31f",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "51e52ddebb1926d0",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0028dc6a23c5729c",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b25d83c73ba3468a",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ed84c9430688ef59",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "32bc92c1453d709d",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "16a7121cd6091e65",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c8796706afbd95b8",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c2d0b6e550bfbada",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7a76118139441117",
+        "goal": "execCode(adminWorkstation,user)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "30249eb70ac8d088",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "96ac4591d38ca72c",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "71e638b2a56b8dbd",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "aea5dba38d49173b",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "00b59b82952ebe26",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d8b46ab5109930ea",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6e6595c0d167b5ac",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a51b5f6d0815aadf",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "488a20743cac3d3c",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "31aad2e21417b762",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0668d978a32dba08",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "22ca631a520e1737",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "58c21d152992cc4e",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7e94babd339e36fa",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d1f44fea04d98070",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "64a7d5e5e5e3c389",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "04ec084c39b2bfdc",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8c1dd95a7e768df0",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b482ee434d8b7ea3",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3289c7f4d5828279",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c58ec1585bdce55e",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a5017013c27cd936",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "db397ffc5f95f3e2",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "07ac7a9b5c91c727",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6bececd7a1cd7f42",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "78630a118558dee0",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d263ad0636202de4",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f97967b18f6f24ea",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "26ae19071957f4f2",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "74b4a2a519f4c021",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1d2c428632f14ba6",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "fb9d27d3e742d814",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7cf2c9a4934a57c8",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d9e963b5704bc4af",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1bc7c3e08ca2f9eb",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "71dca6d7a1fb8ed4",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "21d67ae87e83bf3e",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e43ae504fa6f3125",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6482282aedcf7e4a",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f84dd09fd1f9d45a",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "fd6bb2c9139b89a8",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bd857a1ee6c61f02",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8c705fbfa3823429",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "928853d677aea684",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5f3821dd16f55030",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e5f2f5bd2d801fe8",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "2e5a3654c6cfb10c",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7e41c507f1fe5940",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "da398bfc6412370c",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "578465a85c883c3a",
+        "goal": "execCode(appServer,apache)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d0bbb1faad1ca75f",
+        "goal": "execCode(webProxy,nginx)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ebfb8c416b7a49eb",
+        "goal": "execCode(webProxy,nginx)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3b8b29de16154d6f",
+        "goal": "execCode(webProxy,nginx)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4c0e357262d86e33",
+        "goal": "execCode(webProxy,nginx)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f331e326e67f9f23",
+        "goal": "execCode(webProxy,nginx)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "424234438630109b",
+        "goal": "execCode(webProxy,nginx)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c4a051e963314f22",
+        "goal": "execCode(webProxy,nginx)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5c5d3e23a2e27a7a",
+        "goal": "execCode(webProxy,nginx)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3f3d9698266d72f9",
+        "goal": "execCode(webProxy,nginx)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "150f785bae03a70f",
+        "goal": "execCode(webProxy,nginx)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a32b45e11dd324f2",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0aee73e42becc4cf",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a4c69a7c0f902bf7",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "dbbba01fe3e7ba5d",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c563691e13a63986",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "134f7975c8bba27a",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8b37e78c357c1c0f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "86f6ae53975e75de",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a447a7b27db1ed0c",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3b5ceb8c465d0b78",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f41115a112b0bbf9",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6fdc86806ddc45da",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3dbb559727849e6c",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "671c5402af695e63",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "82bec20785796e81",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e0e15923a6810433",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "50b321772697d6d1",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4aeb5c83d89ca608",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c536d1f09df10871",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "67675ad93db6bf73",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "9f0fe371604de90e",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "889884c013810ac6",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "443b76cfe0458d2e",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "14bb29b09b5158f5",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "fbeb93e64f30d101",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8db08222023bf799",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "801709e75224fd4e",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8b1f72d31363957f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ad8f9be199bb44d0",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b5ef4e9228097922",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e9c301fc5ddc2568",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d117cdb0669c9806",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "eb416f7166660972",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8ebd16c8353d55a3",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "851d155cfaf09d38",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "824fe690cc73a31e",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f0da1569e003fdfa",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6a157408c026083e",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bf3bd361f8b6e82f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "414225ab247545bc",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "eca20a1aa1e89a64",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6b92dc76b02addf8",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7ae84fb07aa3500e",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4203ff29bf962959",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ca171db7a4d80f78",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1f70a857b6026c31",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e9482e164855ecde",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1c7d6ad3de6e8c6b",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0eba2a9baa3695da",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "2a8cbde0cac82397",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "28bb9a3ebac3b2c5",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bd0740df8d1222a7",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "93c59a657bf48859",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4f563828527278d3",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "03851eb846f6ef04",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f7e57f5dbe82e28f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "50d061fe4e76cecc",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1aec1121d93b88cd",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "267468ab2b41dd1f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f8c2d4737cf4a3a4",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5ea9d5c78a56fc96",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "43ff3680185ae15c",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5df81c03c5fb38d4",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ba50729eb7683f26",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a7d0dd64427422b6",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "70e91f0ec21198ef",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "957865f39c1eea5d",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d12723d224241cd2",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "54c984001db4394c",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0fbeee40033fecef",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "2d5878bbe81f940b",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ecb0f5415e021887",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5ec29b5b3ad97eb7",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c4ff7d2a5d104de1",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "264d67ffcd799698",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a359655fbb22cfb9",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "2355be9f40aa4e22",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1345a3fcd9f9df1a",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6bacc61ac7794e92",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "48d7a9965cb3a2c5",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b8fd16b2fe9650ea",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1c809f4eb0d1df8e",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "abb2694b11902b3d",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c1be17b25edeb498",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "01e344ce2fd0b2a6",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8b8d154251535c37",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "421d331395fee0c5",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "32e7f8626915a628",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "cb0e52f7a2d34e57",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "318c0f6f57e62789",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "9e9f69da7978a4bc",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0024f8f4a4362545",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c27861d67926ca1d",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "65d099933269a24c",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f2d04169dbe03150",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6457adac2a3e52c4",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e21aba27a10c70fe",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b799628bd213b57f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e4406ad9386823e1",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e89588723f392345",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6abd4648e1b94e91",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0721a19701fafa86",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3f85ddab183b1aba",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4fba93efae00a679",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b214985125c11b5f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "10e03fe6ada8a7be",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4744573ed8de6a67",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "00e2ee14ff441478",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0695a06a0bccbf88",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f3728cfc7f705932",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5e513795d1e418dc",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "395482e42010b8ea",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "804e8375c27c4a3b",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4598a441db7a5bea",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "970976d9ca5e673d",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "667858705ce1de2a",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "350ea13ab91b3a47",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e5f4d60173d4a595",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8d54f4aad2cc8796",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a6e520d44c77c583",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c69f3363cafb48d0",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "160321d14443f0be",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "452b0c7c05d2e503",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a0541dc33084771b",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "98ea33d232f391db",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "48cbb4a1e275c807",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f57ef076a26db68e",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c9657729d476bfa6",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6239cbcfb56ae6c6",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a0af4bb7a6b2cc74",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a324f22b544764eb",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bf7422e36940189d",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f395b1856839be28",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "59f4b353033c2c1f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "661305c3dc44487d",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "41ea6826ee95d8f1",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "06a7b2990ae3a3d8",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "11d549fe280971f5",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "17ee5fee8e6e040f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1fdc466a27e57ebf",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1b84da417961a492",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "32b1673681482034",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "23e1131cdd903580",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "48f49714a9f83d09",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c17e5faa687a6c07",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b46dd4b3df84ffb4",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8caea8509b6c0d94",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bd6ff5048000baa0",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6161ac5b4d208148",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7f8ef1b861a2c232",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1a71d999b915f41d",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "711f1773ba3947c5",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4a3edc95efe18bd8",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c1df6951eff04b76",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7fe411dcd1b457bf",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e26d9de36086b73d",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8592715119425e97",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bd007f5fb55c9c12",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3d5452fd7186fa66",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "622e20b8e36846c9",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d1c1ab444ff5628f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ae9f3822a0730776",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1ece8e03a0440cad",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ee3b7e020792ecaf",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "2ffdf04d01ee0463",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "68a7c6cd0473a5a3",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "efda6bc02b2202b0",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f44bab5e1f7e697c",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "03523c8c70769396",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "689b7142b47a24cc",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "496bd4156393e8be",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "83f867ef2efb2806",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f02b2c55f848425f",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "63357bd1d7035c1d",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0018a0c35482c27c",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6105e0987242bf80",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "2cb4a6de159789aa",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "47e37ed1d66ccd55",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "232a393fc7bc01b3",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a0b687435b53de5b",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "fa1a9c46becbd9e7",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b7fc50aad7635fd2",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8a5a5ac043c3072b",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "81a35c19a6cd4185",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "24e3f3ec6bff8858",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "9bc7b6745bf06e89",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e20236431a3a8dd2",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "606a7a0c1242babb",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "41b94c8663b7abe6",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6f09c59a7c01be8b",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "111b7bdc9798e025",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0e8fb4e68d32addf",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "54e6cd035a3aa7c6",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "846a613fd4edb02e",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "12f8d1b90fcaa690",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "fab0d68d1fb0e796",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8966ec97e96445fa",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f5ec2d3a5daf4050",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4398c8536d7eb41c",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d60a9ee09d270b54",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "84af05a6b4ad4646",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bbb9ecfc8ef3864e",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3e4a732b9f23a575",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5d2a2ee18abf73c4",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4197176e98fd969e",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c1d4cb00657bb0c6",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "64e2da430fecf619",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "24a71747897c9b00",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "727efa082215b8f4",
+        "goal": "execCode(cacheServer,redis)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d1539a693cdf2aab",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d6a6a62a9fafe858",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b368b2a0b6076c34",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8dbedaf02672bb91",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "2211e4051a671273",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "440ce3172041a2c0",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "2dc6854bdd5b639f",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "cf560c855b726394",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1e275be583912e29",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1cc9eae5b74722a2",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "037d9557087a4f73",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "14ae9fd93b8a25f4",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ee7076e0ec287b24",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "fde4e4de27970fe2",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7f87cefd36b1af36",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c48e1116ade7f8b6",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "192491f3c7d82003",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ee1b13612e4fe3d9",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "cc4af28b3b2ee918",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a2665d8fe9f12de6",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "66bfab9825ddc786",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "91b0b5fe4749035d",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b097d6c1e49528f1",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7bca9f10e9c64698",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "913f319b5bdefb05",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "9600e008855286df",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "60d83c86f69f0c02",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3ba501c678940884",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "340fdf3599d172b8",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "07297293528678e7",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b0a606c61d4931c9",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7ef388cab30a257e",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "9d97ce643b67b43f",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6740e015443a6082",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7129a6d5ee4cf230",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4a232edb560e8472",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "071837b8895d62ea",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a6d9e4df42dbb740",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "068f3a788398143c",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d9c9fb41a0dc6f19",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "35fbf0d910403a72",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "62fe0700168c7bbe",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "88c6ffd5e8736447",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8a475c31024114d3",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "91904165e1199ea2",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "9080eee8d185e45b",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "9e4e3069400ab6ed",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5e8b51fe328ef2d5",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "060cfff340b8a2df",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "faea2df8a47818d2",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b219d58b07dd2a29",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0bd5e006810bd13d",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ddce004869478a86",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 5,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c75a529d749fa527",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "282ef882bf6bf1f9",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "f30552cee6e74ec2",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "123caa58e4283ebb",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "4e785cdb70088972",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "98f5b29894e3a6b3",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "34c43b0e1cba3619",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3a47687f5025878b",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "9308e1da3cf80266",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ce135ccefb91df8c",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ca04352e8b430de0",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "d5cf0f60efd55a2f",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "625a2cc6076f0895",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e6eaff7b8d481292",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "9a9da59e8429928a",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "27430995fd488afe",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b202e5b631f435be",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3fa71a3fbc5a4465",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "1a498933b99e802d",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "491e6174ce35abdd",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "6cea781434d4de09",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "12c873a82a0d306f",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "7df66ff6bfa6f79b",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "74805182ac8cd374",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "be0df3660e082faa",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "808f4e65a706b5a7",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "edb18d736f3574dc",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "62f078657a73f187",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5806c4634afbd7bf",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "cd899055124ac592",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "703e54080784b936",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "3137dbbfbc1669f5",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "36d98bee961ddfc4",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5052f796b64ee6ce",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "0539d3c95b380efa",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "8cccc885185d5d6a",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "c0514b07b03f6d31",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "fe2fd94c84733e4c",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 9,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bd98803bb32ec79b",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "958dd990b4499fbd",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "56c9ec118a992055",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "b24679ce175a8add",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "eb53fb7dc2c84902",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "db1f6397f21ae2dc",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "a166ce1c2289128e",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e35e442649e242d4",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 13,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "716f6bb06f8f9a0e",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "bc9e39eb62293731",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 11,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "ed4b6b2199af0131",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "cf63d502b593296d",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 7,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "5e7b772240923c43",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      },
+      {
+        "path_id": "e9a6403c6a186295",
+        "goal": "execCode(dbServer,mariadb)",
+        "risk_score": 0.0,
+        "path_length": 3,
+        "leaf_cves": [],
+        "kev_on_path": false
+      }
+    ]
+  },
+  "delta_report": {
+    "generated_at": "2026-06-29T11:17:24.914734+00:00",
+    "previous_version": "6806b8dbb2aadf57",
+    "current_version": "6806b8dbb2aadf57",
+    "vulnerability_delta": {
+      "new_cves": [],
+      "removed_cves": []
+    },
+    "risk_change": {
+      "average_top_path_score_delta": 0.0,
+      "new_top_paths": [],
+      "removed_top_paths": []
+    },
+    "kev_additions": []
+  }
+}

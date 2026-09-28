@@ -1,0 +1,31 @@
+/*network connection*/
+attackerLocated(internet).
+hacl(internet, webProxy, tcp, 80).
+hacl(webProxy, appServer, tcp, 8080).
+hacl(appServer, dbServer, tcp, 3306).
+hacl(appServer, cacheServer, tcp, 6379).
+hacl(adminWorkstation, internet, httpProtocol, httpPort).
+
+/*network services*/
+networkServiceInfo(webProxy, nginx, tcp, 80, nginx).
+networkServiceInfo(appServer, magento, tcp, 8080, apache).
+networkServiceInfo(dbServer, mariadb, tcp, 3306, mariadb).
+networkServiceInfo(cacheServer, redis, tcp, 6379, redis).
+
+/*installed software*/
+installed(webProxy, nginx).
+installed(appServer, magento).
+installed(dbServer, mariadb).
+installed(cacheServer, redis).
+installed(adminWorkstation, firefox).
+
+/*users*/
+inCompetent(admin_user).
+hasAccount(admin_user, adminWorkstation, user).
+
+/*attack goals*/
+attackGoal(execCode(webProxy, _)).
+attackGoal(execCode(appServer, _)).
+attackGoal(execCode(dbServer, _)).
+attackGoal(execCode(cacheServer, _)).
+attackGoal(execCode(adminWorkstation, _)).

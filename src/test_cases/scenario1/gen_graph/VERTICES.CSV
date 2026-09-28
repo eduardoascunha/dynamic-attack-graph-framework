@@ -1,0 +1,44 @@
+1,"execCode(victim1,user)","OR",0
+2,"RULE 0 (When a principal is compromised any machine he has an account on will also be compromised)","AND",0
+3,"canAccessHost(victim1)","OR",0
+4,"RULE 8 (Access a host through executing code on the machine)","AND",0
+5,"hasAccount(victim1_user,victim1,user)","LEAF",1
+6,"principalCompromised(victim1_user)","OR",0
+7,"RULE 12 (password sniffing)","AND",0
+8,"RULE 3 (remote exploit for a client program)","AND",0
+9,"accessMaliciousInput(victim1,victim1_user,firefox)","OR",0
+10,"RULE 22 (Browsing a malicious website)","AND",0
+11,"attackerLocated(internet)","LEAF",1
+12,"hacl(victim1,internet,httpProtocol,httpPort)","LEAF",1
+13,"inCompetent(victim1_user)","LEAF",1
+14,"vulExists(victim1,threat_t1_elevation_of_privilege,firefox,remoteClient,privEscalation)","LEAF",1
+15,"execCode(victim2,user)","OR",0
+16,"RULE 0 (When a principal is compromised any machine he has an account on will also be compromised)","AND",0
+17,"canAccessHost(victim2)","OR",0
+18,"RULE 8 (Access a host through executing code on the machine)","AND",0
+19,"hasAccount(victim2_user,victim2,user)","LEAF",1
+20,"principalCompromised(victim2_user)","OR",0
+21,"RULE 12 (password sniffing)","AND",0
+22,"RULE 3 (remote exploit for a client program)","AND",0
+23,"accessMaliciousInput(victim2,victim2_user,finereader)","OR",0
+24,"RULE 22 (Browsing a malicious website)","AND",0
+25,"hacl(victim2,internet,httpProtocol,httpPort)","LEAF",1
+26,"inCompetent(victim2_user)","LEAF",1
+27,"vulExists(victim2,'CVE-2019-20383',finereader,remoteClient,privEscalation)","LEAF",1
+28,"RULE 3 (remote exploit for a client program)","AND",0
+29,"vulExists(victim2,threat_t2_elevation_of_privilege,finereader,remoteClient,privEscalation)","LEAF",1
+30,"execCode(victim3,user)","OR",0
+31,"RULE 0 (When a principal is compromised any machine he has an account on will also be compromised)","AND",0
+32,"canAccessHost(victim3)","OR",0
+33,"RULE 8 (Access a host through executing code on the machine)","AND",0
+34,"hasAccount(victim3_user,victim3,user)","LEAF",1
+35,"principalCompromised(victim3_user)","OR",0
+36,"RULE 12 (password sniffing)","AND",0
+37,"RULE 3 (remote exploit for a client program)","AND",0
+38,"accessMaliciousInput(victim3,victim3_user,mozilla_vpn)","OR",0
+39,"RULE 22 (Browsing a malicious website)","AND",0
+40,"hacl(victim3,internet,httpProtocol,httpPort)","LEAF",1
+41,"inCompetent(victim3_user)","LEAF",1
+42,"vulExists(victim3,'CVE-2022-0517',mozilla_vpn,remoteClient,privEscalation)","LEAF",1
+43,"RULE 3 (remote exploit for a client program)","AND",0
+44,"vulExists(victim3,threat_t3_elevation_of_privilege,mozilla_vpn,remoteClient,privEscalation)","LEAF",1

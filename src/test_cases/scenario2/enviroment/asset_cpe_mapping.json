@@ -1,0 +1,79 @@
+{
+  "assets": [
+    {
+      "asset": "webProxy",
+      "criticality": "HIGH",
+      "cia_weights": {
+        "confidentiality": "MEDIUM",
+        "integrity": "HIGH",
+        "availability": "HIGH"
+      },
+      "services": [
+        {
+          "service_name": "nginx",
+          "cpe": "cpe:2.3:a:f5:nginx:1.23.1:*:*:*:*:*:*:*"
+        }
+      ]
+    },
+    {
+      "asset": "appServer",
+      "criticality": "HIGH",
+      "cia_weights": {
+        "confidentiality": "HIGH",
+        "integrity": "HIGH",
+        "availability": "HIGH"
+      },
+      "services": [
+        {
+          "service_name": "magento",
+          "cpe": "cpe:2.3:a:adobe:commerce:2.4.8-beta2:*:*:*:*:*:*:*"
+        }
+      ]
+    },
+    {
+      "asset": "dbServer",
+      "criticality": "HIGH",
+      "cia_weights": {
+        "confidentiality": "HIGH",
+        "integrity": "HIGH",
+        "availability": "MEDIUM"
+      },
+      "services": [
+        {
+          "service_name": "mariadb",
+          "cpe": "cpe:2.3:a:mariadb:mariadb:10.11.7:*:*:*:*:*:*:*"
+        }
+      ]
+    },
+    {
+      "asset": "cacheServer",
+      "criticality": "MEDIUM",
+      "cia_weights": {
+        "confidentiality": "MEDIUM",
+        "integrity": "MEDIUM",
+        "availability": "MEDIUM"
+      },
+      "services": [
+        {
+          "service_name": "redis",
+          "cpe": "cpe:2.3:a:redis:redis:8.2.3:*:*:*:*:*:*:*"
+        }
+      ]
+    },
+    {
+      "asset": "adminWorkstation",
+      "criticality": "HIGH",
+      "cia_weights": {
+        "confidentiality": "HIGH",
+        "integrity": "MEDIUM",
+        "availability": "LOW"
+      },
+      "client_software": [
+        {
+          "software_name": "firefox",
+          "cpe": "cpe:2.3:a:mozilla:firefox_esr:140.9:*:*:*:*:*:*:*"
+        }
+      ]
+    }
+  ]
+}

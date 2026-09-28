@@ -1,0 +1,43 @@
+{
+  "system": "scenario1",
+  "assets": [
+    {
+      "name": "victim1",
+      "service": "firefox"
+    },
+    {
+      "name": "victim2",
+      "service": "finereader"
+    },
+    {
+      "name": "victim3",
+      "service": "mozilla_vpn"
+    }
+  ],
+  "threats": [
+    {
+      "id": "T1",
+      "stride": "Elevation of Privilege",
+      "asset": "victim1",
+      "impact": "remote_code_execution",
+      "description": "Remote exploitation of the vulnerable client software leads to code execution on victim1",
+      "mitre_attack": "T1203 - Exploitation for Client Execution"
+    },
+    {
+      "id": "T2",
+      "stride": "Elevation of Privilege",
+      "asset": "victim2",
+      "impact": "remote_code_execution",
+      "description": "Remote exploitation of the vulnerable client software leads to code execution on victim2",
+      "mitre_attack": "T1203 - Exploitation for Client Execution"
+    },
+    {
+      "id": "T3",
+      "stride": "Elevation of Privilege",
+      "asset": "victim3",
+      "impact": "remote_code_execution",
+      "description": "Remote exploitation of the vulnerable client software leads to code execution on victim3",
+      "mitre_attack": "T1203 - Exploitation for Client Execution"
+    }
+  ]
+}

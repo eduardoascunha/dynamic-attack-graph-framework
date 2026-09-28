@@ -1,0 +1,37 @@
+digraph AttackSummary {
+	rankdir=LR;
+	bgcolor="white";
+	label="Attack Graph — Host-Level Global View";
+	labelloc=t;
+	fontname="Arial Bold";
+	fontsize=18;
+	nodesep=0.5;
+	ranksep=0.9;
+	node [fontname="Arial", style="filled,rounded", shape=box, penwidth=1.5];
+	edge [fontname="Arial", fontsize=10, penwidth=2.0];
+
+	subgraph cluster_legend {
+		label="";
+		style="filled";
+		fillcolor="#F5F5F5";
+		color="#999999";
+		legend [shape=plaintext,fillcolor="#F5F5F5",label=<
+			<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="5">
+				<TR><TD COLSPAN="4" BGCOLOR="#1A1A1A"><FONT COLOR="white" POINT-SIZE="13"><B>Host-Level Global View</B></FONT></TD></TR>
+				<TR><TD COLSPAN="4" BGCOLOR="#333333"><FONT COLOR="white">Host risk (max on path)</FONT></TD></TR>
+				<TR><TD BGCOLOR="#C85A54"><FONT COLOR="white">Critical &#8805;7</FONT></TD><TD BGCOLOR="#CC7A50">High &#8805;4</TD><TD BGCOLOR="#D4A574">Medium &#8805;2</TD><TD BGCOLOR="#7A9BAE"><FONT COLOR="white">Low &lt;2</FONT></TD></TR>
+				<TR><TD COLSPAN="4" BGCOLOR="#333333"><FONT COLOR="white">Special hosts</FONT></TD></TR>
+				<TR><TD BGCOLOR="#DCDCDC" COLSPAN="2">Origin (ellipse)</TD><TD BGCOLOR="#C8979E" COLSPAN="2">Goal (ellipse)</TD></TR>
+				<TR><TD COLSPAN="4" ALIGN="LEFT"><I>Arrows = lateral movement; label shows max risk &amp; path count</I></TD></TR>
+			</TABLE>>];
+	}
+
+	"dbServer" [label=<<B>dbServer</B><BR/><FONT POINT-SIZE="10">priv: mariadb</FONT><BR/><FONT POINT-SIZE="10">risk: 0.36</FONT><BR/><FONT POINT-SIZE="9">CVE-2026-44168, CVE-2026-44170 +3</FONT>>,shape=ellipse,fillcolor="#C8979E"];
+	"cacheServer" [label=<<B>cacheServer</B><BR/><FONT POINT-SIZE="10">priv: redis</FONT><BR/><FONT POINT-SIZE="10">risk: 0.32</FONT><BR/><FONT POINT-SIZE="9">CVE-2026-23479, CVE-2026-23631 +1</FONT>>,shape=ellipse,fillcolor="#C8979E"];
+	"webProxy" [label=<<B>webProxy</B><BR/><FONT POINT-SIZE="10">priv: nginx</FONT><BR/><FONT POINT-SIZE="10">risk: 0.13</FONT><BR/><FONT POINT-SIZE="9">CVE-2022-41741, CVE-2022-41742 +1</FONT>>,shape=ellipse,fillcolor="#C8979E"];
+	"appServer" [label=<<B>appServer</B><BR/><FONT POINT-SIZE="10">priv: apache</FONT><BR/><FONT POINT-SIZE="10">risk: 0.12</FONT>>,shape=ellipse,fillcolor="#C8979E"];
+
+	"webProxy" -> "appServer" [label="risk: 0.12\n(189 paths)",color="#7A9BAE"];
+	"appServer" -> "cacheServer" [label="risk: 0.12\n(72 paths)",color="#7A9BAE"];
+	"appServer" -> "dbServer" [label="risk: 0.12\n(105 paths)",color="#7A9BAE"];
+}

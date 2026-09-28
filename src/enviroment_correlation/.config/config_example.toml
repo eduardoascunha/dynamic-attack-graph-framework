@@ -1,0 +1,16 @@
+[DATABASE]
+dbname = "DatabaseName"
+user = "Username"
+password = "password for the user"
+host = "Database host"
+port = 5432
+dbdriver = "psycopg"
+sslmode = "disable"
+
+# Pre-flight quality gate: minimum number of rows each threat-intelligence
+# table must contain before the pipeline is allowed to run. 
+[QUALITY_GATE]
+min_cves = 300000
+min_cve_cpe_mapping = 30000000
+min_epss = 300000
+min_kev = 4000

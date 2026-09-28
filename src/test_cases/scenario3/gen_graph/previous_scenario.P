@@ -1,0 +1,114 @@
+/* ============================================================
+   Scenario 3 - Enterprise healthcare patient portal (HIS)
+
+   A larger, microservices-style hospital information system that
+   exposes a patient portal and a back-end REST API protected by SSO,
+   backed by a records database, a session cache and an HL7 message bus.
+
+   Multi-tier deployment:
+     internet              - external attacker location
+     reverseProxy          - HAProxy load balancer / TLS terminator (DMZ)
+     portalServer          - Apache Tomcat patient-portal web application
+     apiServer             - Eclipse Jetty REST API back-end
+     authServer            - Keycloak single sign-on / identity provider
+     dbServer              - PostgreSQL patient-records database
+     cacheServer           - Memcached session / lookup cache
+     mqServer              - RabbitMQ HL7 / clinical-event message broker
+     clinicianWorkstation  - back-office clinician host (email client)
+
+   This file contains only the hand-written base facts. The environment
+   correlation layer appends the vulExists/vulProperty statements derived
+   from asset_cpe_mapping.json and stride_definition.json into scenario.P.
+   ============================================================ */
+
+/* ---------- attacker ---------- */
+attackerLocated(internet).
+
+/* ---------- attack goals ---------- */
+attackGoal(execCode(reverseProxy, _)).
+attackGoal(execCode(portalServer, _)).
+attackGoal(execCode(apiServer, _)).
+attackGoal(execCode(authServer, _)).
+attackGoal(execCode(dbServer, _)).
+attackGoal(execCode(cacheServer, _)).
+attackGoal(execCode(mqServer, _)).
+attackGoal(execCode(clinicianWorkstation, _)).
+
+/* ---------- network connectivity (hacl) ---------- */
+/* the public load balancer terminates TLS from the internet */
+hacl(internet, reverseProxy, tcp, 443).
+/* the load balancer forwards portal traffic to the Tomcat application */
+hacl(reverseProxy, portalServer, tcp, 8080).
+/* the portal calls the REST API back-end */
+hacl(portalServer, apiServer, tcp, 8443).
+/* the API validates tokens with Keycloak and reaches the data services */
+hacl(apiServer, authServer, tcp, 9443).
+hacl(apiServer, dbServer, tcp, 5432).
+hacl(apiServer, cacheServer, tcp, 11211).
+hacl(apiServer, mqServer, tcp, 5672).
+/* the clinician workstation reads external email / browses out */
+hacl(clinicianWorkstation, internet, httpProtocol, httpPort).
+
+/* ---------- network services (server side, remoteExploit) ---------- */
+networkServiceInfo(reverseProxy, haproxy, tcp, 443, haproxy).
+networkServiceInfo(portalServer, tomcat, tcp, 8080, tomcat).
+networkServiceInfo(apiServer, jetty, tcp, 8443, jetty).
+networkServiceInfo(authServer, keycloak, tcp, 9443, keycloak).
+networkServiceInfo(dbServer, postgresql, tcp, 5432, postgresql).
+networkServiceInfo(cacheServer, memcached, tcp, 11211, memcached).
+networkServiceInfo(mqServer, rabbitmq, tcp, 5672, rabbitmq).
+
+/* ---------- installed software ---------- */
+installed(reverseProxy, haproxy).
+installed(portalServer, tomcat).
+installed(apiServer, jetty).
+installed(authServer, keycloak).
+installed(dbServer, postgresql).
+installed(cacheServer, memcached).
+installed(mqServer, rabbitmq).
+installed(clinicianWorkstation, thunderbird).
+
+/* ---------- users (client side, remoteClient) ---------- */
+inCompetent(clinician_user).
+hasAccount(clinician_user, clinicianWorkstation, user).
+
+vulExists(reverseProxy,'CVE-2026-33555',haproxy).
+vulProperty('CVE-2026-33555',remoteExploit,privEscalation).
+vulProperty(threat_t1_tampering,remoteExploit,privEscalation).
+vulExists(reverseProxy,threat_t1_tampering,haproxy).
+vulExists(portalServer,'CVE-2026-41293',tomcat).
+vulProperty('CVE-2026-41293',remoteExploit,privEscalation).
+vulExists(portalServer,'CVE-2026-41284',tomcat).
+vulProperty('CVE-2026-41284',remoteExploit,privEscalation).
+vulExists(portalServer,'CVE-2023-24998',tomcat).
+vulProperty('CVE-2023-24998',remoteExploit,privEscalation).
+vulProperty(threat_t2_spoofing,remoteExploit,privEscalation).
+vulExists(portalServer,threat_t2_spoofing,tomcat).
+vulExists(apiServer,'CVE-2026-5795',jetty).
+vulProperty('CVE-2026-5795',remoteExploit,privEscalation).
+vulProperty(threat_t3_information_disclosure,remoteExploit,privEscalation).
+vulExists(apiServer,threat_t3_information_disclosure,jetty).
+vulExists(authServer,'CVE-2022-0225',keycloak).
+vulProperty('CVE-2022-0225',remoteExploit,privEscalation).
+vulProperty(threat_t4_spoofing,remoteExploit,privEscalation).
+vulExists(authServer,threat_t4_spoofing,keycloak).
+vulExists(dbServer,'CVE-2020-13692',postgresql).
+vulProperty('CVE-2020-13692',remoteExploit,privEscalation).
+vulProperty(threat_t5_information_disclosure,remoteExploit,privEscalation).
+vulExists(dbServer,threat_t5_information_disclosure,postgresql).
+vulExists(cacheServer,'CVE-2026-47784',memcached).
+vulProperty('CVE-2026-47784',remoteExploit,privEscalation).
+vulExists(cacheServer,'CVE-2026-47783',memcached).
+vulProperty('CVE-2026-47783',remoteExploit,privEscalation).
+vulProperty(threat_t6_tampering,remoteExploit,privEscalation).
+vulExists(cacheServer,threat_t6_tampering,memcached).
+vulExists(mqServer,'CVE-2019-11287',rabbitmq).
+vulProperty('CVE-2019-11287',remoteExploit,privEscalation).
+vulProperty(threat_t7_tampering,remoteExploit,privEscalation).
+vulExists(mqServer,threat_t7_tampering,rabbitmq).
+vulExists(clinicianWorkstation,'CVE-2026-5733',thunderbird).
+vulProperty('CVE-2026-5733',remoteClient,privEscalation).
+vulExists(clinicianWorkstation,'CVE-2026-5735',thunderbird).
+vulProperty('CVE-2026-5735',remoteClient,privEscalation).
+vulProperty(threat_t8_elevation_of_privilege,remoteClient,privEscalation).
+vulExists(clinicianWorkstation,threat_t8_elevation_of_privilege,thunderbird).

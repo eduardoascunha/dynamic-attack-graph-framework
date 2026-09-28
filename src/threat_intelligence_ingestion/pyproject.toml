@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "threat-intelligence-ingestion"
+version = "1.0.0"
+description = "Threat Intelligence Data Ingestion Service - CVE, EPSS, and KEV data collection"
+authors = ["Eduardo Cunha <eduardoascunha@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.14"
+requests = "^2.31.0"
+pydantic = "^2.5.0"
+psycopg = {extras = ["binary"], version = "^3.1.0"}
+sqlalchemy = "^2.0.0"
+toml = "^0.10.2"
+
+[tool.poetry.group.dev.dependencies]
+black = "^26.3.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

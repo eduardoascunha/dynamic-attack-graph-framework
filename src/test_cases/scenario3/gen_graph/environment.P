@@ -1,0 +1,17 @@
+:-['/mulval/lib/libmulval'].
+:-['/mulval/src/analyzer/translate'].
+:-['/mulval/src/analyzer/attack_trace'].
+:-['/mulval/src/analyzer/auxiliary'].
+
+:-dynamic meta/1.
+
+:-load_dyn('running_rules.P').
+
+:-load_dyn('/output/scenario.P').
+
+:-assert(traceMode(completeTrace2)).
+
+:-load_dyn('/mulval/src/analyzer/advances_notrim.P').
+
+:-assert(cvss(_, none)).
+

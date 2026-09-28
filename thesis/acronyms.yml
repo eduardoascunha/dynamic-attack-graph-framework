@@ -1,0 +1,200 @@
+- key: ag
+  short: AG
+  long: Attack Graph
+
+- key: at
+  short: AT
+  long: Attack Tree
+
+- key: bag
+  short: BAG
+  long: Bayesian Attack Graph
+
+- key: cia
+  short: CIA
+  long: Confidentiality, Integrity and Availability
+
+- key: cisa
+  short: CISA
+  long: Cybersecurity and Infrastructure Security Agency
+
+- key: cna
+  short: CNA
+  long: CVE Numbering Authority
+
+- key: cpe
+  short: CPE
+  long: Common Platform Enumeration
+
+- key: cti
+  short: CTI
+  long: Cyber Threat Intelligence
+
+- key: cve
+  short: CVE
+  long: Common Vulnerabilities and Exposures
+
+- key: cvss
+  short: CVSS
+  long: Common Vulnerability Scoring System
+
+- key: cwe
+  short: CWE
+  long: Common Weakness Enumeration
+
+- key: dfd
+  short: DFD
+  long: Data Flow Diagram
+
+- key: dmz
+  short: DMZ
+  long: Demilitarized Zone
+
+- key: dos
+  short: DoS
+  long: Denial of Service
+
+- key: dread
+  short: DREAD
+  long: Damage, Reproducibility, Exploitability, Affected Users and Discoverability
+
+- key: edg
+  short: EDG
+  long: Exploit Dependency Graph
+
+- key: epss
+  short: EPSS
+  long: Exploit Prediction Scoring System
+
+- key: fta
+  short: FTA
+  long: Fault Tree Analysis
+
+- key: ftp
+  short: FTP
+  long: File Transfer Protocol
+
+- key: gpl
+  short: GPL
+  long: GNU General Public License
+
+- key: ids
+  short: IDS
+  plural: IDS
+  long: Intrusion Detection System
+
+- key: ioc
+  short: IOC
+  long: Indicator of Compromise
+
+- key: kev
+  short: KEV
+  long: Known Exploited Vulnerabilities
+
+- key: lag
+  short: LAG
+  long: Logical Attack Graph
+
+- key: lobf
+  short: LOBF
+  long: Local Overflow Buffer Fault
+
+- key: mpag
+  short: MPAG
+  long: Multiple Prerequisite Attack Graph
+
+- key: nvd
+  short: NVD
+  long: National Vulnerability Database
+
+- key: oasis
+  short: OASIS
+  long: Organization for the Advancement of Structured Information Standards
+
+- key: octave
+  short: OCTAVE
+  long: Operationally Critical Threat, Asset and Vulnerability Evaluation
+
+- key: osint
+  short: OSINT
+  long: Open-Source Intelligence
+
+- key: oval
+  short: OVAL
+  long: Open Vulnerability and Assessment Language
+
+- key: pasta
+  short: PASTA
+  long: Process for Attack Simulation and Threat Analysis
+
+- key: pfd
+  short: PFD
+  long: Process Flow Diagram
+
+- key: rca
+  short: RCA
+  long: Root Cause Analysis
+
+- key: rsa
+  short: RSA
+  long: Rivest-Shamir-Adleman
+
+- key: rsh
+  short: RSH
+  long: Remote Shell
+
+- key: sage
+  short: SAGE
+  long: IntruSion alert-driven Attack Graph Extractor
+
+- key: sand
+  short: SAND
+  long: Sequential AND
+
+- key: sg
+  short: SG
+  long: State Graph
+
+- key: siem
+  short: SIEM
+  long: Security Information and Event Management
+
+- key: spdfa
+  short: S-PDFA
+  long: Suffix-based Probabilistic Deterministic Finite Automaton
+
+- key: ssh
+  short: SSH
+  long: Secure Shell
+
+- key: stix
+  short: STIX
+  long: Structured Threat Information Expression
+
+- key: stride
+  short: STRIDE
+  long: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service and Elevation of Privilege
+
+- key: tva
+  short: TVA
+  long: Topological Vulnerability Analysis
+
+- key: uml
+  short: UML
+  long: Unified Modeling Language
+
+- key: uri
+  short: URI
+  long: Uniform Resource Identifier
+
+- key: vast
+  short: VAST
+  long: Visual, Agile and Simple Threat
+
+- key: vcg
+  short: VCG
+  long: Vulnerability Cause Graph
+
+- key: xss
+  short: XSS
+  long: Cross-Site Scripting

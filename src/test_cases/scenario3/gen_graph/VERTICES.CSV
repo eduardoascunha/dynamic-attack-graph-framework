@@ -1,0 +1,153 @@
+1,"execCode(apiServer,jetty)","OR",0
+2,"RULE 2 (remote exploit of a server program)","AND",0
+3,"netAccess(apiServer,tcp,8443)","OR",0
+4,"RULE 5 (multi-hop access)","AND",0
+5,"hacl(portalServer,apiServer,tcp,8443)","LEAF",1
+6,"execCode(portalServer,tomcat)","OR",0
+7,"RULE 2 (remote exploit of a server program)","AND",0
+8,"netAccess(portalServer,tcp,8080)","OR",0
+9,"RULE 5 (multi-hop access)","AND",0
+10,"hacl(reverseProxy,portalServer,tcp,8080)","LEAF",1
+11,"execCode(reverseProxy,haproxy)","OR",0
+12,"RULE 2 (remote exploit of a server program)","AND",0
+13,"netAccess(reverseProxy,tcp,443)","OR",0
+14,"RULE 6 (direct network access)","AND",0
+15,"hacl(internet,reverseProxy,tcp,443)","LEAF",1
+16,"attackerLocated(internet)","LEAF",1
+17,"networkServiceInfo(reverseProxy,haproxy,tcp,443,haproxy)","LEAF",1
+18,"vulExists(reverseProxy,'CVE-2026-26080',haproxy,remoteExploit,privEscalation)","LEAF",1
+19,"RULE 2 (remote exploit of a server program)","AND",0
+20,"vulExists(reverseProxy,'CVE-2026-26081',haproxy,remoteExploit,privEscalation)","LEAF",1
+21,"RULE 2 (remote exploit of a server program)","AND",0
+22,"vulExists(reverseProxy,'CVE-2026-33555',haproxy,remoteExploit,privEscalation)","LEAF",1
+23,"RULE 2 (remote exploit of a server program)","AND",0
+24,"vulExists(reverseProxy,threat_t1_tampering,haproxy,remoteExploit,privEscalation)","LEAF",1
+25,"networkServiceInfo(portalServer,tomcat,tcp,8080,tomcat)","LEAF",1
+26,"vulExists(portalServer,'CVE-2023-24998',tomcat,remoteExploit,privEscalation)","LEAF",1
+27,"RULE 2 (remote exploit of a server program)","AND",0
+28,"vulExists(portalServer,threat_t2_spoofing,tomcat,remoteExploit,privEscalation)","LEAF",1
+29,"networkServiceInfo(apiServer,jetty,tcp,8443,jetty)","LEAF",1
+30,"vulExists(apiServer,'CVE-2026-10050',jetty,remoteExploit,privEscalation)","LEAF",1
+31,"RULE 2 (remote exploit of a server program)","AND",0
+32,"vulExists(apiServer,'CVE-2026-10051',jetty,remoteExploit,privEscalation)","LEAF",1
+33,"RULE 2 (remote exploit of a server program)","AND",0
+34,"vulExists(apiServer,'CVE-2026-12611',jetty,remoteExploit,privEscalation)","LEAF",1
+35,"RULE 2 (remote exploit of a server program)","AND",0
+36,"vulExists(apiServer,'CVE-2026-19203',jetty,remoteExploit,privEscalation)","LEAF",1
+37,"RULE 2 (remote exploit of a server program)","AND",0
+38,"vulExists(apiServer,'CVE-2026-19204',jetty,remoteExploit,privEscalation)","LEAF",1
+39,"RULE 2 (remote exploit of a server program)","AND",0
+40,"vulExists(apiServer,'CVE-2026-5795',jetty,remoteExploit,privEscalation)","LEAF",1
+41,"RULE 2 (remote exploit of a server program)","AND",0
+42,"vulExists(apiServer,'CVE-2026-6790',jetty,remoteExploit,privEscalation)","LEAF",1
+43,"RULE 2 (remote exploit of a server program)","AND",0
+44,"vulExists(apiServer,'CVE-2026-8384',jetty,remoteExploit,privEscalation)","LEAF",1
+45,"RULE 2 (remote exploit of a server program)","AND",0
+46,"vulExists(apiServer,threat_t3_information_disclosure,jetty,remoteExploit,privEscalation)","LEAF",1
+47,"execCode(authServer,keycloak)","OR",0
+48,"RULE 2 (remote exploit of a server program)","AND",0
+49,"netAccess(authServer,tcp,9443)","OR",0
+50,"RULE 5 (multi-hop access)","AND",0
+51,"hacl(apiServer,authServer,tcp,9443)","LEAF",1
+52,"networkServiceInfo(authServer,keycloak,tcp,9443,keycloak)","LEAF",1
+53,"vulExists(authServer,threat_t4_spoofing,keycloak,remoteExploit,privEscalation)","LEAF",1
+54,"execCode(cacheServer,memcached)","OR",0
+55,"RULE 2 (remote exploit of a server program)","AND",0
+56,"netAccess(cacheServer,tcp,11211)","OR",0
+57,"RULE 5 (multi-hop access)","AND",0
+58,"hacl(apiServer,cacheServer,tcp,11211)","LEAF",1
+59,"networkServiceInfo(cacheServer,memcached,tcp,11211,memcached)","LEAF",1
+60,"vulExists(cacheServer,'CVE-2026-47783',memcached,remoteExploit,privEscalation)","LEAF",1
+61,"RULE 2 (remote exploit of a server program)","AND",0
+62,"vulExists(cacheServer,'CVE-2026-47784',memcached,remoteExploit,privEscalation)","LEAF",1
+63,"RULE 2 (remote exploit of a server program)","AND",0
+64,"vulExists(cacheServer,threat_t6_tampering,memcached,remoteExploit,privEscalation)","LEAF",1
+65,"execCode(clinicianWorkstation,user)","OR",0
+66,"RULE 0 (When a principal is compromised any machine he has an account on will also be compromised)","AND",0
+67,"canAccessHost(clinicianWorkstation)","OR",0
+68,"RULE 8 (Access a host through executing code on the machine)","AND",0
+69,"hasAccount(clinician_user,clinicianWorkstation,user)","LEAF",1
+70,"principalCompromised(clinician_user)","OR",0
+71,"RULE 12 (password sniffing)","AND",0
+72,"RULE 3 (remote exploit for a client program)","AND",0
+73,"accessMaliciousInput(clinicianWorkstation,clinician_user,thunderbird)","OR",0
+74,"RULE 22 (Browsing a malicious website)","AND",0
+75,"hacl(clinicianWorkstation,internet,httpProtocol,httpPort)","LEAF",1
+76,"inCompetent(clinician_user)","LEAF",1
+77,"vulExists(clinicianWorkstation,threat_t8_elevation_of_privilege,thunderbird,remoteClient,privEscalation)","LEAF",1
+78,"execCode(dbServer,postgresql)","OR",0
+79,"RULE 2 (remote exploit of a server program)","AND",0
+80,"netAccess(dbServer,tcp,5432)","OR",0
+81,"RULE 5 (multi-hop access)","AND",0
+82,"hacl(apiServer,dbServer,tcp,5432)","LEAF",1
+83,"networkServiceInfo(dbServer,postgresql,tcp,5432,postgresql)","LEAF",1
+84,"vulExists(dbServer,'CVE-2020-13692',postgresql,remoteExploit,privEscalation)","LEAF",1
+85,"RULE 2 (remote exploit of a server program)","AND",0
+86,"vulExists(dbServer,'CVE-2026-14662',postgresql,remoteExploit,privEscalation)","LEAF",1
+87,"RULE 2 (remote exploit of a server program)","AND",0
+88,"vulExists(dbServer,'CVE-2026-14663',postgresql,remoteExploit,privEscalation)","LEAF",1
+89,"RULE 2 (remote exploit of a server program)","AND",0
+90,"vulExists(dbServer,'CVE-2026-14664',postgresql,remoteExploit,privEscalation)","LEAF",1
+91,"RULE 2 (remote exploit of a server program)","AND",0
+92,"vulExists(dbServer,'CVE-2026-14666',postgresql,remoteExploit,privEscalation)","LEAF",1
+93,"RULE 2 (remote exploit of a server program)","AND",0
+94,"vulExists(dbServer,'CVE-2026-14668',postgresql,remoteExploit,privEscalation)","LEAF",1
+95,"RULE 2 (remote exploit of a server program)","AND",0
+96,"vulExists(dbServer,'CVE-2026-14669',postgresql,remoteExploit,privEscalation)","LEAF",1
+97,"RULE 2 (remote exploit of a server program)","AND",0
+98,"vulExists(dbServer,'CVE-2026-14670',postgresql,remoteExploit,privEscalation)","LEAF",1
+99,"RULE 2 (remote exploit of a server program)","AND",0
+100,"vulExists(dbServer,'CVE-2026-14671',postgresql,remoteExploit,privEscalation)","LEAF",1
+101,"RULE 2 (remote exploit of a server program)","AND",0
+102,"vulExists(dbServer,'CVE-2026-14672',postgresql,remoteExploit,privEscalation)","LEAF",1
+103,"RULE 2 (remote exploit of a server program)","AND",0
+104,"vulExists(dbServer,'CVE-2026-14673',postgresql,remoteExploit,privEscalation)","LEAF",1
+105,"RULE 2 (remote exploit of a server program)","AND",0
+106,"vulExists(dbServer,'CVE-2026-14676',postgresql,remoteExploit,privEscalation)","LEAF",1
+107,"RULE 2 (remote exploit of a server program)","AND",0
+108,"vulExists(dbServer,'CVE-2026-14677',postgresql,remoteExploit,privEscalation)","LEAF",1
+109,"RULE 2 (remote exploit of a server program)","AND",0
+110,"vulExists(dbServer,'CVE-2026-14678',postgresql,remoteExploit,privEscalation)","LEAF",1
+111,"RULE 2 (remote exploit of a server program)","AND",0
+112,"vulExists(dbServer,'CVE-2026-14679',postgresql,remoteExploit,privEscalation)","LEAF",1
+113,"RULE 2 (remote exploit of a server program)","AND",0
+114,"vulExists(dbServer,'CVE-2026-14680',postgresql,remoteExploit,privEscalation)","LEAF",1
+115,"RULE 2 (remote exploit of a server program)","AND",0
+116,"vulExists(dbServer,'CVE-2026-14681',postgresql,remoteExploit,privEscalation)","LEAF",1
+117,"RULE 2 (remote exploit of a server program)","AND",0
+118,"vulExists(dbServer,'CVE-2026-15741',postgresql,remoteExploit,privEscalation)","LEAF",1
+119,"RULE 2 (remote exploit of a server program)","AND",0
+120,"vulExists(dbServer,'CVE-2026-15742',postgresql,remoteExploit,privEscalation)","LEAF",1
+121,"RULE 2 (remote exploit of a server program)","AND",0
+122,"vulExists(dbServer,'CVE-2026-16238',postgresql,remoteExploit,privEscalation)","LEAF",1
+123,"RULE 2 (remote exploit of a server program)","AND",0
+124,"vulExists(dbServer,'CVE-2026-16239',postgresql,remoteExploit,privEscalation)","LEAF",1
+125,"RULE 2 (remote exploit of a server program)","AND",0
+126,"vulExists(dbServer,'CVE-2026-16241',postgresql,remoteExploit,privEscalation)","LEAF",1
+127,"RULE 2 (remote exploit of a server program)","AND",0
+128,"vulExists(dbServer,'CVE-2026-18024',postgresql,remoteExploit,privEscalation)","LEAF",1
+129,"RULE 2 (remote exploit of a server program)","AND",0
+130,"vulExists(dbServer,'CVE-2026-18408',postgresql,remoteExploit,privEscalation)","LEAF",1
+131,"RULE 2 (remote exploit of a server program)","AND",0
+132,"vulExists(dbServer,'CVE-2026-19385',postgresql,remoteExploit,privEscalation)","LEAF",1
+133,"RULE 2 (remote exploit of a server program)","AND",0
+134,"vulExists(dbServer,'CVE-2026-6464',postgresql,remoteExploit,privEscalation)","LEAF",1
+135,"RULE 2 (remote exploit of a server program)","AND",0
+136,"vulExists(dbServer,'CVE-2026-6469',postgresql,remoteExploit,privEscalation)","LEAF",1
+137,"RULE 2 (remote exploit of a server program)","AND",0
+138,"vulExists(dbServer,'CVE-2026-6470',postgresql,remoteExploit,privEscalation)","LEAF",1
+139,"RULE 2 (remote exploit of a server program)","AND",0
+140,"vulExists(dbServer,'CVE-2026-6471',postgresql,remoteExploit,privEscalation)","LEAF",1
+141,"RULE 2 (remote exploit of a server program)","AND",0
+142,"vulExists(dbServer,threat_t5_information_disclosure,postgresql,remoteExploit,privEscalation)","LEAF",1
+143,"execCode(mqServer,rabbitmq)","OR",0
+144,"RULE 2 (remote exploit of a server program)","AND",0
+145,"netAccess(mqServer,tcp,5672)","OR",0
+146,"RULE 5 (multi-hop access)","AND",0
+147,"hacl(apiServer,mqServer,tcp,5672)","LEAF",1
+148,"networkServiceInfo(mqServer,rabbitmq,tcp,5672,rabbitmq)","LEAF",1
+149,"vulExists(mqServer,'CVE-2019-11287',rabbitmq,remoteExploit,privEscalation)","LEAF",1
+150,"RULE 2 (remote exploit of a server program)","AND",0
+151,"vulExists(mqServer,'CVE-2020-5419',rabbitmq,remoteExploit,privEscalation)","LEAF",1
+152,"RULE 2 (remote exploit of a server program)","AND",0
+153,"vulExists(mqServer,threat_t7_tampering,rabbitmq,remoteExploit,privEscalation)","LEAF",1
