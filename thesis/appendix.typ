@@ -214,7 +214,7 @@ The STRIDE threat model declares, for each asset, the threat category, impact an
   caption: [Scenario 1 `stride_definition.json` (one of three analogous threats shown).],
 )
 
-Finally, the enriched `scenario.P` combines the author written base network description with the vulnerability facts that the environment correlation layer appends below it. In the base description, `attackerLocated` and `hacl` declare the attacker's location and the allowed network reachability, `installed` records the software on each host, the `inCompetent`/`hasAccount` pairs supply the user context required by the client side rules, and `attackGoal` states the objectives. The correlation layer then appends one `vulExists`/`vulProperty` pair per matched vulnerability, drawn both from the CVEs correlated to each asset and from the STRIDE model (the `threat_*` facts).
+Finally, the enriched `scenario.P` combines the author-written base network description with the vulnerability facts that the environment correlation layer appends below it. In the base description, `attackerLocated` and `hacl` declare the attacker's location and the allowed network reachability, `installed` records the software on each host, the `inCompetent`/`hasAccount` pairs supply the user context required by the client-side rules, and `attackGoal` states the objectives. The correlation layer then appends one `vulExists`/`vulProperty` pair per matched vulnerability, drawn both from the CVEs correlated to each asset and from the STRIDE model (the `threat_*` facts).
 
 #figure(
   ```prolog
@@ -275,14 +275,14 @@ As discussed in the background chapter, @stix expresses each threat intelligence
 
 = Detailed Annotated Attack Graph Output <app-graphs>
 
-The following figure presents the detailed annotated attack graph for Scenario 3, produced by the post processing layer. It shows the MulVAL attack graph enriched with threat intelligence and node level risk scores. The corresponding raw MulVAL graph is available as the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario3/gen_graph/AttackGraph.pdf")[original `AttackGraph.pdf`] in the project repository.
+The following figure presents the detailed annotated attack graph for Scenario 3, produced by the post-processing layer. It shows the MulVAL attack graph enriched with threat intelligence and node-level risk scores. The corresponding raw MulVAL graph is available as the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario3/gen_graph/AttackGraph.pdf")[original `AttackGraph.pdf`] in the project repository.
 
 #page(flipped: true)[
   == Scenario 3: Enterprise Healthcare Information System
 
   #figure(
     image("images/scenario3_annotated_small.png", width: 100%),
-    caption: [Scenario 3 annotated attack graph produced by the post-processing layer, with threat intelligence enrichment and per node risk scores.],
+    caption: [Scenario 3 annotated attack graph produced by the post-processing layer, with threat intelligence enrichment and per-node risk scores.],
   ) <fig-scenario3-annotated>
 ]
 
