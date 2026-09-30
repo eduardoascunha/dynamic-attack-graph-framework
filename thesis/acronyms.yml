@@ -95,10 +95,6 @@
   short: LAG
   long: Logical Attack Graph
 
-- key: lobf
-  short: LOBF
-  long: Local Overflow Buffer Fault
-
 - key: mpag
   short: MPAG
   long: Multiple Prerequisite Attack Graph

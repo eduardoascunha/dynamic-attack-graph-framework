@@ -12,7 +12,7 @@
 
 - key: hyperalert
   short: hyper-alert
-  description: A temporally ordered episode formed by aggregating intrusion detection alerts that share contextual and statistical properties
+  description: A group of intrusion alerts from the same attacker and victim pair and attack stage within a fixed time window, used by SAGE to derive episodes
 
 - key: monotonicity
   short: monotonicity assumption
