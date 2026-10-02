@@ -113,7 +113,7 @@ This dissertation proposes a framework that addresses these limitations. It corr
 // - https://satoss.uni.lu/members/sjouke/papers/GM19.pdf
 // - https://orbilu.uni.lu/handle/10993/41698?
 
-== Objectives
+== Objectives <sec-objectives>
 
 The primary objective of this dissertation is to design and implement a dynamic framework that integrates continuously evolving threat intelligence and threat modeling with attack graphs to enhance cybersecurity modeling, situational awareness and decision making.
 
@@ -1242,13 +1242,13 @@ The graph's value lies in the detail it omits. The detailed graph records every 
 
 This chapter described the proposed framework as a modular pipeline built around MulVAL. It covered the logical reasoning engine and STRIDE integration, intelligence flow from ingestion to environment correlation, structural update orchestration and post-processing for path scoring, comparison and visualization. The implementation separates stable MulVAL interaction rules from the evolving fact base, allowing updated intelligence to change risk prioritization without unnecessary graph regeneration.
 
-The system transforms infrastructure descriptions and current threat intelligence into enriched attack graph outputs. The next chapter evaluates it through increasingly complex case studies and examines its behavior under structural changes, intelligence updates and asset reclassification.
+The system transforms infrastructure descriptions and current threat intelligence into enriched attack graph outputs. The next chapter evaluates it through increasingly complex case studies.
 
 = Case Study and Evaluation <ch-evaluation>
 
-This chapter evaluates the framework presented in @ch-design through a set of case studies of increasing complexity and realism. The evaluation has two complementary goals. First, it demonstrates that the pipeline operates as a complete workflow across representative network environments, transforming a plain network description into an enriched and prioritized attack graph informed by threat intelligence. Second, it assesses the dynamic behavior that distinguishes the proposed approach from a conventional, static attack graph generator. The evaluation therefore combines a qualitative analysis of each scenario with a quantitative comparison of structural metrics and dynamic re-prioritization.
+This chapter evaluates the framework presented in @ch-design through a set of case studies of increasing complexity and realism. The evaluation has two complementary goals. First, it demonstrates that the pipeline operates as a complete workflow across representative network environments, transforming a plain network description into an enriched and prioritized attack graph informed by threat intelligence and by facts derived from STRIDE threat modeling. Second, it assesses the dynamic behavior that distinguishes the proposed approach from a conventional, static attack graph generator. The evaluation therefore combines a qualitative analysis of each scenario with a quantitative comparison of structural metrics and dynamic re-prioritization.
 
-The chapter is organized as follows: The experimental setup describes the methodology, the deployment environment and the configuration common to all experiments. Three simulated case studies are then presented in order of increasing complexity: a client-side exposure scenario, a multi-tier e-commerce deployment and an enterprise healthcare information system. A dedicated evaluation of the framework's dynamic behavior then examines change detection, contextual re-scoring and asset reclassification. The chapter closes with a comparative discussion that relates the observed results to the objectives defined in Chapter 1.
+The chapter is organized as follows: The experimental setup describes the methodology, the deployment environment and the configuration common to all experiments. Three simulated case studies are then presented in order of increasing complexity: a client-side exposure scenario, a multi-tier e-commerce deployment and an enterprise healthcare information system. The chapter closes with a comparative discussion that relates the observed results to the objectives defined in Chapter 1.
 
 == Experimental Setup
 
@@ -1256,26 +1256,27 @@ The framework was evaluated using three simulated test scenarios, each describin
 
 Their representativeness derives from the diversity of security situations they cover. The first scenario represents internet delivered client-side compromise of end-user systems. The second represents a conventional multi-tier web application with an internet-facing reverse proxy, application server, data services and an administrative workstation. The third represents a larger enterprise service architecture with a segmented front end, application tier, identity service, database, cache, message broker and clinician workstation. Together, the scenarios exercise direct exposure, client-side exploitation, lateral movement, tiered network segmentation, protected backend services and assets with different criticality profiles.
 
-Every scenario was processed through the complete pipeline described in @ch-design, deployed as a set of containerized services orchestrated with Docker Compose on a single host. Each experiment exercises the full sequence of layers: environment correlation binds vulnerabilities to assets, the orchestrator decides whether regeneration is required and invokes MulVAL, and the post-processing layer enriches, scores and visualizes the resulting graph. The persistent threat intelligence database, populated by the ingestion layer from the National Vulnerability Database, EPSS and the CISA KEV catalogue, was shared across all experiments, ensuring that every scenario was scored against the same intelligence snapshot.
+Each scenario was represented by simulated input artifacts supplied to the framework. As described in @ch-design, the framework itself was executed on a single host as a set of containerized services orchestrated with Docker Compose. For each experiment, the pipeline processed the corresponding inputs through the full sequence of layers: environment correlation bound vulnerabilities to assets, the orchestrator determined whether regeneration was required and invoked MulVAL, and the post-processing layer enriched, scored and visualized the resulting graph. The persistent threat intelligence database, populated by the ingestion layer from the National Vulnerability Database, EPSS and the CISA KEV catalogue, was shared across all experiments, ensuring that every scenario was scored against the same intelligence snapshot.
 
 A common configuration was applied throughout, so that differences in the results are attributable to the scenarios themselves rather than to parameter changes. The post-processing layer retained the ten highest risk attack paths per run, bounded path enumeration at a maximum depth of thirty (which also serves as a cycle guard), and aggregated up to two hundred paths into the host-level summary graph. Unless explicitly overridden per asset, the global default asset criticality was set to `MEDIUM` and the confidentiality, integrity and availability priorities were left equal, so that the impact multiplier remained neutral in the absence of a deliberate prioritization decision. Where defined, per asset criticality and CIA priorities were specified in the asset mapping file of each scenario.
 
-To keep the analysis tractable and the attack graphs interpretable, the software versions assigned to each asset use explicit version-specific CPEs. This constrains correlation to named product releases but does not impose a fixed CVE count, since fresh intelligence snapshots can contain additional mappings. The scenarios use real software products identified by CPEs and are enriched with CVE, CVSS, EPSS and KEV data obtained through the pipeline, preserving a grounded mapping between products, identifiers and vulnerabilities. The results therefore demonstrate the operation and comparative prioritization behavior of the framework across representative architectural patterns. They do not measure the security posture of a real organization, reproduce the full vulnerability surface of a production environment, establish statistical generalizability or constitute a performance benchmark. Each scenario additionally includes a STRIDE threat model constructed for this study from its defined assets, network connections, exposed services and trust boundaries. The model applies the STRIDE categories systematically to the components of each simulated architecture and translates the identified threats into supplementary MulVAL-compatible logical facts. It is representative of the threat classes associated with the selected architectural patterns, rather than a threat model elicited from a specific organization or validated against incident data.
+To keep the analysis tractable and the attack graphs interpretable, the software versions assigned to each asset use explicit version-specific CPEs. Together with the shared database snapshot, these mappings fixed the set of CVEs considered for each scenario in this evaluation. A subsequent intelligence refresh could yield additional CVE mappings for the same CPEs in later executions. The scenarios use real software products identified by CPEs and are enriched with CVE, CVSS, EPSS and KEV data obtained through the pipeline, preserving a grounded mapping between products, identifiers and vulnerabilities. The results therefore demonstrate the operation and comparative prioritization behavior of the framework across representative architectural patterns. Each scenario additionally includes a STRIDE threat model constructed for this study from its defined assets, network connections, exposed services and trust boundaries. The model applies the STRIDE categories systematically to the components of each simulated architecture and translates the identified threats into supplementary MulVAL-compatible logical facts. The resulting models reflect the threat classes relevant to the selected architectural patterns.
 
-For each scenario, the evaluation reports the structure of the generated attack graph, the asset inventory and attacker goals, the host-level summary view produced by the post-processing layer and the ranked set of highest risk attack paths with their associated threat intelligence attributes. The first scenario additionally includes a delta analysis, comparing successive risk reports to quantify how the prioritization responds to a change in the environment or in the underlying intelligence. These per-scenario results are then consolidated in the cross-scenario analysis.
+For each scenario, the evaluation reports the structure of the generated attack graph, the asset inventory and attacker goals, the host-level summary view produced by the post-processing layer and the ranked set of highest risk attack paths with their associated threat intelligence attributes. The first scenario additionally includes a delta analysis, comparing successive risk reports to quantify how the prioritization responds to a change in the environment or in the underlying intelligence.
 
+// #pagebreak(weak: true)
 == Scenario 1: Client-Side Exposure
 
 The first scenario models a common form of initial compromise: client-side exploitation of vulnerable end-user software. It consists of three independent victim hosts, each running a distinct vulnerable client application and each permitted to browse outbound to the internet, where the attacker is located. The hosts do not communicate with one another, so the scenario contains no lateral movement and instead isolates the client-side exploitation primitive. The topology is shown in @fig-scenario1-topology.
 
 #figure(
-  image("images/scenario1_topology.png", width: 90%),
+  image("images/scenario1_topology.png", width: 80%),
   caption: [Scenario 1 topology: three independent victim hosts browsing outbound to an attacker-controlled internet.],
 ) <fig-scenario1-topology>
 
 The asset inventory comprises `victim1` running Mozilla Firefox 26, `victim2` running ABBYY FineReader 10.0 Pro and `victim3` running Mozilla VPN 2.3. The attacker is located on the internet (`attackerLocated(internet)`) and the analysis goal is to obtain code execution on each host, expressed as `attackGoal(execCode(victimN, _))`. The current CPE mappings yield `CVE-2019-20383` for FineReader and `CVE-2022-0517` for Mozilla VPN. Firefox 26 has no CVE-derived match in the current database snapshot. In line with the conceptual design, the environment correlation layer injected the corresponding `vulExists` and `vulProperty` facts, modeling each matched weakness as a client-side `remoteClient` exploit with a privilege escalation consequence. The STRIDE model contributed one additional Elevation of Privilege threat per host, each mapped to the MITRE ATT&CK technique T1203 (Exploitation for Client Execution).
 
-MulVAL generated an attack graph of 44 nodes and 59 edges, of which 15 are leaf nodes and 5 are vulnerability leaves, drawn from 2 unique CVEs. The post-processing layer enumerated 81 distinct root-to-leaf attack paths and achieved full enrichment coverage, meaning that every CVE node was successfully matched against threat intelligence data. The raw attack graph generated by MulVAL is available as the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario1/gen_graph/AttackGraph.pdf")[original `AttackGraph.pdf`] in the project repository. The detailed annotated graph produced by the post-processing layer is shown in @fig-scenario1-annotated.
+MulVAL generated an attack graph of 44 nodes and 59 edges, of which 15 are leaf nodes and 5 are vulnerability leaves, drawn from 2 unique CVEs. The post-processing layer enumerated 81 distinct root-to-leaf attack paths and achieved full enrichment coverage, meaning that every CVE node was successfully matched against threat intelligence data. The raw attack graph generated by MulVAL is available as the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario1/gen_graph/AttackGraph.pdf")[original `AttackGraph.pdf`] in the project repository. The detailed annotated graph shown in @fig-scenario1-annotated is also available as the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario1/post_processing/AttackGraph_annotated.png")[annotated `AttackGraph_annotated.png`] in the project repository, allowing its labels and annotations to be inspected at full resolution.
 
 #figure(
   image("images/scenario1_annotated.png", width: 100%),
@@ -1285,19 +1286,19 @@ MulVAL generated an attack graph of 44 nodes and 59 edges, of which 15 are leaf 
 The condensed host-level summary produced for this scenario is shown in @fig-scenario1-summary. It provides a compact view of each host's exposure and worst-case path risk.
 
 #figure(
-  image("images/scenario1_summarized.png", width: 100%),
+  image("images/scenario1_summarized.png", width: 80%),
   caption: [Scenario 1 host-level summary graph: each victim is reached directly from the internet, annotated with its worst-case path risk and exploited CVEs.],
 ) <fig-scenario1-summary>
 
 The summary view communicates the relative exposure of the three hosts. All three are reachable directly from the internet. `victim2` carries the highest worst case path risk at $0.04$ when rounded for visualization, `victim3` follows at $0.01$ and `victim1` remains at $0.00$.
 
-The $0.00$ labels on the internet-to-host arrows do not imply that the hosts have no exposure. Each arrow is labelled with the risk of the attack paths that produce the corresponding transition. In this flat topology, the only transition is the attacker’s initial network access. The paths that create it terminate at the network reachability precondition and therefore cross no vulnerability. The vulnerability that endangers each victim lies on the host itself and is recorded on the host node rather than on the incoming arrow. For each victim, the node value rather than the arrow label quantifies the exposure.
+The risk value on each arrow quantifies only the path fragments that establish reachability between the attacker and a host, whereas the value inside a host is the maximum risk of a complete attack path that reaches it. In Scenario 1, every arrow from the internet represents initial network reachability and no vulnerability is traversed in the corresponding path fragment, so its risk is $0.00$. The vulnerability is exploited after that step, and its contribution is reflected in the risk value displayed inside the corresponding host node.
 
-This ranking follows not from reachability, which is identical for all three hosts, but from the threat intelligence attributes of the underlying vulnerabilities. The highest-ranked path is driven by `CVE-2019-20383` on `victim2`, with a CVSS base score of $7.8$ and an EPSS score of $0.0048$. `CVE-2022-0517` on `victim3` has the same CVSS base score but a lower EPSS score of $0.00185$, resulting in a lower path risk. The STRIDE derived fact on `victim1` remains structurally represented but has no associated CVE enrichment, so its paths receive a score of zero. This demonstrates that prioritization is governed by the estimated likelihood and impact of exploitation rather than by structural reachability alone.
+Although reachability is identical for all three hosts, threat intelligence differentiates their risks. The highest ranked path is driven by `CVE-2019-20383` on `victim2`, with CVSS $7.8$ and EPSS $0.0048$. `CVE-2022-0517` on `victim3` has the same CVSS score but EPSS $0.00185$, so its path risk is lower. The STRIDE fact on `victim1` remains structurally represented but lacks CVE enrichment, so its paths score zero.
 
 === Delta Analysis: Stable Baseline
 
-Each run of the pipeline persists a single JSON artifact that contains two complementary objects. The first, the _risk report_, is the full result of the post-processing layer for the current graph. It records the graph version, a structural summary and the ranked list of highest risk attack paths, each annotated with its risk score and threat intelligence drivers. The second, the _delta report_, is written alongside it and compares the current risk report against the previously archived one. @lst-scenario1-risk-report shows the initial portion of the current risk report for this scenario.
+Each run produces a risk report and a delta report. The risk report records the graph version, structural summary and ranked paths, while the delta report compares it with the preceding report. @lst-scenario1-risk-report shows the beginning of the current risk report.
 
 #figure(
 ```json
@@ -1326,10 +1327,10 @@ Each run of the pipeline persists a single JSON artifact that contains two compl
   ]
 }
 ```,
-  caption: [Current Scenario 1 risk report: the structural summary and the single highest risk path.],
+  caption: [Scenario 1 risk report.],
 ) <lst-scenario1-risk-report>
 
-The most recent repeated execution is a steady-state run. Neither the environment nor the underlying intelligence changed, so the delta report contains no new or removed CVEs and no risk change. The resulting delta report is reproduced in @lst-scenario1-delta-report.
+The most recent repeated execution is unchanged and produces an empty delta, establishing a reproducible baseline. A synthetic example in @lst-scenario1-delta-report illustrates a contextual update in which `CVE-2019-20383` is added to the KEV catalogue.
 
 #figure(
 ```json
@@ -1341,24 +1342,24 @@ The most recent repeated execution is a steady-state run. Neither the environmen
     "removed_cves": []
   },
   "risk_change": {
-    "average_top_path_score_delta": 0.0,
+    "average_top_path_score_delta": 0.0053,
     "new_top_paths": [],
     "removed_top_paths": []
   },
-  "kev_additions": []
+  "kev_additions": ["CVE-2019-20383"]
 }
 ```,
-  caption: [Scenario 1 delta report for an unchanged repeat execution.],
+  caption: [Synthetic Scenario 1 delta report for a contextual KEV update.],
 ) <lst-scenario1-delta-report>
 
-The empty delta establishes a reproducible baseline for the current configuration. The unchanged graph version confirms that the structural model was not regenerated, while the zero average risk difference confirms that the repeated run used the same intelligence values. When a CPE mapping adds or removes a `vulExists` fact, the orchestrator detects the structural change and regenerates the graph before post-processing compares the resulting report with the archived baseline.
+Because this change affects no scenario facts, both graph versions are identical. The KEV update increases the average top path risk by $0.0053$ without changing the ranking. When a CPE mapping adds or removes a `vulExists` fact, the orchestrator detects the structural change and regenerates the graph before post-processing compares the resulting report with the archived baseline.
 
 == Scenario 2: Multi-Tier E-commerce Deployment
 
 The second scenario increases both the size and the architectural depth of the environment, modeling a moderately sized multi-tier e-commerce deployment. An internet-facing nginx reverse proxy in a @dmz fronts a Magento (Adobe Commerce) storefront, which is in turn backed by a MariaDB database and a Redis cache in a protected data tier. A back-office administrator workstation browses outbound to the internet, introducing a parallel client-side attack surface. Unlike the first scenario, this environment contains lateral movement, as network reachability rules permit an attacker to pivot from the proxy to the application server and from there into the data tier. The topology is shown in @fig-scenario2-topology.
 
 #figure(
-  image("images/scenario2_topology.png", height: 80%),
+  image("images/scenario2_topology.png", height: 65%),
   caption: [Scenario 2 topology: a multi-tier e-commerce deployment with a DMZ proxy, an application server, a data tier and a back-office workstation.],
 ) <fig-scenario2-topology>
 
@@ -1383,7 +1384,7 @@ The attacker originates on the internet, and a code execution goal is declared f
   caption: [Scenario 2: per asset criticality and confidentiality (C), integrity (I) and availability (A) priorities.],
 ) <tab-scenario2-priorities>
 
-MulVAL produced a graph of 82 nodes and 125 edges, with 37 leaf nodes, 25 vulnerability leaves and 19 unique CVEs. The post-processing layer enumerated 1373 attack paths. All CVE identities were enriched, and every current CVE match carried the CVSS data needed to calculate a numeric path score. The raw attack graph generated by MulVAL is available as the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario2/gen_graph/AttackGraph.pdf")[original `AttackGraph.pdf`] in the project repository. The detailed annotated graph produced by the post-processing layer is shown in @fig-scenario2-annotated.
+MulVAL produced a graph of 82 nodes and 125 edges, with 37 leaf nodes, 25 vulnerability leaves and 19 unique CVEs. The post-processing layer enumerated 1373 attack paths. All CVE identities were enriched, and every current CVE match carried the CVSS data needed to calculate a numeric path score. The raw attack graph generated by MulVAL is available as the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario2/gen_graph/AttackGraph.pdf")[original `AttackGraph.pdf`] in the project repository. The detailed annotated graph shown in @fig-scenario2-annotated is also available as the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario2/post_processing/AttackGraph_annotated.png")[annotated `AttackGraph_annotated.png`] in the project repository, allowing its labels and annotations to be inspected at full resolution.
 
 #figure(
   image("images/scenario2_annotated.png", width: 100%),
@@ -1412,7 +1413,7 @@ The third scenario represents the most structurally complex environment evaluate
 
 A code execution goal was declared for all eight hosts. As in the previous scenario, criticality was assigned per asset, with the internet-facing, application, identity and data bearing hosts marked `HIGH` and the cache and message broker hosts retained at `MEDIUM`. The STRIDE model for this scenario is the richest of the three, contributing eight threats spanning Tampering, Spoofing, Information Disclosure and Elevation of Privilege, each mapped to a corresponding MITRE ATT&CK technique and translated into supplementary logical facts.
 
-The generated attack graph comprises 153 nodes and 246 edges, with 71 leaf nodes, 53 vulnerability leaves and 45 unique CVEs. Path enumeration yielded 14204 distinct attack paths, the largest of the three scenarios. All CVE identities were enriched, but `CVE-2026-12611`, `CVE-2026-19203` and `CVE-2026-19204` on Jetty have no CVSS score or vector in the current data source. They produce 114 paths with undefined risk, which are deliberately placed first in the risk report for manual review. The raw attack graph generated by MulVAL is available as the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario3/gen_graph/AttackGraph.pdf")[original `AttackGraph.pdf`] in the project repository. The detailed annotated graph is reproduced in @app-graphs. Only the host-level summary, shown in @fig-scenario3-summary, is presented here.
+The generated attack graph comprises 153 nodes and 246 edges, with 71 leaf nodes, 53 vulnerability leaves and 45 unique CVEs. Path enumeration yielded 14204 distinct attack paths, the largest of the three scenarios. All CVE identities were enriched, but `CVE-2026-12611`, `CVE-2026-19203` and `CVE-2026-19204` on Jetty have no CVSS score or vector in the current data source. They produce 114 paths with undefined risk, which are deliberately placed first in the risk report for manual review. The raw attack graph generated by MulVAL is available as the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario3/gen_graph/AttackGraph.pdf")[original `AttackGraph.pdf`] in the project repository. The detailed annotated graph is reproduced in @app-graphs and is also available as the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario3/post_processing/AttackGraph_annotated.png")[annotated `AttackGraph_annotated.png`] in the project repository, allowing its labels and annotations to be inspected at full resolution. Only the host-level summary, shown in @fig-scenario3-summary, is presented here.
 
 #figure(
   image("images/scenario3_summarized.png", width: 100%),
@@ -1440,97 +1441,39 @@ The summary graph presents this evaluated environment in a compact form. The att
 
 The decreasing risk along the numeric ranking is a direct consequence of the directness factor $d(P)$ defined earlier in the scoring model. The portal goal, reached in 3 steps, is scored higher than the 11 step path to the database driven by the same vulnerability. Because $d(P) = 1 / log_2(|P| + 2)$ decreases as a path lengthens, the same driver vulnerability necessarily yields a higher score on the shorter path. This is an arithmetic property of the scoring formula rather than a separate heuristic, yet it still lets the framework differentiate between paths that share an exploitation driver but differ in depth, supporting prioritization in deep architectures.
 
-// == Cross-Scenario Quantitative Analysis
-
-// Consolidating the three case studies shows how the framework scales as the environment grows. The following table reports the principal structural metrics for each scenario.
-
-// #figure(
-//   table(
-//     columns: (2.2fr, 1fr, 1fr, 1fr),
-//     inset: 6pt,
-//     align: left + horizon,
-//     stroke: (x, y) => if y == 0 { (bottom: 1pt + black) } else { (bottom: 0.5pt + gray) },
-//     fill: (col, row) => if row == 0 { gray.lighten(80%) },
-//     table.header(
-//       [*Metric*], [*Scenario 1*], [*Scenario 2*], [*Scenario 3*],
-//     ),
-//     [Hosts modeled], [3], [5], [8],
-//     [Graph nodes], [44], [82], [153],
-//     [Graph edges], [59], [125], [246],
-//     [Leaf nodes], [15], [37], [71],
-//     [Vulnerability leaves], [5], [25], [53],
-//     [Unique CVEs], [2], [19], [45],
-//     [Attack paths enumerated], [81], [1373], [14204],
-//     [Enrichment coverage], [100%], [100%], [100%],
-//   ),
-//   caption: [Cross-scenario structural metrics.],
-// )
-
-// The current intelligence snapshot shows a sharp increase in both graph size and path count. The graph grows from 44 to 153 nodes as the environment increases from 3 to 8 hosts, while the CPE mappings grow from 2 to 45 CVEs. The number of enumerated root-to-leaf paths rises from 81 to 1373 and then 14204. This demonstrates that the post-processing path enumeration stage, rather than graph generation, dominates cost as vulnerability mappings accumulate. The framework contains this through depth bounded enumeration, content hash deduplication, retention of only the ten highest risk paths for reporting and the host-level summary graph. CVE identity enrichment coverage remained at 100% throughout, although Scenario 3 also demonstrates that a matched CVE can still lack the CVSS data required for a numeric score.
-
-== Evaluation of Dynamic Behavior
-
-Beyond producing a single snapshot, the framework evolves the model as intelligence and asset definitions change. The mechanisms behind this were described in @ch-design. This section evaluates them along the three dimensions identified in the design, drawing on the orchestrator's change detection logic and the versioned risk reports archived across repeated runs of Scenario 1. The source code, scenario input data and generated outputs that support these tests are publicly available in the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework")[project repository].
-
-Structural change detection is evaluated through steady-state runs and controlled changes to scenario facts. The repeated current Scenario 1 execution reported an identical graph version and an empty structural delta, so no regeneration occurred. Adding or removing a `vulExists` fact changes the normalized fact set and triggers regeneration. The detector automatically rebuilds the graph when the tracked `vulExists` facts or attack goals change. Changes to other scenario facts, including topology and service configuration, require forced regeneration. Adding or removing an asset is automatically detected when it changes one of the tracked fact sets.
-
-Contextual re-scoring without regeneration is visible in the separation between the graph version and the risk report. The stable repeat execution recorded a zero risk delta because its intelligence inputs were unchanged. When a refreshed EPSS value changes the enrichment of a CVE already present in the graph, the post-processing layer recalculates the path scores while the graph version remains unchanged. This preserves the intended separation between structural regeneration and contextual risk analysis.
-
-Asset reclassification provides a second contextual input, derived from the organization's own assessment of an asset. Because the path risk score scales deterministically with the criticality factor $alpha$, reclassifying an asset re ranks its paths with no change to the graph structure or to the underlying intelligence. Taking the highest-ranked path of Scenario 1, whose driver vulnerability and directness yield a criticality independent component of approximately $0.0536$, @tab-asset-reclassification presents the resulting path risk and qualitative band for each level.
-
-#figure(
-  table(
-    columns: (1.4fr, 1fr, 1.2fr, 1.4fr),
-    inset: 6pt,
-    align: left + horizon,
-    stroke: (x, y) => if y == 0 { (bottom: 1pt + black) } else { (bottom: 0.5pt + gray) },
-    fill: (col, row) => if row == 0 { gray.lighten(80%) },
-    table.header(
-      [*Criticality*], [*Factor $alpha$*], [*Path risk*], [*Risk level*],
-    ),
-    [LOW], [0.4], [0.0214], [Low],
-    [MEDIUM (baseline)], [0.7], [0.0375], [Low],
-    [HIGH], [1.0], [0.0536], [Low],
-    [CRITICAL], [1.3], [0.0696], [Low],
-  ),
-  caption: [Effect of asset reclassification on the highest-ranked path of Scenario 1, computed from its measured base risk. Reclassification re-ranks the path without graph regeneration.],
-) <tab-asset-reclassification>
-
-Reclassifying the host from the baseline `MEDIUM` level to `HIGH` increases its highest path score, while a downgrade to `LOW` reduces it, with the structural model identical throughout. The selected CVEs retain a Low qualitative band because their EPSS probabilities are deliberately small. The change nevertheless affects prioritization without requiring the attack graph to be regenerated.
-
 == Comparative Discussion
 
-The case studies and the dynamic behavior evaluation together allow the proposed framework to be contrasted with a conventional, static use of MulVAL and related to the objectives stated in Chapter 1. This comparison clarifies how the proposed pipeline extends structural reachability analysis with dynamic threat intelligence.
+The case studies allow the proposed framework to be contrasted with a conventional, static use of MulVAL and related to the objectives stated in Chapter 1. This comparison clarifies how the proposed pipeline extends structural reachability analysis with dynamic threat intelligence.
 
-A conventional invocation of an attack graph generator answers a structural question: given a network configuration and a set of vulnerabilities, which hosts can the attacker reach and through which exploit chains? This is valuable but incomplete. MulVAL adapters can supply later invocations with refreshed vulnerability repository data or scanner output, but each invocation still reasons over the particular fact base that it receives. On their own, these updates do not determine whether refreshed information is relevant to a specific environment, translate threat modeling output into facts, or separate a structural change from a contextual change. The proposed framework provides these surrounding capabilities. In each of the three scenarios, the structural reachability picture does not by itself provide a basis on which to decide where to act first. The same models, once enriched and scored by the proposed framework, provide a justified prioritization. In Scenario 1 the three equally reachable victims separate into distinct low-risk scores according to the estimated exploitation likelihood of their vulnerabilities, while the host without a matched CVE receives zero CVE risk. In Scenario 2 the application server is identified as the bottleneck through which most attack paths funnel. In Scenario 3 the API server emerges as the dominant pivot into the protected tiers. These conclusions require information beyond structural reachability alone.
+A conventional invocation of an attack graph generator answers a structural question: given a network configuration and a set of vulnerabilities, which hosts can the attacker reach and through which exploit chains? This is valuable but incomplete. MulVAL adapters can supply later invocations with refreshed vulnerability repository data or scanner output, but each invocation still reasons over the particular fact base that it receives. On their own, these updates do not determine whether refreshed information is relevant to a specific environment or separate a structural change from a contextual change. Independently, threat modeling outputs are not translated into facts that can influence automated attack graph generation. The proposed framework addresses both limitations. Across all three scenarios, the unannotated attack graph shows which attack paths are feasible, but it does not establish which vulnerability, path or asset should be remediated first. Enriching and scoring the same graph provides a risk-based prioritization. In Scenario 1 the three equally reachable victims separate into distinct low-risk scores according to the estimated exploitation likelihood of their vulnerabilities, while the host without a matched CVE receives zero CVE risk. Separately, the host-level summary graph aggregates selected attack paths by host. It identifies the application server as the bottleneck through which most selected paths pass in Scenario 2 and the API server as the dominant pivot into the protected tiers in Scenario 3. These latter observations arise from the summarized path structure, whereas the Scenario 1 distinction is driven by threat intelligence.
 
-The framework also addresses the evolution of risk over time. An individual graph is necessarily a snapshot, but it can be maintained through repeated correlation, selective regeneration and contextual rescoring. The dynamic evaluation showed that the model reprioritizes attack paths in response to revised EPSS scores while leaving the structural graph untouched, regenerates the graph when tracked vulnerability facts or attack goals change, and responds immediately to analyst-driven asset reclassification. Changes to topology or asset inventory can be incorporated through forced regeneration. The proposed framework therefore updates risk priorities when contextual inputs change while avoiding graph regeneration in those cases.
+The framework also addresses the evolution of risk over time. An individual graph is necessarily a snapshot, but the implementation supports repeated correlation, selective regeneration and contextual rescoring. It compares normalized scenario facts to determine whether regeneration is required, while intelligence signals and asset criticality are applied during post-processing.
 
-These results map directly to the objectives defined in Chapter 1. The end-to-end operation of the layered pipeline across three environments realizes the conceptual and architectural model linking dynamic threat intelligence to attack graphs (Objective 1) and is underpinned by the automated ingestion and correlation of CVE, CVSS, EPSS and KEV intelligence (Objective 2). The change detection, contextual re-scoring and reclassification behaviors evaluated in this chapter demonstrate the mechanisms for adaptive model evolution and re-prioritization (Objective 3). The host-level summary graphs, ranked path tables and delta reports transform the enriched models into actionable analytical insight (Objective 4). Finally, the three case studies validate the framework's functional behavior, dynamic update mechanisms and analytical usefulness in representative scenarios (Objective 5). Collectively, the evidence indicates that the framework achieves its central aim of advancing attack graphs from static representations into dynamic, intelligence-driven decision support tools.
+These results map directly to the objectives defined in Chapter 1. The end-to-end operation of the layered pipeline across three environments realizes the conceptual and architectural model linking dynamic threat intelligence and structured threat modeling outputs to attack graphs (Objective 1) and is underpinned by the automated ingestion and correlation of CVE, CVSS, EPSS and KEV intelligence (Objective 2). The translation of the STRIDE models into MulVAL facts, together with the implemented change detection and post-processing mechanisms, provides the basis for adaptive model evolution and re-prioritization (Objective 3). The detailed annotated graphs, host-level summary graphs, ranked path tables and risk reports transform the enriched models into actionable analytical insight (Objective 4). Finally, the three case studies validate the framework's functional behavior and analytical usefulness in representative scenarios (Objective 5). Collectively, the evidence indicates that the framework achieves its central aim of advancing attack graphs from static representations into dynamic, intelligence-driven decision support tools.
 
 == Chapter Summary
 
-This chapter evaluated the framework across three network scenarios with increasing complexity. The results showed that the complete pipeline generates enriched attack graphs from each environment, ranks paths using CVSS, EPSS, KEV status and asset criticality, and produces detailed and host-level views to support analysis. The dynamic evaluation further confirmed that changes to tracked vulnerability facts trigger regeneration, while revised intelligence and asset criticality re-rank paths without changing the logical graph.
+This chapter evaluated three increasingly complex network scenarios. The pipeline generated enriched attack graphs, ranked paths using CVSS, EPSS, KEV status and asset criticality, and produced detailed and host-level views.
 
-Together, these findings demonstrate that the proposed approach extends static reachability analysis with current threat context and selective recomputation. The final chapter consolidates the dissertation's contributions, discusses the extent to which the objectives were achieved and outlines directions for future work.
+These findings show how the approach extends static reachability analysis with current threat context and selective recomputation. The final chapter summarizes the contributions, assesses the objectives and outlines future work.
 
 = Conclusion and Future Work <ch-conclusion>
 
-This dissertation addressed an operational limitation of contemporary security modeling: the handling of changing threat intelligence around repeated attack graph generation. Although threat intelligence is published continuously and infrastructures evolve rapidly, each graph represents the facts available at the time of execution. This does not imply that MulVAL lacks mechanisms for receiving updated inputs. Its adapters can update vulnerability repository data and consume scanner output before later executions #cite(<MULVAL_PROJECT13>, form: "normal"). The work proposed, designed, implemented and evaluated a framework that correlates evolving threat intelligence with the modeled environment, determines when regeneration is required and updates risk priorities when it is not.
+This dissertation addressed the broader problem of maintaining useful attack graph analyses as environments, threat intelligence and threat-modeling assumptions evolve. A conventional MulVAL execution reasons over the fact base supplied to it, but does not by itself correlate refreshed intelligence with a specific environment, distinguish structural changes from changes in risk context or translate threat-modeling outputs into facts for automated reasoning. The work therefore proposed, implemented and evaluated a framework that combines CPE-based environment correlation, STRIDE-to-MulVAL translation, selective graph regeneration and contextual path-risk scoring.
 
-The proposed solution materializes this idea as a modular, event-driven pipeline of containerized services built around the MulVAL logical reasoning engine. It complements MulVAL's existing adapters by correlating intelligence with a CPE-based asset inventory, enabling analysis where vulnerability scans cannot be performed or are inappropriate. A persistent threat intelligence knowledge base is populated from authoritative sources, namely CVE and CPE records, CVSS severity metrics, EPSS exploitation probabilities and the CISA KEV catalogue. An environment correlation layer binds this intelligence to the modeled infrastructure and, in the same stage, translates the STRIDE threat model into logical facts, together producing the enriched fact base that MulVAL consumes. A central design decision underpins the entire framework: the interaction rules remain fixed while only the fact base evolves, which preserves compatibility with existing MulVAL rule sets and the favorable inference properties of the engine, while confining all adaptive behavior to the surrounding layers. An orchestration layer detects changes to vulnerability facts and attack goals, regenerating the graph for those changes and otherwise rescoring the existing model. Other scenario facts can be incorporated through forced regeneration. A post-processing layer enriches, scores, compares and visualizes the result. The case studies and the dynamic behavior evaluation in @ch-evaluation demonstrated that this architecture operates end to end across environments of increasing complexity and that it reprioritizes risk in response to evolving intelligence and analyst-driven asset reclassification without regenerating the graph for contextual updates.
+The proposed solution is realized as a modular, event-driven pipeline of containerized services built around the MulVAL logical reasoning engine. It complements MulVAL's existing adapters by correlating intelligence with a CPE-based asset inventory, enabling analysis where vulnerability scans cannot be performed or are inappropriate. A persistent threat intelligence knowledge base is populated from authoritative sources, namely CVE and CPE records, CVSS severity metrics, EPSS exploitation probabilities and the CISA KEV catalogue. An environment correlation layer binds this intelligence to the modeled infrastructure and, in the same stage, translates the STRIDE threat model into logical facts, together producing the enriched fact base that MulVAL consumes. A central design decision underpins the entire framework: the interaction rules remain fixed while only the fact base evolves, which preserves compatibility with existing MulVAL rule sets and the favorable inference properties of the engine, while confining all adaptive behavior to the surrounding layers. An orchestration layer compares normalized scenario facts and regenerates the graph when they change; it otherwise reuses the existing graph. A post-processing layer enriches and scores the graph, compares reports and produces annotated and host-level visualizations. The case studies in @ch-evaluation demonstrated that this architecture operates end to end across environments of increasing complexity.
 
 == Summary of Contributions
 
-The contributions of this dissertation correspond directly to those outlined in Section 1.2 and are summarized below in light of the design, implementation and evaluation presented in the preceding chapters.
+The following summary describes how the design, implementation and evaluation presented in the preceding chapters realize the contributions defined in @sec-objectives.
 
-First, the work delivers a dynamic integration of threat intelligence into attack models. Rather than treating attack graphs as isolated snapshots, the framework defines explicit linkages between evolving threat data and the model's fact base, so that vulnerability disclosures, severity metrics, exploitation probabilities and confirmed exploitation signals continuously inform the generated model. The case studies confirmed that this enrichment transforms an undifferentiated reachability picture into a justified prioritization, separating equally reachable targets according to the likelihood and impact of their underlying vulnerabilities.
+First, the work delivers a dynamic integration of threat intelligence into attack models. Each generated attack graph remains a snapshot of its input facts, but the framework relates successive snapshots to evolving threat data by correlating vulnerability disclosures, severity metrics, exploitation probabilities and confirmed exploitation signals with the model's fact base. The case studies confirmed that this enrichment transforms an undifferentiated reachability picture into a justified prioritization, separating equally reachable targets according to the likelihood and impact of their underlying vulnerabilities.
 
-Second, the work realizes mechanisms for adaptive model evolution and re-prioritization. The orchestrator's two-phase change detection strategy regenerates the attack graph precisely when security-relevant facts change, while the post-processing scorer re-ranks attack paths whenever an intelligence signal, such as a revised EPSS score or a newly catalogued KEV entry, is updated. The evaluation showed that contextual re-scoring occurs without structural regeneration and that organization-driven asset reclassification takes effect immediately through the same contextual path. This validates the implemented separation between structural and contextual updates.
+Second, the work realizes mechanisms for adaptive model evolution and re-prioritization. The orchestrator's two-phase change detection strategy regenerates the attack graph when normalized scenario facts change, while the post-processing scorer is designed to re-rank attack paths when an intelligence signal, such as a revised EPSS score or a newly catalogued KEV entry, is updated.
 
 Third, the work provides a practical mechanism for integrating threat modeling with automated attack graph generation. The STRIDE model is validated against the modeled assets, and its threat categories and declared impacts are translated into logical facts consumable by MulVAL. This permits adversarial assumptions from qualitative threat modeling to participate in attack path generation alongside concrete vulnerability facts.
 
-Taken together, the contributions establish an end-to-end method for incorporating evolving threat intelligence into logical attack graph analysis. The evaluation confirms that the framework can correlate vulnerability and threat modeling data with a modeled environment, distinguish structural changes from contextual risk updates, and present the resulting priorities through reports and host-level summaries. These results support its use as a research prototype for dynamic attack graph maintenance.
+Taken together, the contributions establish an end-to-end method for incorporating evolving threat intelligence into logical attack graph analysis. The evaluation confirms that the framework can correlate vulnerability and threat modeling data with a modeled environment, distinguish structural changes from contextual risk updates, and present the resulting priorities through reports and host-level summaries. These results support its use as a research prototype for dynamic attack graph maintenance
 
 == Future Work
 
@@ -1552,10 +1495,6 @@ The current translation represents all correlated vulnerabilities as privilege e
 
 At present, the STRIDE threat model must be supplied to the framework as a structured JSON template, which the analyst authors by hand. A natural extension is to let the analyst keep performing the STRIDE analysis in their usual narrative form and to use a language model to translate that report into the JSON template the pipeline consumes, mapping the assets, threats, categories and impacts to its machine-readable schema. In its minimal form this is a well-scoped translation task that already lowers the barrier to adoption. The same mechanism could later be extended so that the model also assists with the analysis itself, for instance by suggesting candidate threats or impacts for the analyst to review.
 
-=== Learned asset criticality and CIA prioritization
-
-Asset criticality and the relative importance of the confidentiality, integrity and availability dimensions are currently configured manually per asset. Future work could derive these values automatically from the threat model itself, for instance by inferring that an asset whose threat model emphasizes confidentiality concerns should weight confidentiality more heavily in its risk computation. A first realization could rely on deterministic rules mapping threat categories to CIA priorities, evolving subsequently toward a machine-learning approach trained to predict per-asset criticality from threat-modeling artifacts and historical data.
-
 === Risk-threshold filtering and risk acceptance
 
 Two analyst-facing controls would make the output more actionable in day-to-day operations. The first is a configurable risk threshold: by specifying a minimum score, an analyst could restrict the generated graph and the reports to attack paths whose risk exceeds that value, for example suppressing everything below a score of 3.0 so that only the more pressing exposures are shown. The second is explicit risk acceptance, which would let an analyst mark specific vulnerabilities, paths or assets as accepted, so that known false positives or consciously tolerated risks are excluded from the prioritization rather than resurfacing on every run. Together these controls would focus the framework's attention on the risks an organization actually intends to act upon.
@@ -1574,7 +1513,7 @@ The current host-level summary improves the readability of dense graphs by prese
 
 Finally, the framework's practical impact would be strengthened by tighter integration with operational security tooling. Connecting it to SIEM platforms would enable observed events and alerts to drive model updates and would allow the resulting prioritization to feed back into operational workflows. In parallel, a dedicated graphical user interface for configuring scenarios, browsing the generated graphs and exploring delta reports would improve usability and make the dynamic, evolving nature of the model more immediately accessible to analysts.
 
-These directions, ranging from richer intelligence sources and broader scoring inputs to automated translation of threat models, analyst-driven risk filtering and operational integration, would further consolidate the transition of attack graphs from static representations into living, intelligence-driven instruments for proactive cyber defense. They also outline a path from the current research prototype toward a more comprehensive operational decision-support capability.
+These directions, ranging from richer intelligence sources and more expressive attack modeling to automated threat-model translation, analyst-driven risk filtering, operational robustness, scalability evaluation and integration with security tooling, would further strengthen the framework's analytical and practical capabilities. They also outline a path from the current research prototype toward a more comprehensive operational decision-support capability.
 
 
 // Bibliografia
