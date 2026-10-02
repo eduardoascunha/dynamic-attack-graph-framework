@@ -6,7 +6,7 @@
 
 = Risk Scoring Configuration Reference <app-scoring>
 
-The asset criticality factor $alpha$ multiplies the base risk in the path risk computation, so a value below $1.0$ dampens and a value above $1.0$ amplifies an asset's contribution to the score. It is selected from one of four named levels. @tab-criticality-levels lists the values applied throughout the evaluation.
+The asset criticality factor $alpha$ scales the base risk in the path risk computation. Values below $1.0$ reduce and values above $1.0$ increase an asset's contribution. @tab-criticality-levels lists the four levels.
 
 #figure(
   table(
@@ -16,17 +16,17 @@ The asset criticality factor $alpha$ multiplies the base risk in the path risk c
     stroke: (x, y) => if y == 0 { (bottom: 1pt + black) } else { (bottom: 0.5pt + gray) },
     fill: (col, row) => if row == 0 { gray.lighten(80%) },
     table.header(
-      [*Criticality level*], [*Factor $alpha$*], [*Effect on the path risk score*],
+      [*Criticality level*], [*Factor $alpha$*], [*Effect on path risk*],
     ),
-    [LOW], [0.4], [Strongly reduces the score],
-    [MEDIUM (default)], [0.7], [Moderately reduces the score when no criticality is declared],
-    [HIGH], [1.0], [Leaves the score unscaled],
-    [CRITICAL], [1.3], [Amplifies the score],
+    [LOW], [0.4], [Strong reduction],
+    [MEDIUM (default)], [0.7], [Used when unset],
+    [HIGH], [1.0], [Neutral],
+    [CRITICAL], [1.3], [Increase],
   ),
-  caption: [Asset criticality factor $alpha$ per named level.],
+  caption: [Asset criticality factor $alpha$ per level.],
 ) <tab-criticality-levels>
 
-The remaining global parameters, applied uniformly across all experiments unless explicitly overridden per asset, are summarized in @tab-global-scoring-parameters.
+@tab-global-scoring-parameters summarizes the remaining global parameters.
 
 #figure(
   table(
@@ -38,17 +38,17 @@ The remaining global parameters, applied uniformly across all experiments unless
     table.header(
       [*Parameter*], [*Value*], [*Role*],
     ),
-    [KEV multiplier ($k_("KEV")$)], [1.5 / 1.0], [Amplifies vulnerabilities listed in CISA KEV and is neutral otherwise],
-    [CIA multiplier ($k_("CIA")$)], [0.5-1.5], [Weights confidentiality, integrity and availability impact per asset priority and is neutral (1.0) when priorities are equal],
-    [Top paths retained], [10], [Highest risk root-to-leaf paths kept in the summary report],
-    [Maximum path depth], [30], [Bound on path enumeration and cycle guard],
-    [Summary graph path cap], [200], [Highest risk paths aggregated into the host-level summary graph],
-    [Default asset criticality], [MEDIUM], [Applied when an asset declares no explicit criticality],
+    [KEV multiplier ($k_("KEV")$)], [1.5 / 1.0], [Amplifies KEV-listed vulnerabilities],
+    [CIA multiplier ($k_("CIA")$)], [0.5-1.5], [Weights CIA impact by asset priority],
+    [Top paths retained], [10], [Highest-risk paths in the report],
+    [Maximum path depth], [30], [Enumeration bound and cycle guard],
+    [Summary graph path cap], [200], [Paths aggregated in the host-level summary],
+    [Default asset criticality], [MEDIUM], [Used when unspecified],
   ),
   caption: [Global scoring and enumeration parameters.],
 ) <tab-global-scoring-parameters>
 
-The CIA multiplier is interpreted relatively: when the confidentiality, integrity and availability priorities of an asset are equal, the weighted average collapses to a neutral value of $1.0$, so that impact prioritization only takes effect when an analyst deliberately favours one dimension over the others.
+Equal CIA priorities yield a neutral multiplier of $1.0$, so it affects scores only when priorities differ.
 
 = STRIDE-to-MulVAL Mapping <app-stride>
 
@@ -106,9 +106,10 @@ For a threat mapped to the `remoteClient` primitive, the base scenario may optio
 
 = Threat Intelligence Database Schema <app-schema>
 
-@lst-threat-intel-schema reproduces the schema of the shared Threat Intelligence Database, organized around the CVE identifier as the principal key. It is provisioned automatically when the database container is initialized.
+@lst-threat-intel-schema shows the shared Threat Intelligence Database schema. The schema is provisioned when the database container is initialized.
 
-#figure(
+#figure({
+  set text(size: 10pt)
   ```sql
   CREATE SCHEMA IF NOT EXISTS threat_intel;
 
@@ -142,15 +143,17 @@ For a threat mapped to the `remoteClient` primitive, the base scenario may optio
       known_ransomware_use BOOLEAN DEFAULT FALSE,
       created_at           TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
-  ```,
+  ```
+},
   caption: [Threat Intelligence Database schema (PostgreSQL).],
 ) <lst-threat-intel-schema>
 
 = Representative Scenario Input Artifacts <app-artifacts>
 
-To illustrate the inputs consumed by the pipeline, this section reproduces the artifacts of Scenario 1 (Client-Side Exposure). The asset-to-CPE mapping associates each asset and service with its CPE identifier and, optionally, its criticality and CIA priorities.
+This section reproduces Scenario 1 input artifacts. Its asset-to-CPE mapping assigns each asset and service a CPE identifier and optional criticality and CIA priorities.
 
-#figure(
+#figure({
+  set text(size: 10pt)
   ```json
   {
     "assets": [
@@ -184,13 +187,15 @@ To illustrate the inputs consumed by the pipeline, this section reproduces the a
       }
     ]
   }
-  ```,
+  ```
+},
   caption: [Scenario 1 `asset_cpe_mapping.json`.],
 )
 
 The STRIDE threat model declares, for each asset, the threat category, impact and the corresponding MITRE ATT&CK technique.
 
-#figure(
+#figure({
+  set text(size: 10pt)
   ```json
   {
     "system": "scenario1",
@@ -210,13 +215,15 @@ The STRIDE threat model declares, for each asset, the threat category, impact an
       }
     ]
   }
-  ```,
+  ```
+},
   caption: [Scenario 1 `stride_definition.json` (one of three analogous threats shown).],
 )
 
 Finally, the enriched `scenario.P` combines the author-written base network description with the vulnerability facts that the environment correlation layer appends below it. In the base description, `attackerLocated` and `hacl` declare the attacker's location and the allowed network reachability, `installed` records the software on each host, the `inCompetent`/`hasAccount` pairs supply the user context required by the client-side rules, and `attackGoal` states the objectives. The correlation layer then appends one `vulExists`/`vulProperty` pair per matched vulnerability, drawn both from the CVEs correlated to each asset and from the STRIDE model (the `threat_*` facts).
 
-#figure(
+#figure({
+  set text(size: 10pt)
   ```prolog
   /* --- Base network description (author-written scenario1MV.P) --- */
   /* network connection */
@@ -250,7 +257,8 @@ Finally, the enriched `scenario.P` combines the author-written base network desc
   vulExists(victim3,threat_t3_elevation_of_privilege,mozilla_vpn).
   vulProperty(threat_t1_elevation_of_privilege,remoteClient,privEscalation).
   vulExists(victim1,threat_t1_elevation_of_privilege,firefox).
-  ```,
+  ```
+},
   caption: [Enriched MulVAL scenario (`scenario.P`) for Scenario 1.],
 )
 
@@ -258,7 +266,8 @@ Finally, the enriched `scenario.P` combines the author-written base network desc
 
 As discussed in the background chapter, @stix expresses each threat intelligence object in JSON, so that objects can be linked to one another to form a coherent intelligence picture. The following snippet illustrates a STIX 2.1 Campaign object.
 
-#figure(
+#figure({
+  set text(size: 10pt)
   ```json
   {
       "type": "campaign",
@@ -269,13 +278,14 @@ As discussed in the background chapter, @stix expresses each threat intelligence
       "name": "Green Group Attacks Against Finance",
       "description": "Campaign by Green Group against targets in the financial services sector."
   }
-  ```,
+  ```
+},
   caption: [Example of a STIX 2.1 Campaign object #cite(<OASIS_STIX_INTRO26>).],
 )
 
 = Detailed Annotated Attack Graph Output <app-graphs>
 
-The following figure presents the detailed annotated attack graph for Scenario 3, produced by the post-processing layer. It shows the MulVAL attack graph enriched with threat intelligence and node-level risk scores. The corresponding raw MulVAL graph is available as the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario3/gen_graph/AttackGraph.pdf")[original `AttackGraph.pdf`] in the project repository.
+The following figure presents the detailed annotated attack graph for Scenario 3, produced by the post-processing layer. It shows the MulVAL attack graph enriched with threat intelligence and node-level risk scores. Both the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario3/gen_graph/AttackGraph.pdf")[original `AttackGraph.pdf`] and the #link("https://github.com/eduardoascunha/dynamic-attack-graph-framework/blob/main/src/test_cases/scenario3/post_processing/AttackGraph_annotated.png")[full-resolution annotated `AttackGraph_annotated.png`] are available in the project repository.
 
 #page(flipped: true)[
   == Scenario 3: Enterprise Healthcare Information System
